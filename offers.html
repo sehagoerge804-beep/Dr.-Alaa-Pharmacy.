@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offers - Dr. Alaa Pharmacy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #078140;
+            --secondary-color: #045a41;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --light-text: #666;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--bg-color) 0%, #e9ecef 100%);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.5); }
+        }
+
+        header p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 25px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        nav a i {
+            font-size: 1rem;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(7, 129, 64, 0.1);
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #e9ecef;
+            position: relative;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .product:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .discounted-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .discount-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+
+        .add-to-cart {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .add-to-cart:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close:hover {
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            animation: slideInRight 0.3s ease-out;
+            display: none;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 15px;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            header p {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                width: 100%;
+                justify-content: center;
+                max-width: 200px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .product-content {
+                padding: 15px;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles */
+        nav a:focus,
+        .search-input:focus,
+        .add-to-cart:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Special Offers</h1>
+        <p>Don't miss out on our amazing deals!</p>
+        <nav>
+            <ul>
+                <li><a href="pharmacy.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a></li>
+                <li><a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a></li>
+                <li><a href="deodorants-perfumes.html"><i class="fas fa-wind"></i> Deodorants & Perfumes</a></li>
+                <li><a href="sensitive-area-care.html"><i class="fas fa-shield-alt"></i> Sensitive Area Care</a></li>
+                <li><a href="dental-care.html"><i class="fas fa-tooth"></i> Dental Care</a></li>
+                <li><a href="dyes.html"><i class="fas fa-palette"></i> Dyes</a></li>
+                <li><a href="nail-lip-care.html"><i class="fas fa-paint-brush"></i> Nail & Lip Care</a></li>
+                <li><a href="sunscreen.html"><i class="fas fa-sun"></i> Sunscreen</a></li>
+                <li><a href="childrens-supplies.html"><i class="fas fa-baby"></i> Children's Supplies</a></li>
+                <li><a href="shaving-supplies.html"><i class="fas fa-cut"></i> Shaving Supplies</a></li>
+                <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
+                <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
+                <li><a href="offers.html" class="active"><i class="fas fa-tags"></i> Offers</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Special Offers</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="Search offers..." class="search-input">
+            </div>
+            <div class="products">
+                <div class="product" data-name="Buy 2 Get 1 Free Shampoo">
+                    <span class="discount-badge">BOGO</span>
+                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Buy 2 Get 1 Free Shampoo">
+                    <div class="product-content">
+                        <h3>Buy 2 Get 1 Free Shampoo</h3>
+                        <div class="price">
+                            <span class="original-price">$30</span>
+                            <span class="discounted-price">$20</span>
+                            <span class="discount-badge">33% OFF</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-name="50% Off Toothpaste">
+                    <span class="discount-badge">50% OFF</span>
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="50% Off Toothpaste">
+                    <div class="product-content">
+                        <h3>50% Off Toothpaste</h3>
+                        <div class="price">
+                            <span class="original-price">$8</span>
+                            <span class="discounted-price">$4</span>
+                            <span class="discount-badge">50% OFF</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-name="Free Gift with Purchase">
+                    <span class="discount-badge">FREE GIFT</span>
+                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Free Gift with Purchase">
+                    <div class="product-content">
+                        <h3>Free Gift with Purchase</h3>
+                        <div class="price">
+                            <span class="original-price">$25</span>
+                            <span class="discounted-price">$25</span>
+                            <span class="discount-badge">FREE GIFT</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-name="Bundle Deal: Skin Care Set">
+                    <span class="discount-badge">BUNDLE</span>
+                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bundle Deal: Skin Care Set">
+                    <div class="product-content">
+                        <h3>Bundle Deal: Skin Care Set</h3>
+                        <div class="price">
+                            <span class="original-price">$50</span>
+                            <span class="discounted-price">$35</span>
+                            <span class="discount-badge">30% OFF</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-name="Flash Sale: Deodorant">
+                    <span class="discount-badge">FLASH SALE</span>
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Flash Sale: Deodorant">
+                    <div class="product-content">
+                        <h3>Flash Sale: Deodorant</h3>
+                        <div class="price">
+                            <span class="original-price">$10</span>
+                            <span class="discounted-price">$5</span>
+                            <span class="discount-badge">50% OFF</span>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for image zoom -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Notification for add to cart -->
+    <div id="notification" class="notification">
+        Product added to cart!
+    </div>
+
+    <script>
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        const products = document.querySelectorAll('.product');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            products.forEach(product => {
+                const productName = product.getAttribute('data-name').toLowerCase();
+                if (productName.includes(searchTerm)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+
+        // Add to Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Function to update cart count display
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+        }
+
+        // Initialize cart count on page load
+        updateCartCount();
+
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const product = e.target.closest('.product');
+                const productName = product.getAttribute('data-name');
+                const discountedPrice = product.querySelector('.discounted-price').textContent;
+                const productImage = product.querySelector('img').src;
+
+                const cartItem = {
+                    name: productName,
+                    price: discountedPrice,
+                    image: productImage,
+                    quantity: 1
+                };
+
+                // Check if item already in cart
+                const existingItem = cart.find(item => item.name === productName);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push(cartItem);
+                }
+
+                // Save to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Update cart count display
+                updateCartCount();
+
+                // Show notification
+                showNotification();
+            });
+        });
+
+        // Cart link functionality
+        const cartLink = document.getElementById('cart-link');
+        cartLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'cart.html';
+        });
+
+        // Image modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.close');
+
+        document.querySelectorAll('.product img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                modal.style.display = 'block';
+                modalImg.src = e.target.src;
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Notification function
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
