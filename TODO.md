@@ -1,0 +1,18 @@
+- [ ] Add @media (max-width: 1024px) breakpoint to all HTML pages for large tablets/small desktops
+- [ ] Add @media (max-width: 360px) breakpoint to all HTML pages for very small phones
+- [ ] Update skin.html with new breakpoints
+- [ ] Update index.html with new breakpoints
+- [ ] Update cart.html with new breakpoints
+- [ ] Update childrens-supplies.html with new breakpoints
+- [ ] Update dental-care.html with new breakpoints
+- [ ] Update deodorants-perfumes.html with new breakpoints
+- [ ] Update diapers.html with new breakpoints
+- [ ] Update dyes.html with new breakpoints
+- [ ] Update good-supplies.html with new breakpoints
+- [ ] Update hair.html with new breakpoints
+- [ ] Update nail-lip-care.html with new breakpoints
+- [ ] Update offers.html with new breakpoints
+- [ ] Update sensitive-area-care.html with new breakpoints
+- [ ] Update shaving-supplies.html with new breakpoints
+- [ ] Update sunscreen.html with new breakpoints
+- [ ] Test responsiveness on various device sizes using browser dev tools
