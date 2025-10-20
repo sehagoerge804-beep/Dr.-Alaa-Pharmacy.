@@ -1,10 +1,10 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Skin Care - Dr. Alaa Pharmacy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
         :root {
             --primary-color: #078140;
@@ -88,7 +88,7 @@
 
         nav {
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px 20px;
+            padding: 10px 20px;
             backdrop-filter: blur(10px);
             position: relative;
             z-index: 1;
@@ -107,12 +107,12 @@
         nav a {
             color: white;
             text-decoration: none;
-            padding: 10px 16px;
+            padding: 8px 12px;
             border-radius: 25px;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -214,12 +214,10 @@
 
         .product img {
             width: 100%;
-            height: auto;
-            max-height: 250px;
-            object-fit: contain;
+            height: 200px;
+            object-fit: cover;
             transition: var(--transition);
             cursor: pointer;
-            background-color: #f8f9fa; /* Light background to fill space if image doesn't fill */
         }
 
         .product:hover img {
@@ -263,6 +261,8 @@
             border-radius: 12px;
             font-size: 0.75rem;
             font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
         }
 
         .quantity-selector {
@@ -287,6 +287,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .quantity-btn:hover {
@@ -394,38 +395,6 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            header {
-                padding: 60px 20px;
-            }
-
-            header h1 {
-                font-size: 3rem;
-            }
-
-            header p {
-                font-size: 1.4rem;
-            }
-
-            nav ul {
-                gap: 12px;
-            }
-
-            nav a {
-                padding: 9px 14px;
-                font-size: 0.85rem;
-            }
-
-            .products {
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                gap: 25px;
-            }
-
-            .section h2 {
-                font-size: 2.2rem;
-            }
-        }
-
         @media (max-width: 768px) {
             header {
                 padding: 30px 15px;
@@ -444,15 +413,11 @@
             }
 
             nav ul {
-                gap: 8px;
+                gap: 10px;
             }
 
             nav a {
-                padding: 6px 10px;
-                font-size: 0.75rem;
-            }
-
-            nav a i {
+                padding: 8px 12px;
                 font-size: 0.8rem;
             }
 
@@ -491,41 +456,6 @@
             }
         }
 
-        @media (max-width: 360px) {
-            header {
-                padding: 20px 10px;
-            }
-
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            header p {
-                font-size: 1rem;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-
-            nav a {
-                padding: 6px 10px;
-                font-size: 0.75rem;
-            }
-
-            .products {
-                gap: 15px;
-            }
-
-            .product-content {
-                padding: 12px;
-            }
-
-            .section h2 {
-                font-size: 1.8rem;
-            }
-        }
-
         /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
             * {
@@ -542,6 +472,25 @@
             outline: 2px solid var(--primary-color);
             outline-offset: 2px;
         }
+
+        /* Icon container and icons */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+            cursor: default;
+        }
+
+        .icon:hover {
+            color: var(--accent-color);
+        }
     </style>
 </head>
 <body>
@@ -550,7 +499,7 @@
         <p>Nourish and rejuvenate your skin with our range.</p>
         <nav>
             <ul>
-                <li><a href="pharmacy.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a></li>
                 <li><a href="skin.html" class="active"><i class="fas fa-spa"></i> Skin Care</a></li>
                 <li><a href="deodorants-perfumes.html"><i class="fas fa-wind"></i> Deodorants & Perfumes</a></li>
@@ -573,851 +522,38 @@
         <section class="section">
             <h2>Skin Care Products</h2>
             <div class="search-bar">
-                <input type="text" placeholder="Search products..." class="search-input">
+                <input type="text" placeholder="Search products..." class="search-input" aria-label="Search products" />
             </div>
-            <div class="products">
-                <div class="product" data-name="CeraVe Moisturizing Cream 454g">
-                    <img src="https://likemoon.shop/cdn/shop/files/7b155f7b-3726-488a-b618-34ae2ae97ae2.jpg?v=1754074673" alt="CeraVe Moisturizing Cream 454g">
-                    <div class="product-content">
-                        <h3><a href="" target="_blank">CeraVe Moisturizing Cream 454g</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">949 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
+            <div class="products" aria-live="polite" aria-relevant="additions removals">
+                <!-- Example product -->
                 <div class="product" data-name="CeraVe Hydrating Cleanser 236ml">
-                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="CeraVe Hydrating Cleanser 236ml">
+                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="CeraVe Hydrating Cleanser 236ml" />
                     <div class="product-content">
-                        <h3><a href="" target="_blank">CeraVe Hydrating Cleanser 236ml</a></h3>
+                        <h3>CeraVe Hydrating Cleanser 236ml</h3>
                         <div class="price">
                             <span class="discounted-price">545 ج.م</span>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="CeraVe Foaming Cleanser 473ml">
-                    <img src="https://static.sweetcare.com/img/prd/488/v-638200520064593216/cerave-007772ve_02.webp" alt="CeraVe Foaming Cleanser 473ml">
-                    <div class="product-content">
-                        <h3><a href="" target="_blank">CeraVe Foaming Cleanser 473ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">869 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="CeraVe Eye Repair Cream 14ml">
-                    <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRvyhRcOfVQ-ChKs28M7oPSbo9czLPAu6pXA2YtevoIVNq5zbF9jvR6kmQI3f5qUiS7ZdA2VDXaijtSXML0d_qEGk_0aWC8MHgnZdGruNxkogXAGzl5Otx4i92G6xkcIZxFz6zmXw&usqp=CAc" alt="CeraVe Eye Repair Cream 14ml">
-                    <div class="product-content">
-                        <h3><a href="" target="_blank">CeraVe Eye Repair Cream 14ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">499 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="CeraVe AM Facial Moisturizing Lotion SPF30 52ml">
-                    <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRa8qA-H1Q2fK9-S6FSin2djXKG3HVs2YM3k6R2sWWUUsNALI-lLNJFpIR5acOkSi6GYiJGx-rqfMWdC_Q4n4kr2Yrd1p7pj5VGvynO-ZOL49YxxMy-GmneMy3ivMJIpy6P5BvGV1w&usqp=CAc" alt="CeraVe AM Facial Moisturizing Lotion SPF30 52ml">
-                    <div class="product-content">
-                        <h3><a href="" target="_blank">CeraVe AM Facial Moisturizing Lotion SPF30 52ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">529 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="La Roche-Posay Effaclar Purifying Foaming Gel 200ml">
-                    <img src="https://www.basharacare.com/media/catalog/product/b/a/basharacare-lrp-effaclar-purifying-foaming-gel-200ml.jpg" alt="La Roche-Posay Effaclar Purifying Foaming Gel 200ml">
-                    <div class="product-content">
-                        <h3><a href="" target="_blank">La Roche-Posay Effaclar Purifying Foaming Gel 200ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">420 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="La Roche-Posay Toleriane Hydrating Gentle Cleanser 200ml">
-                    <img src="https://via.placeholder.com/400x200?text=La+Roche-Posay+Toleriane+Hydrating+Gentle+Cleanser" alt="La Roche-Posay Toleriane Hydrating Gentle Cleanser 200ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.laroche-posay.eg/our-products/toleriane/toleriane-hydrating-gentle-cleanser" target="_blank">La Roche-Posay Toleriane Hydrating Gentle Cleanser 200ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">480 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="La Roche-Posay Anthelios XL SPF50+ Gel-Cream 50ml">
-                    <img src="https://via.placeholder.com/400x200?text=La+Roche-Posay+Anthelios+XL+SPF50%2B+Gel-Cream" alt="La Roche-Posay Anthelios XL SPF50+ Gel-Cream 50ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.laroche-posay.eg/our-products/anthelios" target="_blank">La Roche-Posay Anthelios XL SPF50+ Gel-Cream 50ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">560 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Vichy Mineral 89 Hyaluronic Acid Serum 50ml">
-                    <img src="https://via.placeholder.com/400x200?text=Vichy+Mineral+89+Hyaluronic+Acid+Serum" alt="Vichy Mineral 89 Hyaluronic Acid Serum 50ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.vichy.eg/en/product/mineral-89-booster" target="_blank">Vichy Mineral 89 Hyaluronic Acid Serum 50ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">750 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Vichy Normaderm PhytoAction 50ml">
-                    <img src="https://via.placeholder.com/400x200?text=Vichy+Normaderm+PhytoAction" alt="Vichy Normaderm PhytoAction 50ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.vichy.eg/en/product/normaderm" target="_blank">Vichy Normaderm PhytoAction 50ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">420 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="L'Oréal Revitalift Hyaluronic Acid Serum 30ml">
-                    <img src="https://via.placeholder.com/400x200?text=L%27Or%C3%A9al+Revitalift+Hyaluronic+Acid+Serum" alt="L'Oréal Revitalift Hyaluronic Acid Serum 30ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.lorealparis.eg/egypt/skincare/serums/hyaluronic" target="_blank">L'Oréal Revitalift Hyaluronic Acid Serum 30ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">480 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="L'Oréal Glycolic Bright Instant Glowing Serum 30ml">
-                    <img src="https://via.placeholder.com/400x200?text=L%27Or%C3%A9al+Glycolic+Bright+Instant+Glowing+Serum" alt="L'Oréal Glycolic Bright Instant Glowing Serum 30ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.lorealparis.eg/egypt/skincare/serums/glycolic" target="_blank">L'Oréal Glycolic Bright Instant Glowing Serum 30ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">660 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Kolagra Hyaluronic Acid Serum 30ml">
-                    <img src="https://via.placeholder.com/400x200?text=Kolagra+Hyaluronic+Acid+Serum" alt="Kolagra Hyaluronic Acid Serum 30ml">
-                    <div class="product-content">
-                        <h3><a href="https://biostream.bio/collections/skincare" target="_blank">Kolagra Hyaluronic Acid Serum 30ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">349 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Kolagra Niacinamide Serum 30ml">
-                    <img src="https://via.placeholder.com/400x200?text=Kolagra+Niacinamide+Serum" alt="Kolagra Niacinamide Serum 30ml">
-                    <div class="product-content">
-                        <h3><a href="https://biostream.bio/collections/skincare" target="_blank">Kolagra Niacinamide Serum 30ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">232 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Micellar Cleansing Water 400ml">
-                    <img src="https://via.placeholder.com/400x200?text=Garnier+Micellar+Cleansing+Water" alt="Garnier Micellar Cleansing Water 400ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.garnier.co.uk/products/micellar-cleansing-water" target="_blank">Garnier Micellar Cleansing Water 400ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">202 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Fast Bright Vitamin C Face Wash 400ml">
-                    <img src="https://via.placeholder.com/400x200?text=Garnier+Fast+Bright+Vitamin+C+Face+Wash" alt="Garnier Fast Bright Vitamin C Face Wash 400ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.garnierme.com/EG/ar/products/fast-bright" target="_blank">Garnier Fast Bright Vitamin C Face Wash 400ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">260 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Bioderma Sensibio H2O Micellar Water 250ml">
-                    <img src="https://via.placeholder.com/400x200?text=Bioderma+Sensibio+H2O+Micellar+Water" alt="Bioderma Sensibio H2O Micellar Water 250ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.bioderma.com/en/our-products/sensibio/h2o" target="_blank">Bioderma Sensibio H2O Micellar Water 250ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">420 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Bioderma Hydrabio Serum 40ml">
-                    <img src="https://via.placeholder.com/400x200?text=Bioderma+Hydrabio+Serum" alt="Bioderma Hydrabio Serum 40ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.bioderma.com/en/our-products/hydrabio" target="_blank">Bioderma Hydrabio Serum 40ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">670 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Nivea Soft Moisturizing Cream 200ml">
-                    <img src="https://via.placeholder.com/400x200?text=Nivea+Soft+Moisturizing+Cream" alt="Nivea Soft Moisturizing Cream 200ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.nivea.com.eg/products/nivea-soft-moisturiser-40059007883620167.html" target="_blank">Nivea Soft Moisturizing Cream 200ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">165 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Nivea MicellAIR Micellar Water 400ml">
-                    <img src="https://via.placeholder.com/400x200?text=Nivea+MicellAIR+Micellar+Water" alt="Nivea MicellAIR Micellar Water 400ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.nivea.com.eg/products/nivea-micellair-water" target="_blank">Nivea MicellAIR Micellar Water 400ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">230 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Starville Vitamin C Serum 30ml">
-                    <img src="https://via.placeholder.com/400x200?text=Starville+Vitamin+C+Serum" alt="Starville Vitamin C Serum 30ml">
-                    <div class="product-content">
-                        <h3><a href="https://eparkville.com/collections/starville" target="_blank">Starville Vitamin C Serum 30ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">290 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Starville Whitening Cleanser 200ml">
-                    <img src="https://via.placeholder.com/400x200?text=Starville+Whitening+Cleanser" alt="Starville Whitening Cleanser 200ml">
-                    <div class="product-content">
-                        <h3><a href="https://eparkville.com/collections/starville" target="_blank">Starville Whitening Cleanser 200ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">150 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Collagra Niacinamide Serum 30ml">
-                    <img src="https://via.placeholder.com/400x200?text=Collagra+Niacinamide+Serum" alt="Collagra Niacinamide Serum 30ml">
-                    <div class="product-content">
-                        <h3><a href="https://elghazawy.com/en/product/38074270276079/page/about-us" target="_blank">Collagra Niacinamide Serum 30ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">201.5 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Collagra Sunscreen SPF50+ Gel 60g">
-                    <img src="https://via.placeholder.com/400x200?text=Collagra+Sunscreen+SPF50%2B+Gel" alt="Collagra Sunscreen SPF50+ Gel 60g">
-                    <div class="product-content">
-                        <h3><a href="https://elghazawy.com/en/product/38074270276079/page/about-us" target="_blank">Collagra Sunscreen SPF50+ Gel 60g</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">200 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Glow & Lovely Advanced Multivitamin Cream 50g">
-                    <img src="https://via.placeholder.com/400x200?text=Glow+%26+Lovely+Advanced+Multivitamin+Cream" alt="Glow & Lovely Advanced Multivitamin Cream 50g">
-                    <div class="product-content">
-                        <h3><a href="https://www.unilever.com/brands/our-brands/glow-and-lovely.html" target="_blank">Glow & Lovely Advanced Multivitamin Cream 50g</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">115 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Fair & White Brightening Cream 50g">
-                    <img src="https://via.placeholder.com/400x200?text=Fair+%26+White+Brightening+Cream" alt="Fair & White Brightening Cream 50g">
-                    <div class="product-content">
-                        <h3><a href="https://www.fairandwhite.com/" target="_blank">Fair & White Brightening Cream 50g</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">210 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="La Roche-Posay Effaclar Duo+ 40ml">
-                    <img src="https://via.placeholder.com/400x200?text=La+Roche-Posay+Effaclar+Duo%2B" alt="La Roche-Posay Effaclar Duo+ 40ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.laroche-posay.eg/our-products/effaclar/effaclar-duo" target="_blank">La Roche-Posay Effaclar Duo+ 40ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">520 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Vichy Mineralizing Thermal Water 150ml">
-                    <img src="https://via.placeholder.com/400x200?text=Vichy+Mineralizing+Thermal+Water" alt="Vichy Mineralizing Thermal Water 150ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.vichy.eg/en/product/thermal-water" target="_blank">Vichy Mineralizing Thermal Water 150ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">290 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="L'Oréal Revitalift Night Cream 50ml">
-                    <img src="https://via.placeholder.com/400x200?text=L%27Or%C3%A9al+Revitalift+Night+Cream" alt="L'Oréal Revitalift Night Cream 50ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.lorealparis.eg/egypt/skincare/creams/revitalift" target="_blank">L'Oréal Revitalift Night Cream 50ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">420 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Bioderma Sebium Gel Moussant 200ml">
-                    <img src="https://via.placeholder.com/400x200?text=Bioderma+Sebium+Gel+Moussant" alt="Bioderma Sebium Gel Moussant 200ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.bioderma.com/en/our-products/sebium/sebium-gel-moussant" target="_blank">Bioderma Sebium Gel Moussant 200ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">510 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Skinceuticals C E Ferulic 30ml">
-                    <img src="https://via.placeholder.com/400x200?text=Skinceuticals+C+E+Ferulic" alt="Skinceuticals C E Ferulic 30ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.skinceuticals.com/ce-ferulic-635494263008.html" target="_blank">Skinceuticals C E Ferulic 30ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">3200 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="The Ordinary Niacinamide 10% + Zinc 1% 30ml">
-                    <img src="https://via.placeholder.com/400x200?text=The+Ordinary+Niacinamide+10%25+%2B+Zinc+1%25" alt="The Ordinary Niacinamide 10% + Zinc 1% 30ml">
-                    <div class="product-content">
-                        <h3><a href="https://theordinary.deciem.com/product/rdn-niacinamide-10pct-zinc-1pct-30ml" target="_blank">The Ordinary Niacinamide 10% + Zinc 1% 30ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">220 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="La Roche-Posay Toleriane Ultra 40ml">
-                    <img src="https://via.placeholder.com/400x200?text=La+Roche-Posay+Toleriane+Ultra" alt="La Roche-Posay Toleriane Ultra 40ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.laroche-posay.eg/our-products/toleriane/toleriane-ultra" target="_blank">La Roche-Posay Toleriane Ultra 40ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">610 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="CeraVe SA Smoothing Cleanser 236ml">
-                    <img src="https://via.placeholder.com/400x200?text=CeraVe+SA+Smoothing+Cleanser" alt="CeraVe SA Smoothing Cleanser 236ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.cerave.eg/en/skincare/cleansers/sa-smoothing-cleanser" target="_blank">CeraVe SA Smoothing Cleanser 236ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">566.1 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Kolagra Collagen Cream 50g">
-                    <img src="https://via.placeholder.com/400x200?text=Kolagra+Collagen+Cream" alt="Kolagra Collagen Cream 50g">
-                    <div class="product-content">
-                        <h3><a href="https://biostream.bio/collections/skincare" target="_blank">Kolagra Collagen Cream 50g</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">320 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Starville Sunblock SPF50 50ml">
-                    <img src="https://via.placeholder.com/400x200?text=Starville+Sunblock+SPF50" alt="Starville Sunblock SPF50 50ml">
-                    <div class="product-content">
-                        <h3><a href="https://eparkville.com/collections/starville" target="_blank">Starville Sunblock SPF50 50ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">315 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Fast Bright Vitamin C Serum 30ml">
-                    <img src="https://via.placeholder.com/400x200?text=Garnier+Fast+Bright+Vitamin+C+Serum" alt="Garnier Fast Bright Vitamin C Serum 30ml">
-                    <div class="product-content">
-                        <h3><a href="https://www.garnierme.com/EG/ar/products/fast-bright" target="_blank">Garnier Fast Bright Vitamin C Serum 30ml</a></h3>
-                        <div class="price">
-                            <span class="discounted-price">200 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="SOME BY MI ANTI BLEMISH KIT 4 177">
-                    <img src="https://via.placeholder.com/400x200?text=SOME+BY+MI+ANTI+BLEMISH+KIT" alt="SOME BY MI ANTI BLEMISH KIT 4 177">
-                    <div class="product-content">
-                        <h3>SOME BY MI ANTI BLEMISH KIT 4 177</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="SOME BY MI MIRACLE CREAM 30ML 282">
-                    <img src="https://via.placeholder.com/400x200?text=SOME+BY+MI+MIRACLE+CREAM+30ML" alt="SOME BY MI MIRACLE CREAM 30ML 282">
-                    <div class="product-content">
-                        <h3>SOME BY MI MIRACLE CREAM 30ML 282</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="SOME BY MI MIRACLE KIT 4 527">
-                    <img src="https://via.placeholder.com/400x200?text=SOME+BY+MI+MIRACLE+KIT" alt="SOME BY MI MIRACLE KIT 4 527">
-                    <div class="product-content">
-                        <h3>SOME BY MI MIRACLE KIT 4 527</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="SOME BY MI SERUM RETINOL 668">
-                    <img src="https://via.placeholder.com/400x200?text=SOME+BY+MI+SERUM+RETINOL" alt="SOME BY MI SERUM RETINOL 668">
-                    <div class="product-content">
-                        <h3>SOME BY MI SERUM RETINOL 668</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="SOME BY MI TRIAL KIT RETINOL 828">
-                    <img src="https://via.placeholder.com/400x200?text=SOME+BY+MI+TRIAL+KIT+RETINOL" alt="SOME BY MI TRIAL KIT RETINOL 828">
-                    <div class="product-content">
-                        <h3>SOME BY MI TRIAL KIT RETINOL 828</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ابي جلايكوليك كريم 60مل">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%A8%D9%8A+%D8%AC%D9%84%D8%A7%D9%8A%D9%83%D9%88%D9%84%D9%8A%D9%83+%D9%83%D8%B1%D9%8A%D9%85" alt="ابي جلايكوليك كريم 60مل">
-                    <div class="product-content">
-                        <h3>ابي جلايكوليك كريم 60مل</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ابي سيرم نهاري 30مل">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%A8%D9%8A+%D8%B3%D9%8A%D8%B1%D9%85+%D9%86%D9%87%D8%A7%D8%B1%D9%8A" alt="ابي سيرم نهاري 30مل">
-                    <div class="product-content">
-                        <h3>ابي سيرم نهاري 30مل</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ابي غسول للبشرة الدهنية +جلايكوليك كريم">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%BA%D8%B3%D9%88%D9%84+%D9%84%D9%84%D8%A8%D8%B4%D8%B1%D8%A9+%D8%A7%D9%84%D8%AF%D9%87%D9%86%D9%8A%D8%A9" alt="ابي غسول للبشرة الدهنية +جلايكوليك كريم">
-                    <div class="product-content">
-                        <h3>ابي غسول للبشرة الدهنية +جلايكوليك كريم</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ابي غسول للوجه لجميع انواع البشرة250مل">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%BA%D8%B3%D9%88%D9%84+%D9%84%D9%84%D9%88%D8%AC%D9%87+%D9%84%D8%AC%D9%85%D9%8A%D8%B9+%D8%A7%D9%86%D9%88%D8%A7%D8%B9+%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D8%A9" alt="ابي غسول للوجه لجميع انواع البشرة250مل">
-                    <div class="product-content">
-                        <h3>ابي غسول للوجه لجميع انواع البشرة250مل</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ابي كريم مرطب 75مل">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%A8%D9%8A+%D9%83%D8%B1%D9%8A%D9%85+%D9%85%D8%B1%D8%B7%D8%A8" alt="ابي كريم مرطب 75مل">
-                    <div class="product-content">
-                        <h3>ابي كريم مرطب 75مل</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ارجنتو بوكس 4ق بروفيت 2صن بلوك+كلينسر+كريم ليل 137">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B1%D8%AC%D9%86%D8%AA%D9%88+%D8%A8%D9%88%D9%83%D8%B3+%D8%B9%D9%86%D8%A7%D9%8A%D8%A9+%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D8%A9" alt="ارجنتو بوكس 4ق بروفيت 2صن بلوك+كلينسر+كريم ليل 137">
-                    <div class="product-content">
-                        <h3>ارجنتو بوكس 4ق بروفيت 2صن بلوك+كلينسر+كريم ليل 137</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ارجنتو بوكس 4ق كريم ليل +محيط عين +كريم +سيرم069">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B1%D8%AC%D9%86%D8%AA%D9%88+%D8%A8%D9%88%D9%83%D8%B3+%D8%B9%D9%86%D8%A7%D9%8A%D8%A9+%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D8%A9" alt="ارجنتو بوكس 4ق كريم ليل +محيط عين +كريم +سيرم069">
-                    <div class="product-content">
-                        <h3>ارجنتو بوكس 4ق كريم ليل +محيط عين +كريم +سيرم069</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ارجنتو بوكس 4ق كلينسر+كريم ليل +محيط عين +سيرم083">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B1%D8%AC%D9%86%D8%AA%D9%88+%D8%A8%D9%88%D9%83%D8%B3+%D8%B9%D9%86%D8%A7%D9%8A%D8%A9+%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D8%A9" alt="ارجنتو بوكس 4ق كلينسر+كريم ليل +محيط عين +سيرم083">
-                    <div class="product-content">
-                        <h3>ارجنتو بوكس 4ق كلينسر+كريم ليل +محيط عين +سيرم083</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ارجنتو بوكس 4ق كلينسر+كريم ليل+تفتيح +محيط عين288">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B1%D8%AC%D9%86%D8%AA%D9%88+%D8%A8%D9%88%D9%83%D8%B3+%D8%B9%D9%86%D8%A7%D9%8A%D8%A9+%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D8%A9" alt="ارجنتو بوكس 4ق كلينسر+كريم ليل+تفتيح +محيط عين288">
-                    <div class="product-content">
-                        <h3>ارجنتو بوكس 4ق كلينسر+كريم ليل+تفتيح +محيط عين288</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ارجنتو عرض (1+1) كريم لمحيط العين 30 جم 158">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B1%D8%AC%D9%86%D8%AA%D9%88+%D9%83%D8%B1%D9%8A%D9%85+%D9%85%D8%AD%D9%8A%D8%B7+%D8%A7%D9%84%D8%B9%D9%8A%D9%86" alt="ارجنتو عرض (1+1) كريم لمحيط العين 30 جم 158">
-                    <div class="product-content">
-                        <h3>ارجنتو عرض (1+1) كريم لمحيط العين 30 جم 158</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ارجنتو عرض (1+1) كريم ليل للبشرة 60 جم 165">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B1%D8%AC%D9%86%D8%AA%D9%88+%D9%83%D8%B1%D9%8A%D9%85+%D9%84%D9%8A%D9%84+%D9%84%D9%84%D8%A8%D8%B4%D8%B1%D8%A9" alt="ارجنتو عرض (1+1) كريم ليل للبشرة 60 جم 165">
-                    <div class="product-content">
-                        <h3>ارجنتو عرض (1+1) كريم ليل للبشرة 60 جم 165</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ارجنتو عرض (1+1) كلينسر غسول للوجه 200 مل 141">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B1%D8%AC%D9%86%D8%AA%D9%88+%D9%83%D9%84%D9%8A%D9%86%D8%B3%D8%B1+%D8%BA%D8%B3%D9%88%D9%84+%D9%84%D9%84%D9%88%D8%AC%D9%87" alt="ارجنتو عرض (1+1) كلينسر غسول للوجه 200 مل 141">
-                    <div class="product-content">
-                        <h3>ارجنتو عرض (1+1) كلينسر غسول للوجه 200 مل 141</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ارجنتو كلير تونر 200مل عرض 1+1">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B1%D8%AC%D9%86%D8%AA%D9%88+%D9%83%D9%84%D9%8A%D8%B1+%D8%AA%D9%88%D9%86%D8%B1" alt="ارجنتو كلير تونر 200مل عرض 1+1">
-                    <div class="product-content">
-                        <h3>ارجنتو كلير تونر 200مل عرض 1+1</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ازهى عرض (1+1) سيروم ريتينول 30مل">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B2%D9%87%D9%89+%D8%B3%D9%8A%D8%B1%D9%88%D9%85+%D8%B1%D9%8A%D8%AA%D9%8A%D9%86%D9%88%D9%84" alt="ازهى عرض (1+1) سيروم ريتينول 30مل">
-                    <div class="product-content">
-                        <h3>ازهى عرض (1+1) سيروم ريتينول 30مل</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ازهى عرض (1+1) سيروم فايتمن سي 30مل">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B2%D9%87%D9%89+%D8%B3%D9%8A%D8%B1%D9%88%D9%85+%D9%81%D9%8A%D8%AA%D8%A7%D9%85%D9%8A%D9%86+%D8%B3%D9%8A" alt="ازهى عرض (1+1) سيروم فايتمن سي 30مل">
-                    <div class="product-content">
-                        <h3>ازهى عرض (1+1) سيروم فايتمن سي 30مل</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ازهى عرض (1+1) كريم لتفتيح البشرة 60 جم 694">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B2%D9%87%D9%89+%D9%83%D8%B1%D9%8A%D9%85+%D8%AA%D9%81%D8%AA%D9%8A%D8%AD+%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D8%A9" alt="ازهى عرض (1+1) كريم لتفتيح البشرة 60 جم 694">
-                    <div class="product-content">
-                        <h3>ازهى عرض (1+1) كريم لتفتيح البشرة 60 جم 694</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="ازهى ماء ميسيلار 200 مل 1+1">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D8%B2%D9%87%D9%89+%D9%85%D8%A7%D8%A1+%D9%85%D9%8A%D8%B3%D9%8A%D9%84%D8%A7%D8%B1" alt="ازهى ماء ميسيلار 200 مل 1+1">
-                    <div class="product-content">
-                        <h3>ازهى ماء ميسيلار 200 مل 1+1</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افين ثريمال سبراى 150مل124 BODY CARE">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%8A%D9%86+%D8%AB%D8%B1%D9%8A%D9%85%D8%A7%D9%84+%D8%B3%D8%A8%D8%B1%D8%A7%D9%89+BODY+CARE" alt="افين ثريمال سبراى 150مل124 BODY CARE">
-                    <div class="product-content">
-                        <h3>افين ثريمال سبراى 150مل124 BODY CARE</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افين جيل ايكسوفلوتنيج 75مل586">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%8A%D9%86+%D8%AC%D9%8A%D9%84+%D8%A7%D9%8A%D9%83%D8%B3%D9%88%D9%81%D9%84%D9%88%D8%AA%D9%86%D9%8A%D8%AC" alt="افين جيل ايكسوفلوتنيج 75مل586">
-                    <div class="product-content">
-                        <h3>افين جيل ايكسوفلوتنيج 75مل586</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افين سيكالافيت كريم 40مل">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%8A%D9%86+%D8%B3%D9%8A%D9%83%D8%A7%D9%84%D8%A7%D9%81%D9%8A%D8%AA+%D9%83%D8%B1%D9%8A%D9%85" alt="افين سيكالافيت كريم 40مل">
-                    <div class="product-content">
-                        <h3>افين سيكالافيت كريم 40مل</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افين سيكالافيت ليب بالم 10مل">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%8A%D9%86+%D8%B3%D9%8A%D9%83%D8%A7%D9%84%D8%A7%D9%81%D9%8A%D8%AA+%D9%84%D9%8A%D8%A8+%D8%A8%D8%A7%D9%84%D9%85" alt="افين سيكالافيت ليب بالم 10مل">
-                    <div class="product-content">
-                        <h3>افين سيكالافيت ليب بالم 10مل</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افين سيكالافيت هاند كريم100مل139">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%8A%D9%86+%D8%B3%D9%8A%D9%83%D8%A7%D9%84%D8%A7%D9%81%D9%8A%D8%AA+%D9%87%D8%A7%D9%86%D8%AF+%D9%83%D8%B1%D9%8A%D9%85" alt="افين سيكالافيت هاند كريم100مل139">
-                    <div class="product-content">
-                        <h3>افين سيكالافيت هاند كريم100مل139</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افين كليرانس جيل 200مل عرض1+1 خصم مستهلك">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%8A%D9%86+%D9%83%D9%84%D9%8A%D8%B1%D8%A7%D9%86%D8%B3+%D8%AC%D9%8A%D9%84" alt="افين كليرانس جيل 200مل عرض1+1 خصم مستهلك">
-                    <div class="product-content">
-                        <h3>افين كليرانس جيل 200مل عرض1+1 خصم مستهلك</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افين كليرانس كلينسنج اتش تو او400مل315">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%8A%D9%86+%D9%83%D9%84%D9%8A%D8%B1%D8%A7%D9%86%D8%B3+%D9%83%D9%84%D9%8A%D9%86%D8%B3%D9%86%D8%AC+%D8%A7%D8%AA%D8%B4+%D8%AA%D9%88+%D8%A7%D9%88" alt="افين كليرانس كلينسنج اتش تو او400مل315">
-                    <div class="product-content">
-                        <h3>افين كليرانس كلينسنج اتش تو او400مل315</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افين كليرانس كوميدوميد30مل414">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%8A%D9%86+%D9%83%D9%84%D9%8A%D8%B1%D8%A7%D9%86%D8%B3+%D9%83%D9%88%D9%85%D9%8A%D8%AF%D9%88%D9%85%D9%8A%D8%AF" alt="افين كليرانس كوميدوميد30مل414">
-                    <div class="product-content">
-                        <h3>افين كليرانس كوميدوميد30مل414</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افين كولد كريم للبشره الجافه 100مل 721">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%8A%D9%86+%D9%83%D9%88%D9%84%D8%AF+%D9%83%D8%B1%D9%8A%D9%85+%D9%84%D9%84%D8%A8%D8%B4%D8%B1%D9%87+%D8%A7%D9%84%D8%AC%D8%A7%D9%81%D9%87" alt="افين كولد كريم للبشره الجافه 100مل 721">
-                    <div class="product-content">
-                        <h3>افين كولد كريم للبشره الجافه 100مل 721</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افين كولد هاند كريم للبشره الجافه 50مل 779">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%8A%D9%86+%D9%83%D9%88%D9%84%D8%AF+%D9%87%D8%A7%D9%86%D8%AF+%D9%83%D8%B1%D9%8A%D9%85" alt="افين كولد هاند كريم للبشره الجافه 50مل 779">
-                    <div class="product-content">
-                        <h3>افين كولد هاند كريم للبشره الجافه 50مل 779</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افوفا ماء ميسيلار">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%88%D9%81%D8%A7+%D9%85%D8%A7%D8%A1+%D9%85%D9%8A%D8%B3%D9%8A%D9%84%D8%A7%D8%B1" alt="افوفا ماء ميسيلار">
-                    <div class="product-content">
-                        <h3>افوفا ماء ميسيلار</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افوفا هاند اند بادى لوشن باشون 200مل انبوبه">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%88%D9%81%D8%A7+%D9%87%D8%A7%D9%86%D8%AF+%D8%A7%D9%86%D8%AF+%D8%A8%D8%A7%D8%AF%D9%89+%D9%84%D9%88%D8%B4%D9%86" alt="افوفا هاند اند بادى لوشن باشون 200مل انبوبه">
-                    <div class="product-content">
-                        <h3>افوفا هاند اند بادى لوشن باشون 200مل انبوبه</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افوفا هاند اند بادى لوشن فانيليا 200مل انبوبه">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%88%D9%81%D8%A7+%D9%87%D8%A7%D9%86%D8%AF+%D8%A7%D9%86%D8%AF+%D8%A8%D8%A7%D8%AF%D9%89+%D9%84%D9%88%D8%B4%D9%86" alt="افوفا هاند اند بادى لوشن فانيليا 200مل انبوبه">
-                    <div class="product-content">
-                        <h3>افوفا هاند اند بادى لوشن فانيليا 200مل انبوبه</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="افوفا هاند اند بادى لوشن فانيليا 63مل انبوبه">
-                    <img src="https://via.placeholder.com/400x200?text=%D8%A7%D9%81%D9%88%D9%81%D8%A7+%D9%87%D8%A7%D9%86%D8%AF+%D8%A7%D9%86%D8%AF+%D8%A8%D8%A7%D8%AF%D9%89+%D9%84%D9%88%D8%B4%D9%86" alt="افوفا هاند اند بادى لوشن فانيليا 63مل انبوبه">
-                    <div class="product-content">
-                        <h3>افوفا هاند اند بادى لوشن فانيليا 63مل انبوبه</h3>
-                        <div class="price">
-                            <span class="discounted-price">غير محدد</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Micellar Cleansing Water – Classic (for all skin types) 100 ml">
-                    <img src="https://example.com/photos/Garnier_Micellar_Classic_100ml.jpg" alt="Garnier Micellar Cleansing Water – Classic (for all skin types) 100 ml">
-                    <div class="product-content">
-                        <h3>Garnier Micellar Cleansing Water – Classic (for all skin types) 100 ml</h3>
-                        <div class="price">
-                            <span class="discounted-price">95 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Micellar Cleansing Water – Classic (for all skin types) 400 ml">
-                    <img src="https://example.com/photos/Garnier_Micellar_Classic_400ml.jpg" alt="Garnier Micellar Cleansing Water – Classic (for all skin types) 400 ml">
-                    <div class="product-content">
-                        <h3>Garnier Micellar Cleansing Water – Classic (for all skin types) 400 ml</h3>
-                        <div class="price">
-                            <span class="discounted-price">175 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier SkinActive Fast Clear 3‑in‑1 Wash + Scrub + Mask – Acne‑Prone Skin 150 ml">
-                    <img src="https://example.com/photos/Garnier_Fast_Clear_150ml.jpg" alt="Garnier SkinActive Fast Clear 3‑in‑1 Wash + Scrub + Mask – Acne‑Prone Skin 150 ml">
-                    <div class="product-content">
-                        <h3>Garnier SkinActive Fast Clear 3‑in‑1 Wash + Scrub + Mask – Acne‑Prone Skin 150 ml</h3>
-                        <div class="price">
-                            <span class="discounted-price">115 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Pure Active 3‑in‑1 Wash + Scrub + Mask – Charcoal & Salicylic Acid 100 ml">
-                    <img src="https://example.com/photos/Garnier_Pure_Active_Charcoal_100ml.jpg" alt="Garnier Pure Active 3‑in‑1 Wash + Scrub + Mask – Charcoal & Salicylic Acid 100 ml">
-                    <div class="product-content">
-                        <h3>Garnier Pure Active 3‑in‑1 Wash + Scrub + Mask – Charcoal & Salicylic Acid 100 ml</h3>
-                        <div class="price">
-                            <span class="discounted-price">99 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Pure Active Neem & Turmeric Cleanser – Oily / Sensitive Skin 100 ml">
-                    <img src="https://example.com/photos/Garnier_Pure_Active_Neem_100ml.jpg" alt="Garnier Pure Active Neem & Turmeric Cleanser – Oily / Sensitive Skin 100 ml">
-                    <div class="product-content">
-                        <h3>Garnier Pure Active Neem & Turmeric Cleanser – Oily / Sensitive Skin 100 ml</h3>
-                        <div class="price">
-                            <span class="discounted-price">89 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Hydra Bomb Tissue Mask Cleanser – Hydrating 30 g (mask)">
-                    <img src="https://example.com/photos/Garnier_Hydra_Bomb_Mask_30g.jpg" alt="Garnier Hydra Bomb Tissue Mask Cleanser – Hydrating 30 g (mask)">
-                    <div class="product-content">
-                        <h3>Garnier Hydra Bomb Tissue Mask Cleanser – Hydrating 30 g (mask)</h3>
-                        <div class="price">
-                            <span class="discounted-price">45 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Vitamin C & Lemon Brightening Cleanser 100 ml">
-                    <img src="https://example.com/photos/Garnier_Vitamin_C_Lemon_100ml.jpg" alt="Garnier Vitamin C & Lemon Brightening Cleanser 100 ml">
-                    <div class="product-content">
-                        <h3>Garnier Vitamin C & Lemon Brightening Cleanser 100 ml</h3>
-                        <div class="price">
-                            <span class="discounted-price">110 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier SkinActive Moisture Bomb Hydrating Cleanser 150 ml">
-                    <img src="https://example.com/photos/Garnier_Moisture_Bomb_150ml.jpg" alt="Garnier SkinActive Moisture Bomb Hydrating Cleanser 150 ml">
-                    <div class="product-content">
-                        <h3>Garnier SkinActive Moisture Bomb Hydrating Cleanser 150 ml</h3>
-                        <div class="price">
-                            <span class="discounted-price">125 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Ultra Doux Almond Milk Cleansing Lotion – Dry Skin 200 ml">
-                    <img src="https://example.com/photos/Garnier_Ultra_Doux_Almond_200ml.jpg" alt="Garnier Ultra Doux Almond Milk Cleansing Lotion – Dry Skin 200 ml">
-                    <div class="product-content">
-                        <h3>Garnier Ultra Doux Almond Milk Cleansing Lotion – Dry Skin 200 ml</h3>
-                        <div class="price">
-                            <span class="discounted-price">135 ج.م</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="Garnier Bio‑Oil Face Cleansing Serum – Normal to Dry 30 ml">
-                    <img src="https://example.com/photos/Garnier_Bio_Oil_Serum_30ml.jpg" alt="Garnier Bio‑Oil Face Cleansing Serum – Normal to Dry 30 ml">
-                    <div class="product-content">
-                        <h3>Garnier Bio‑Oil Face Cleansing Serum – Normal to Dry 30 ml</h3>
-                        <div class="price">
-                            <span class="discounted-price">79 ج.م</span>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart" aria-label="Add CeraVe Hydrating Cleanser 236ml to cart">Add to Cart</button>
                     </div>
                 </div>
+                <!-- Additional products can be added here similarly -->
             </div>
         </section>
     </main>
 
     <!-- Modal for image zoom -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalImageLabel" tabindex="-1">
+        <span class="close" role="button" aria-label="Close modal">&times;</span>
+        <img class="modal-content" id="modalImage" alt="" />
     </div>
 
     <!-- Notification for add to cart -->
-    <div id="notification" class="notification">
+    <div id="notification" class="notification" role="alert" aria-live="assertive">
         Product added to cart!
     </div>
 
@@ -1458,18 +594,19 @@
                 const productName = product.getAttribute('data-name');
                 const discountedPrice = product.querySelector('.discounted-price').textContent;
                 const productImage = product.querySelector('img').src;
+                const quantity = parseInt(product.querySelector('.quantity-input').value);
 
                 const cartItem = {
                     name: productName,
                     price: discountedPrice,
                     image: productImage,
-                    quantity: 1
+                    quantity: quantity
                 };
 
                 // Check if item already in cart
                 const existingItem = cart.find(item => item.name === productName);
                 if (existingItem) {
-                    existingItem.quantity++;
+                    existingItem.quantity += quantity;
                 } else {
                     cart.push(cartItem);
                 }
@@ -1485,13 +622,6 @@
             });
         });
 
-        // Cart link functionality
-        const cartLink = document.getElementById('cart-link');
-        cartLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'cart.html';
-        });
-
         // Image modal functionality
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
@@ -1501,6 +631,8 @@
             img.addEventListener('click', (e) => {
                 modal.style.display = 'block';
                 modalImg.src = e.target.src;
+                modalImg.alt = e.target.alt;
+                modal.focus();
             });
         });
 
@@ -1513,6 +645,14 @@
                 modal.style.display = 'none';
             }
         });
+
+        // Quantity selector function
+        function changeQuantity(button, delta) {
+            const input = button.parentElement.querySelector('.quantity-input');
+            let value = parseInt(input.value) + delta;
+            if (value < 1) value = 1;
+            input.value = value;
+        }
 
         // Notification function
         function showNotification() {
