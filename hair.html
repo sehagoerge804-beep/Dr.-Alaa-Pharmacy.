@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hair Care - Dr. Alaa Pharmacy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
         :root {
             --primary-color: #078140;
@@ -88,7 +88,7 @@
 
         nav {
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px 20px;
+            padding: 10px 20px;
             backdrop-filter: blur(10px);
             position: relative;
             z-index: 1;
@@ -107,12 +107,12 @@
         nav a {
             color: white;
             text-decoration: none;
-            padding: 10px 16px;
+            padding: 8px 12px;
             border-radius: 25px;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -261,6 +261,48 @@
             border-radius: 12px;
             font-size: 0.75rem;
             font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quantity-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .quantity-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 5px;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
         .add-to-cart {
@@ -430,15 +472,34 @@
             outline: 2px solid var(--primary-color);
             outline-offset: 2px;
         }
+
+        /* Icon container and icons */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+            cursor: default;
+        }
+
+        .icon:hover {
+            color: var(--accent-color);
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Hair Care</h1>
-        <p>Premium products for healthy, beautiful hair.</p>
+        <p>Keep your hair healthy, shiny, and beautiful with our range.</p>
         <nav>
             <ul>
-                <li><a href="pharmacy.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="hair.html" class="active"><i class="fas fa-cut"></i> Hair Care</a></li>
                 <li><a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a></li>
                 <li><a href="deodorants-perfumes.html"><i class="fas fa-wind"></i> Deodorants & Perfumes</a></li>
@@ -452,7 +513,7 @@
                 <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
                 <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
                 <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-                <li><a href="#" id="cart-link"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
             </ul>
         </nav>
     </header>
@@ -461,81 +522,68 @@
         <section class="section">
             <h2>Hair Care Products</h2>
             <div class="search-bar">
-                <input type="text" placeholder="Search products..." class="search-input">
+                <input type="text" placeholder="Search products..." class="search-input" aria-label="Search products" />
             </div>
-            <div class="products">
-                <div class="product" data-name="Argan Oil Serum">
-                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Argan Oil Serum">
+            <div class="products" aria-live="polite" aria-relevant="additions removals">
+                <!-- Example product -->
+                <div class="product" data-name="Head & Shoulders Shampoo 400ml">
+                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Head & Shoulders Shampoo 400ml" />
                     <div class="product-content">
-                        <h3>Argan Oil Serum</h3>
+                        <h3>Head & Shoulders Shampoo 400ml</h3>
                         <div class="price">
-                            <span class="original-price">$40</span>
-                            <span class="discounted-price">$28</span>
-                            <span class="discount-badge">30% OFF</span>
+                            <span class="discounted-price">150 ج.م</span>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Head & Shoulders Shampoo 400ml to cart">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Herbal Shampoo">
-                    <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Herbal Shampoo">
+                <div class="product" data-name="Pantene Conditioner 400ml">
+                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Pantene Conditioner 400ml" />
                     <div class="product-content">
-                        <h3>Herbal Shampoo</h3>
+                        <h3>Pantene Conditioner 400ml</h3>
                         <div class="price">
-                            <span class="original-price">$25</span>
-                            <span class="discounted-price">$20</span>
-                            <span class="discount-badge">20% OFF</span>
+                            <span class="discounted-price">140 ج.م</span>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Pantene Conditioner 400ml to cart">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Keratin Treatment">
-                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Keratin Treatment">
+                <div class="product" data-name="Garnier Hair Color 1 Box">
+                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Garnier Hair Color 1 Box" />
                     <div class="product-content">
-                        <h3>Keratin Treatment</h3>
+                        <h3>Garnier Hair Color 1 Box</h3>
                         <div class="price">
-                            <span class="original-price">$60</span>
-                            <span class="discounted-price">$45</span>
-                            <span class="discount-badge">25% OFF</span>
+                            <span class="discounted-price">80 ج.م</span>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Garnier Hair Color 1 Box to cart">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Hair Mask">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit&w=400&q=80" alt="Hair Mask">
-                    <div class="product-content">
-                        <h3>Hair Mask</h3>
-                        <div class="price">
-                            <span class="original-price">$35</span>
-                            <span class="discounted-price">$25</span>
-                            <span class="discount-badge">29% OFF</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product" data-name="eva body splash">
-                    <img src="https://chancestoreegy.com/wp-content/uploads/2025/09/132.webp" alt="eva body splash">
-                    <div class="product-content">
-                        <h3>eva body splash</h3>
-                        <div class="price">
-                            <span class="original-price">240</span>
-                            <span class="discounted-price">200 ج</span>
-                            <span class="discount-badge">30% OFF</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
+                <!-- Additional products can be added here similarly -->
             </div>
         </section>
     </main>
 
     <!-- Modal for image zoom -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalImageLabel" tabindex="-1">
+        <span class="close" role="button" aria-label="Close modal">&times;</span>
+        <img class="modal-content" id="modalImage" alt="" />
     </div>
 
     <!-- Notification for add to cart -->
-    <div id="notification" class="notification">
+    <div id="notification" class="notification" role="alert" aria-live="assertive">
         Product added to cart!
     </div>
 
@@ -575,17 +623,20 @@
                 const product = e.target.closest('.product');
                 const productName = product.getAttribute('data-name');
                 const discountedPrice = product.querySelector('.discounted-price').textContent;
+                const productImage = product.querySelector('img').src;
+                const quantity = parseInt(product.querySelector('.quantity-input').value);
 
                 const cartItem = {
                     name: productName,
                     price: discountedPrice,
-                    quantity: 1
+                    image: productImage,
+                    quantity: quantity
                 };
 
                 // Check if item already in cart
                 const existingItem = cart.find(item => item.name === productName);
                 if (existingItem) {
-                    existingItem.quantity++;
+                    existingItem.quantity += quantity;
                 } else {
                     cart.push(cartItem);
                 }
@@ -601,25 +652,6 @@
             });
         });
 
-        // Cart link functionality
-        const cartLink = document.getElementById('cart-link');
-        cartLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (cart.length === 0) {
-                alert('Your cart is empty.');
-            } else {
-                let summary = 'Cart Summary:\n\n';
-                let total = 0;
-                cart.forEach(item => {
-                    const itemTotal = parseFloat(item.price.replace('$', '').replace(' ج', '')) * item.quantity;
-                    summary += `${item.name} (x${item.quantity}) - ${item.price} each = $${itemTotal.toFixed(2)}\n`;
-                    total += itemTotal;
-                });
-                summary += `\nTotal: $${total.toFixed(2)}`;
-                alert(summary);
-            }
-        });
-
         // Image modal functionality
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
@@ -629,6 +661,8 @@
             img.addEventListener('click', (e) => {
                 modal.style.display = 'block';
                 modalImg.src = e.target.src;
+                modalImg.alt = e.target.alt;
+                modal.focus();
             });
         });
 
@@ -641,6 +675,14 @@
                 modal.style.display = 'none';
             }
         });
+
+        // Quantity selector function
+        function changeQuantity(button, delta) {
+            const input = button.parentElement.querySelector('.quantity-input');
+            let value = parseInt(input.value) + delta;
+            if (value < 1) value = 1;
+            input.value = value;
+        }
 
         // Notification function
         function showNotification() {

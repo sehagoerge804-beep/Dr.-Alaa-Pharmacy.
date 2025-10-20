@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Nail & Lip Care - Dr. Alaa Pharmacy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
         :root {
             --primary-color: #078140;
@@ -88,7 +88,7 @@
 
         nav {
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px 20px;
+            padding: 10px 20px;
             backdrop-filter: blur(10px);
             position: relative;
             z-index: 1;
@@ -107,12 +107,12 @@
         nav a {
             color: white;
             text-decoration: none;
-            padding: 10px 16px;
+            padding: 8px 12px;
             border-radius: 25px;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -261,6 +261,48 @@
             border-radius: 12px;
             font-size: 0.75rem;
             font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quantity-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .quantity-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 5px;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
         .add-to-cart {
@@ -366,6 +408,10 @@
                 font-size: 1.2rem;
             }
 
+            nav {
+                padding: 10px 15px;
+            }
+
             nav ul {
                 gap: 10px;
             }
@@ -378,6 +424,10 @@
             .products {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 20px;
+            }
+
+            .product img {
+                max-height: 200px;
             }
 
             .section h2 {
@@ -422,15 +472,34 @@
             outline: 2px solid var(--primary-color);
             outline-offset: 2px;
         }
+
+        /* Icon container and icons */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+            cursor: default;
+        }
+
+        .icon:hover {
+            color: var(--accent-color);
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Nail & Lip Care</h1>
-        <p>Enhance your beauty with our nail and lip products.</p>
+        <p>Perfect your nails and lips with our specialized care products.</p>
         <nav>
             <ul>
-                <li><a href="pharmacy.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a></li>
                 <li><a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a></li>
                 <li><a href="deodorants-perfumes.html"><i class="fas fa-wind"></i> Deodorants & Perfumes</a></li>
@@ -453,67 +522,97 @@
         <section class="section">
             <h2>Nail & Lip Care Products</h2>
             <div class="search-bar">
-                <input type="text" placeholder="Search products..." class="search-input">
+                <input type="text" placeholder="Search products..." class="search-input" aria-label="Search products" />
             </div>
-            <div class="products">
-                <div class="product" data-name="Nail Polish Remover">
-                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nail Polish Remover">
+            <div class="products" aria-live="polite" aria-relevant="additions removals">
+                <div class="product" data-name="Vaseline Lip Balm 7g">
+                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Vaseline Lip Balm 7g" />
                     <div class="product-content">
-                        <h3>Nail Polish Remover</h3>
+                        <h3>Vaseline Lip Balm 7g</h3>
                         <div class="price">
-                            <span class="original-price">$6</span>
-                            <span class="discounted-price">$5</span>
-                            <span class="discount-badge">17% OFF</span>
+                            <span class="discounted-price">25 ج.م</span>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Vaseline Lip Balm 7g to cart">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Lip Balm">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lip Balm">
+                <div class="product" data-name="Maybelline Lip Gloss 5ml">
+                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Maybelline Lip Gloss 5ml" />
                     <div class="product-content">
-                        <h3>Lip Balm</h3>
+                        <h3>Maybelline Lip Gloss 5ml</h3>
                         <div class="price">
-                            <span class="original-price">$4</span>
-                            <span class="discounted-price">$3</span>
-                            <span class="discount-badge">25% OFF</span>
+                            <span class="discounted-price">45 ج.م</span>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Maybelline Lip Gloss 5ml to cart">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Nail Clippers">
-                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nail Clippers">
+                <div class="product" data-name="OPI Nail Polish 15ml">
+                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="OPI Nail Polish 15ml" />
                     <div class="product-content">
-                        <h3>Nail Clippers</h3>
+                        <h3>OPI Nail Polish 15ml</h3>
                         <div class="price">
-                            <span class="original-price">$10</span>
-                            <span class="discounted-price">$8</span>
-                            <span class="discount-badge">20% OFF</span>
+                            <span class="discounted-price">80 ج.م</span>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add OPI Nail Polish 15ml to cart">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Lip Gloss">
-                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lip Gloss">
+                <div class="product" data-name="Nail Clippers Set">
+                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Nail Clippers Set" />
                     <div class="product-content">
-                        <h3>Lip Gloss</h3>
+                        <h3>Nail Clippers Set</h3>
                         <div class="price">
-                            <span class="original-price">$12</span>
-                            <span class="discounted-price">$9</span>
-                            <span class="discount-badge">25% OFF</span>
+                            <span class="discounted-price">35 ج.م</span>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Nail Clippers Set to cart">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Cuticle Oil">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Cuticle Oil">
+                <div class="product" data-name="Lip Scrub 50g">
+                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Lip Scrub 50g" />
                     <div class="product-content">
-                        <h3>Cuticle Oil</h3>
+                        <h3>Lip Scrub 50g</h3>
                         <div class="price">
-                            <span class="original-price">$15</span>
-                            <span class="discounted-price">$12</span>
-                            <span class="discount-badge">20% OFF</span>
+                            <span class="discounted-price">40 ج.م</span>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Lip Scrub 50g to cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product" data-name="Nail Strengthener 10ml">
+                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Nail Strengthener 10ml" />
+                    <div class="product-content">
+                        <h3>Nail Strengthener 10ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">60 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Nail Strengthener 10ml to cart">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -521,13 +620,13 @@
     </main>
 
     <!-- Modal for image zoom -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalImageLabel" tabindex="-1">
+        <span class="close" role="button" aria-label="Close modal">&times;</span>
+        <img class="modal-content" id="modalImage" alt="" />
     </div>
 
     <!-- Notification for add to cart -->
-    <div id="notification" class="notification">
+    <div id="notification" class="notification" role="alert" aria-live="assertive">
         Product added to cart!
     </div>
 
@@ -568,18 +667,19 @@
                 const productName = product.getAttribute('data-name');
                 const discountedPrice = product.querySelector('.discounted-price').textContent;
                 const productImage = product.querySelector('img').src;
+                const quantity = parseInt(product.querySelector('.quantity-input').value);
 
                 const cartItem = {
                     name: productName,
                     price: discountedPrice,
                     image: productImage,
-                    quantity: 1
+                    quantity: quantity
                 };
 
                 // Check if item already in cart
                 const existingItem = cart.find(item => item.name === productName);
                 if (existingItem) {
-                    existingItem.quantity++;
+                    existingItem.quantity += quantity;
                 } else {
                     cart.push(cartItem);
                 }
@@ -595,13 +695,6 @@
             });
         });
 
-        // Cart link functionality
-        const cartLink = document.getElementById('cart-link');
-        cartLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'cart.html';
-        });
-
         // Image modal functionality
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
@@ -611,6 +704,8 @@
             img.addEventListener('click', (e) => {
                 modal.style.display = 'block';
                 modalImg.src = e.target.src;
+                modalImg.alt = e.target.alt;
+                modal.focus();
             });
         });
 
@@ -623,6 +718,14 @@
                 modal.style.display = 'none';
             }
         });
+
+        // Quantity selector function
+        function changeQuantity(button, delta) {
+            const input = button.parentElement.querySelector('.quantity-input');
+            let value = parseInt(input.value) + delta;
+            if (value < 1) value = 1;
+            input.value = value;
+        }
 
         // Notification function
         function showNotification() {

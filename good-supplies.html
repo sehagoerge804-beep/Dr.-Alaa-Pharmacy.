@@ -88,7 +88,7 @@
 
         nav {
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px 20px;
+            padding: 10px 20px;
             backdrop-filter: blur(10px);
             position: relative;
             z-index: 1;
@@ -107,12 +107,12 @@
         nav a {
             color: white;
             text-decoration: none;
-            padding: 10px 16px;
+            padding: 8px 12px;
             border-radius: 25px;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -215,7 +215,7 @@
         .product img {
             width: 100%;
             height: 200px;
-            object-fit: cover;
+            object-fit: contain;
             transition: var(--transition);
             cursor: pointer;
         }
@@ -261,6 +261,46 @@
             border-radius: 12px;
             font-size: 0.75rem;
             font-weight: bold;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quantity-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .quantity-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 5px;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
         .add-to-cart {
@@ -352,6 +392,36 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
+        /* Footer */
+        footer {
+            background: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        footer .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        footer .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             header {
@@ -430,7 +500,7 @@
         <p>Quality personal care products for everyday use.</p>
         <nav>
             <ul>
-                <li><a href="pharmacy.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a></li>
                 <li><a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a></li>
                 <li><a href="deodorants-perfumes.html"><i class="fas fa-wind"></i> Deodorants & Perfumes</a></li>
@@ -451,7 +521,7 @@
 
     <main>
         <section class="section">
-            <h2>Good Supplies</h2>
+            <h2>Good Supplies Products</h2>
             <div class="search-bar">
                 <input type="text" placeholder="Search products..." class="search-input">
             </div>
@@ -465,6 +535,11 @@
                             <span class="discounted-price">$9</span>
                             <span class="discount-badge">25% OFF</span>
                         </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </div>
@@ -476,6 +551,11 @@
                             <span class="original-price">$8</span>
                             <span class="discounted-price">$6</span>
                             <span class="discount-badge">25% OFF</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
@@ -489,6 +569,11 @@
                             <span class="discounted-price">$16</span>
                             <span class="discount-badge">20% OFF</span>
                         </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </div>
@@ -500,6 +585,11 @@
                             <span class="original-price">$5</span>
                             <span class="discounted-price">$4</span>
                             <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
@@ -513,12 +603,27 @@
                             <span class="discounted-price">$12</span>
                             <span class="discount-badge">20% OFF</span>
                         </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer>
+        <p>&copy; 2023 Dr. Alaa Pharmacy. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
 
     <!-- Modal for image zoom -->
     <div id="imageModal" class="modal">
@@ -568,18 +673,19 @@
                 const productName = product.getAttribute('data-name');
                 const discountedPrice = product.querySelector('.discounted-price').textContent;
                 const productImage = product.querySelector('img').src;
+                const quantity = parseInt(product.querySelector('.quantity-input').value);
 
                 const cartItem = {
                     name: productName,
                     price: discountedPrice,
                     image: productImage,
-                    quantity: 1
+                    quantity: quantity
                 };
 
                 // Check if item already in cart
                 const existingItem = cart.find(item => item.name === productName);
                 if (existingItem) {
-                    existingItem.quantity++;
+                    existingItem.quantity += quantity;
                 } else {
                     cart.push(cartItem);
                 }
@@ -593,13 +699,6 @@
                 // Show notification
                 showNotification();
             });
-        });
-
-        // Cart link functionality
-        const cartLink = document.getElementById('cart-link');
-        cartLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = 'cart.html';
         });
 
         // Image modal functionality
@@ -623,6 +722,14 @@
                 modal.style.display = 'none';
             }
         });
+
+        // Quantity selector function
+        function changeQuantity(button, delta) {
+            const input = button.parentElement.querySelector('.quantity-input');
+            let value = parseInt(input.value) + delta;
+            if (value < 1) value = 1;
+            input.value = value;
+        }
 
         // Notification function
         function showNotification() {
