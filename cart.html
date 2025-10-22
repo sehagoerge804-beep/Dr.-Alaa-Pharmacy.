@@ -471,7 +471,7 @@
             </div>
             <div id="cart-total" class="cart-total" style="display: none;">
                 <h3>Total</h3>
-                <p class="total-price" id="total-price">$0.00</p>
+                <p class="total-price" id="total-price">le 0.00</p>
                 <button class="confirm-order" onclick="confirmOrder()"><i class="fab fa-whatsapp"></i> Confirm Order on WhatsApp</button>
             </div>
             <div id="empty-cart" class="empty-cart">
@@ -482,42 +482,42 @@
     </main>
 
     <script>
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cart = JSON.parse(localStorage.getItem('pharmacy_cart')) || [];
 
         // Function to update cart count display
-        function updateCartCount() {
+        function updatepharmacy_cartCount() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-count').textContent = totalItems;
+            document.getElementById('pharmacy_cart-count').textContent = totalItems;
         }
 
         // Function to render cart items
-        function renderCart() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            const emptyCart = document.getElementById('empty-cart');
+        function renderpharmacy_cart() {
+            const pharmacy_cartItemsContainer = document.getElementById('pharmacy_cart-items');
+            const pharmacy_cartTotal = document.getElementById('pharmacy_cart-total');
+            const emptypharmacy_cart = document.getElementById('empty-cart');
             const totalPriceElement = document.getElementById('total-price');
 
-            cartItemsContainer.innerHTML = '';
+            pharmacy_cartItemsContainer.innerHTML = '';
             let total = 0;
 
-            if (cart.length === 0) {
-                cartTotal.style.display = 'none';
-                emptyCart.style.display = 'block';
+            if (pharmacy_cart.length === 0) {
+                pharmacy_cartTotal.style.display = 'none';
+                emptypharmacy_cart.style.display = 'block';
                 return;
             }
 
-            emptyCart.style.display = 'none';
-            cartTotal.style.display = 'block';
+            emptypharmacy_cart.style.display = 'none';
+            pharmacy_cartTotal.style.display = 'block';
 
-            cart.forEach((item, index) => {
-                const itemTotal = parseFloat(item.price.replace('$', '').replace(' ج', '')) * item.quantity;
+            pharmacy_cart.forEach((item, index) => {
+                const itemTotal = parseFloat(item.price.replace('LE', '').replace(' ج', '')) * item.quantity;
                 total += itemTotal;
 
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
+                const pharmacy_cartItem = document.createElement('div');
+               pharmacy_cartItem.className = 'pharmacy_cart-item';
+                pharmacy_cartItem.innerHTML = `
                     <img src="${item.image || ''}" alt="${item.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Tm8gSW1hZ2U8L3RleHQ+PC9zdmc+'">
-                    <div class="cart-item-details">
+                    <div class="pharmacy_cart-item-details">
                         <h3>${item.name}</h3>
                         <p>${item.price}</p>
                         <div class="quantity-controls">
@@ -584,4 +584,5 @@
     </script>
 </body>
 </html>
+
 
