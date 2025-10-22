@@ -121,7 +121,7 @@
         }
 
         nav a i {
-            font-size: 1rem;
+            font-size: 0.6rem;
         }
 
         nav a::before {
@@ -513,7 +513,7 @@
                 <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
                 <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
                 <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> cart <span id="cart-count">0</span></a></li>
             </ul>
         </nav>
     </header>
@@ -538,7 +538,7 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
                         </div>
-                        <button class="add-to-cart" aria-label="Add Hair Dye Black 100ml to cart">Add to Cart</button>
+                        <button class="add-to-cart" aria-label="Add Hair Dye Black 100ml to cart">Add to cart</button>
                     </div>
                 </div>
                 <!-- Additional products can be added here similarly -->
@@ -554,7 +554,7 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
                         </div>
-                        <button class="add-to-cart" aria-label="Add Fabric Dye Blue 500ml to cart">Add to Cart</button>
+                        <button class="add-to-cart" aria-label="Add Fabric Dye Blue 500ml to cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Nail Polish Red 10ml">
@@ -569,7 +569,7 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
                         </div>
-                        <button class="add-to-cart" aria-label="Add Nail Polish Red 10ml to cart">Add to Cart</button>
+                        <button class="add-to-cart" aria-label="Add Nail Polish Red 10ml to cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Lipstick Matte Pink">
@@ -584,7 +584,7 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
                         </div>
-                        <button class="add-to-cart" aria-label="Add Lipstick Matte Pink to cart">Add to Cart</button>
+                        <button class="add-to-cart" aria-label="Add Lipstick Matte Pink to cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Eye Shadow Palette 12 Colors">
@@ -599,7 +599,7 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
                         </div>
-                        <button class="add-to-cart" aria-label="Add Eye Shadow Palette 12 Colors to cart">Add to Cart</button>
+                        <button class="add-to-cart" aria-label="Add Eye Shadow Palette 12 Colors to cart">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -634,7 +634,7 @@
             });
         });
 
-        // Add to Cart functionality
+        // Add to cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         // Function to update cart count display
@@ -725,3 +725,8 @@
     </script>
 </body>
 </html>
+
+
+
+
+
