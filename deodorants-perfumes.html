@@ -37,7 +37,7 @@
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
-            padding: 50px 20px;
+            padding: 80px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -121,7 +121,7 @@
         }
 
         nav a i {
-            font-size: 1rem;
+            font-size: 0.6rem;
         }
 
         nav a::before {
@@ -397,7 +397,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             header {
-                padding: 30px 15px;
+                padding: 60px 15px;
             }
 
             header h1 {
@@ -409,7 +409,7 @@
             }
 
             nav {
-                padding: 10px 15px;
+                padding: 5px 10px;
             }
 
             nav ul {
@@ -445,6 +445,11 @@
                 width: 100%;
                 justify-content: center;
                 max-width: 200px;
+                font-size: 0.6rem;
+            }
+
+            nav a i {
+                font-size: 0.6rem;
             }
 
             .products {
@@ -494,7 +499,7 @@
                 <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
                 <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
                 <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> cart <span id="cart-count">0</span></a></li>
             </ul>
         </nav>
     </header>
@@ -520,7 +525,7 @@
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
                         <span class="discount-badge">25% OFF</span>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Natural Deodorant">
@@ -537,7 +542,7 @@
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
                         <span class="discount-badge">20% OFF</span>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Floral Perfume">
@@ -554,7 +559,7 @@
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
                         <span class="discount-badge">29% OFF</span>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Men's Cologne">
@@ -571,7 +576,7 @@
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
                         <span class="discount-badge">24% OFF</span>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Body Mist">
@@ -588,7 +593,7 @@
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
                         <span class="discount-badge">28% OFF</span>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -623,7 +628,7 @@
             });
         });
 
-        // Add to Cart functionality
+        // Add to cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         // Function to update cart count display
@@ -712,3 +717,8 @@
     </script>
 </body>
 </html>
+
+
+
+
+

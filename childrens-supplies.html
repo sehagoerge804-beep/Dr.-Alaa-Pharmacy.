@@ -514,7 +514,7 @@
                 <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
                 <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
                 <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> cart <span id="cart-count">0</span></a></li>
             </ul>
         </nav>
     </header>
@@ -540,7 +540,7 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly>
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Kids Shampoo">
@@ -557,7 +557,7 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly>
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Baby Powder">
@@ -574,7 +574,7 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly>
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Kids Toothpaste">
@@ -591,7 +591,7 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly>
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
                 <div class="product" data-name="Baby Wipes">
@@ -608,7 +608,7 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly>
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
-                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -653,7 +653,7 @@
             });
         });
 
-        // Add to Cart functionality
+        // Add to cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         // Function to update cart count display
@@ -742,3 +742,8 @@
     </script>
 </body>
 </html>
+
+
+
+
+
