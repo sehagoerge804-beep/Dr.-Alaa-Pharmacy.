@@ -1,29 +1,26 @@
-# TODO: Make Navigation Bar Small on All Pages and Reduce Icon Sizes for Phone
+# TODO: Make Navigation Bar Icons Smaller
 
-## Plan Summary
-- Update header padding on all category pages to 80px 20px (matching home page) to make nav bar appear proportionally smaller.
-- Adjust responsive header padding to 60px 15px on mobile.
-- Reduce nav padding on mobile to 5px 10px for smaller bar.
-- Reduce nav icon font-size on mobile to 0.6rem for better phone fit.
+## Plan Overview
+- Update `nav a i { font-size: 0.6rem; }` to `font-size: 0.5rem;` in all HTML files.
+- Update any media query overrides for `nav a i` font-size to 0.5rem.
+- Affects all pages: index.html, deodorants-perfumes.html, skin.html, hair.html, etc. (19 files total).
 
-## Files to Edit
-- [x] skin.html
-- [x] hair.html
-- [x] deodorants-perfumes.html
-- [ ] sensitive-area-care.html
-- [ ] dental-care.html
-- [ ] dyes.html
-- [ ] nail-lip-care.html
-- [ ] sunscreen.html
-- [ ] childrens-supplies.html
-- [ ] shaving-supplies.html
-- [ ] good-supplies.html
-- [ ] diapers.html
-- [ ] offers.html
-- [ ] pharmacy_cart.html
+## Steps to Complete
+- [ ] Edit index.html
+- [ ] Edit deodorants-perfumes.html
+- [ ] Edit skin.html
+- [ ] Edit hair.html
+- [ ] Edit sunscreen.html
+- [ ] Edit shaving-supplies.html
+- [ ] Edit sensitive-area-care.html
+- [ ] Edit dental-care.html
+- [ ] Edit dyes.html
+- [ ] Edit nail-lip-care.html
+- [ ] Edit childrens-supplies.html
+- [ ] Edit good-supplies.html
+- [ ] Edit diapers.html
+- [ ] Edit offers.html
+- [ ] Edit pharmacy_cart.html
 
-## Steps
-1. Update header padding in each file.
-2. Update responsive header padding.
-3. Update nav padding on mobile.
-4. Update icon font-size on mobile.
+## Followup Steps
+- [ ] Test by opening one of the pages to verify the icons are smaller.
