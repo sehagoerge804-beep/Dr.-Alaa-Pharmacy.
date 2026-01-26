@@ -1,515 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Alaa Pharmacy - Premium Cosmetics, Skin & Hair Care</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #078140;
-            --secondary-color: #045a41;
-            --accent-color: #ff6b6b;
-            --text-color: #333;
-            --light-text: #666;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Alaa Pharmacy - Modern Professional Design</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+<style>
+/* ===== Reset ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#f5f5f5;color:#333;overflow-x:hidden;}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* ===== Navbar ===== */
+header{position:relative;z-index:100;}
+.nav-container{display:flex;justify-content:space-between;align-items:center;padding:20px;max-width:1300px;margin:auto;}
+.logo{font-size:2rem;font-weight:700;color:#00796b;}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{width:30px;height:3px;background:#333;border-radius:3px;transition:all 0.3s;}
+.side-menu{position:fixed;top:0;right:-300px;width:300px;height:100vh;background:#185a9d;color:white;transition:0.5s;padding:50px 20px;display:flex;flex-direction:column;gap:25px;z-index:200;}
+.side-menu a{color:white;text-decoration:none;font-size:1.1rem;transition:0.3s;}
+.side-menu a:hover{color:#43cea2;}
+.side-menu.active{right:0;}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);opacity:0;visibility:hidden;transition:0.5s;z-index:150;}
+.overlay.active{opacity:1;visibility:visible;}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--bg-color) 0%, #e9ecef 100%);
-            overflow-x: hidden;
-        }
+/* ===== Banner ===== */
+.banner{background:linear-gradient(135deg,#43cea2,#185a9d);color:white;text-align:center;padding:120px 20px;border-radius:20px;margin:20px auto;max-width:1200px;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.15);}
+.banner h1{font-size:3rem;font-weight:800;margin-bottom:15px;}
+.banner p{font-size:1.2rem;max-width:700px;margin:0 auto 20px;line-height:1.5;}
+.banner .cta-btn{display:inline-block;padding:12px 25px;background:#fff;color:#185a9d;font-weight:600;border-radius:50px;text-decoration:none;transition:all 0.3s;}
+.banner .cta-btn:hover{background:#185a9d;color:#fff;transform:scale(1.05);}
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
+/* ===== Section Titles ===== */
+section h2{font-size:2rem;color:#185a9d;text-align:center;margin:50px 0 30px;position:relative;}
+section h2::after{content:"";width:60px;height:3px;background:#43cea2;display:block;margin:10px auto 0;border-radius:3px;}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            animation: float 20s linear infinite;
-        }
+/* ===== Companies Section ===== */
+.companies{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;margin:30px auto;max-width:1200px;}
+.company-logo{width:120px;height:60px;background:white;display:flex;justify-content:center;align-items:center;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.1);transition:all 0.3s;cursor:pointer;}
+.company-logo img{max-width:100%;max-height:80%;}
+.company-logo:hover{transform:scale(1.05);box-shadow:0 12px 30px rgba(0,0,0,0.15);}
 
-        @keyframes float {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100px); }
-        }
+/* ===== Products Section ===== */
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;max-width:1200px;margin:auto;}
+.product-card{background:white;border-radius:15px;padding:20px;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:all 0.3s;cursor:pointer;}
+.product-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 15px 35px rgba(0,0,0,0.15);}
+.product-card img{width:100%;border-radius:12px;margin-bottom:15px;}
+.product-card h3{color:#185a9d;margin-bottom:8px;}
+.product-card p{font-size:0.9rem;color:#555;margin-bottom:10px;}
+.product-card .price{font-weight:700;color:#43cea2;font-size:1.1rem;}
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-            position: relative;
-            z-index: 1;
-        }
+/* ===== Best Sellers Section ===== */
+.best-sellers{display:flex;overflow-x:auto;gap:20px;padding:20px 0;scroll-behavior:smooth;margin:30px auto;max-width:1200px;}
+.best-sellers::-webkit-scrollbar{display:none;}
+.best-card{min-width:200px;background:white;border-radius:15px;padding:15px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,0.1);transition:all 0.3s;cursor:pointer;}
+.best-card img{width:100%;border-radius:10px;margin-bottom:12px;}
+.best-card h4{color:#185a9d;margin-bottom:6px;}
+.best-card .price{font-weight:700;color:#43cea2;font-size:1rem;}
+.best-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,0.15);}
 
-        @keyframes glow {
-            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.5); }
-        }
+/* ===== Social Media Section ===== */
+.social-section{background:#43cea2;padding:40px 20px;text-align:center;border-radius:15px;max-width:1200px;margin:40px auto;}
+.social-section h2{color:white;margin-bottom:25px;font-size:2rem;position:relative;}
+.social-section .social-icons a{display:inline-block;color:white;font-size:2rem;margin:0 15px;padding:12px;border-radius:50%;background:rgba(0,0,0,0.1);transition:all 0.3s;}
+.social-section .social-icons a:hover{background:white;color:#43cea2;transform:scale(1.2);}
 
-        .hero p {
-            font-size: clamp(1.1rem, 3vw, 1.8rem);
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease-out;
-            position: relative;
-            z-index: 1;
-        }
+/* ===== Footer ===== */
+footer{background:#185a9d;color:white;text-align:center;padding:40px 20px;margin-top:50px;}
+footer p{margin-bottom:15px;}
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Navigation */
-        nav {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 25px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        nav a i {
-            font-size: 0.5rem;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        nav a:hover::before {
-            left: 100%;
-        }
-
-        nav a:hover, nav a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        /* Main Content */
-        main {
-            max-width: 1400px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .category-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid #e9ecef;
-            text-align: center;
-            padding: 40px 20px;
-            position: relative;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .category-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            transition: var(--transition);
-        }
-
-        .category-card:hover .category-icon {
-            transform: scale(1.1);
-            color: var(--secondary-color);
-        }
-
-        .category-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .category-card p {
-            color: var(--light-text);
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-
-        .category-link {
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: var(--transition);
-            display: inline-block;
-        }
-
-        .category-link:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-color);
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-        }
-
-        footer p {
-            margin-bottom: 10px;
-        }
-
-        footer .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        footer .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        footer .social-links a:hover {
-            color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 60px 15px;
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero p {
-                font-size: 1.3rem;
-            }
-
-            nav {
-                padding: 10px 15px;
-            }
-
-            nav ul {
-                gap: 10px;
-            }
-
-            nav a {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-
-            .categories {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 5px 10px;
-            }
-
-            nav ul {
-                gap: 5px;
-            }
-
-            nav a {
-                padding: 4px 8px;
-                font-size: 0.6rem;
-            }
-
-            nav a i {
-                font-size: 0.5rem;
-            }
-
-            .categories {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-
-            .category-card {
-                padding: 20px 10px;
-            }
-
-            .category-icon {
-                font-size: 1rem;
-                margin-bottom: 10px;
-            }
-
-            .category-card h3 {
-                font-size: 1.1rem;
-                margin-bottom: 10px;
-            }
-
-            .category-card p {
-                font-size: 0.85rem;
-                margin-bottom: 15px;
-            }
-
-            .category-link {
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-
-            footer .social-links a {
-                font-size: 1rem;
-            }
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Focus styles */
-        nav a:focus,
-        .cta-button:focus,
-        .category-link:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-    </style>
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  .products{grid-template-columns:1fr;}
+  .best-sellers{flex-wrap:wrap;overflow-x:auto;}
+}
+</style>
 </head>
 <body>
-    <header class="hero">
-        <h1>Welcome to Dr. Alaa Pharmacy</h1>
-        <p>Your trusted source for premium cosmetics, skin & hair care products</p>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a></li>
-                <li><a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a></li>
-                <li><a href="deodorants-perfumes.html"><i class="fas fa-wind"></i> Deodorants & Perfumes</a></li>
-                <li><a href="sensitive-area-care.html"><i class="fas fa-shield-alt"></i> Sensitive Area Care</a></li>
-                <li><a href="dental-care.html"><i class="fas fa-tooth"></i> Dental Care</a></li>
-                <li><a href="dyes.html"><i class="fas fa-palette"></i> Dyes</a></li>
-                <li><a href="nail-lip-care.html"><i class="fas fa-paint-brush"></i> Nail & Lip Care</a></li>
-                <li><a href="sunscreen.html"><i class="fas fa-sun"></i> Sunscreen</a></li>
-                <li><a href="childrens-supplies.html"><i class="fas fa-baby"></i> Children's Supplies</a></li>
-                <li><a href="shaving-supplies.html"><i class="fas fa-cut"></i> Shaving Supplies</a></li>
-                <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
-                <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
-                <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> cart <span id="cart-count">0</span></a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section id="categories" class="section">
-            <h2>Our Product Categories</h2>
-            <div class="categories">
-                <div class="category-card">
-                    <i class="fas fa-spa category-icon"></i>
-                    <h3>Skin Care</h3>
-                    <p>Nourish and rejuvenate your skin with our premium range of products.</p>
-                    <a href="skin.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-cut category-icon"></i>
-                    <h3>Hair Care</h3>
-                    <p>Keep your hair healthy, shiny, and beautiful with our hair care solutions.</p>
-                    <a href="hair.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-wind category-icon"></i>
-                    <h3>Deodorants & Perfumes</h3>
-                    <p>Stay fresh and confident with our range of deodorants and fragrances.</p>
-                    <a href="deodorants-perfumes.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-shield-alt category-icon"></i>
-                    <h3>Sensitive Area Care</h3>
-                    <p>Gentle and effective care for your most sensitive areas.</p>
-                    <a href="sensitive-area-care.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-tooth category-icon"></i>
-                    <h3>Dental Care</h3>
-                    <p>Maintain a healthy smile with our dental care products.</p>
-                    <a href="dental-care.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-palette category-icon"></i>
-                    <h3>Dyes</h3>
-                    <p>Express yourself with our vibrant hair dye collection.</p>
-                    <a href="dyes.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-paint-brush category-icon"></i>
-                    <h3>Nail & Lip Care</h3>
-                    <p>Perfect your nails and lips with our specialized care products.</p>
-                    <a href="nail-lip-care.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-sun category-icon"></i>
-                    <h3>Sunscreen</h3>
-                    <p>Protect your skin from harmful UV rays with our sunscreens.</p>
-                    <a href="sunscreen.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-baby category-icon"></i>
-                    <h3>Children's Supplies</h3>
-                    <p>Gentle and safe products for your little ones.</p>
-                    <a href="childrens-supplies.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-cut category-icon"></i>
-                    <h3>Shaving Supplies</h3>
-                    <p>Achieve a smooth shave with our high-quality shaving products.</p>
-                    <a href="shaving-supplies.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-user category-icon"></i>
-                    <h3>Good Supplies</h3>
-                    <p>Essential personal care items for everyday use.</p>
-                    <a href="good-supplies.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-baby-carriage category-icon"></i>
-                    <h3>Diapers</h3>
-                    <p>Comfortable and reliable diapers for babies and adults.</p>
-                    <a href="diapers.html" class="category-link">Shop Now</a>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-tags category-icon"></i>
-                    <h3>Offers</h3>
-                    <p>Don't miss out on our special deals and discounts.</p>
-                    <a href="offers.html" class="category-link">View Offers</a>
-                </div>
-            </div>
-        </section>
-    </main>
+<!-- Navbar -->
+<header>
+<div class="nav-container">
+  <div class="logo">Dr. Alaa Pharmacy</div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</div>
 
-    <footer>
-        <p>&copy; 2023 Dr. Alaa Pharmacy. All rights reserved.</p>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-    </footer>
+<!-- Side Menu -->
+<div class="side-menu" id="side-menu">
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a>
+  <a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a>
+  <a href="deodorants-perfumes.html"><i class="fas fa-wind"></i> Deodorants & Perfumes</a>
+  <a href="sensitive-area-care.html"><i class="fas fa-shield-alt"></i> Sensitive Area Care</a>
+  <a href="dental-care.html"><i class="fas fa-tooth"></i> Dental Care</a>
+  <a href="dyes.html"><i class="fas fa-palette"></i> Dyes</a>
+  <a href="nail-lip-care.html"><i class="fas fa-paint-brush"></i> Nail & Lip Care</a>
+  <a href="sunscreen.html"><i class="fas fa-sun"></i> Sunscreen</a>
+  <a href="childrens-supplies.html"><i class="fas fa-baby"></i> Children's Supplies</a>
+  <a href="shaving-supplies.html"><i class="fas fa-cut"></i> Shaving Supplies</a>
+  <a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a>
+  <a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a>
+  <a href="offers.html"><i class="fas fa-tags"></i> Offers</a>
+  <a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+</div>
+<div class="overlay" id="overlay"></div>
+</header>
 
-    <script>
-        // Update cart count on page load
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        function updateCartCount() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-count').textContent = totalItems;
-        }
-        updateCartCount();
-    </script>
+<!-- Banner -->
+<div class="banner">
+  <h1>Welcome to Dr. Alaa Pharmacy</h1>
+  <p>Premium cosmetics, skin & hair care products delivered to your doorstep. Discover top brands and bestsellers!</p>
+  <a href="offers.html" class="cta-btn">Shop Now</a>
+</div>
+
+<!-- Companies Section -->
+<section>
+<h2>Our Trusted Brands</h2>
+<div class="companies">
+  <div class="company-logo"><img src="https://via.placeholder.com/100x50?text=Brand+1" alt="Brand 1"></div>
+  <div class="company-logo"><img src="https://via.placeholder.com/100x50?text=Brand+2" alt="Brand 2"></div>
+  <div class="company-logo"><img src="https://via.placeholder.com/100x50?text=Brand+3" alt="Brand 3"></div>
+  <div class="company-logo"><img src="https://via.placeholder.com/100x50?text=Brand+4" alt="Brand 4"></div>
+</div>
+</section>
+
+<!-- Products Section -->
+<section>
+<h2>Featured Products</h2>
+<div class="products">
+  <div class="product-card">
+    <img src="https://via.placeholder.com/250x250?text=Product+1" alt="Product 1">
+    <h3>Hair Shampoo</h3>
+    <p>For shiny, healthy hair</p>
+    <div class="price">$12.99</div>
+  </div>
+  <div class="product-card">
+    <img src="https://via.placeholder.com/250x250?text=Product+2" alt="Product 2">
+    <h3>Skin Cream</h3>
+    <p>Moisturize & nourish</p>
+    <div class="price">$18.50</div>
+  </div>
+  <div class="product-card">
+    <img src="https://via.placeholder.com/250x250?text=Product+3" alt="Product 3">
+    <h3>Perfume</h3>
+    <p>Fresh long-lasting scent</p>
+    <div class="price">$22.00</div>
+  </div>
+</div>
+</section>
+
+<!-- Best Sellers -->
+<section>
+<h2>Best Sellers</h2>
+<div class="best-sellers">
+  <div class="best-card">
+    <img src="https://via.placeholder.com/200x200?text=Best+1" alt="Best 1">
+    <h4>Vitamin C Serum</h4>
+    <div class="price">$15.99</div>
+  </div>
+  <div class="best-card">
+    <img src="https://via.placeholder.com/200x200?text=Best+2" alt="Best 2">
+    <h4>Face Mask</h4>
+    <div class="price">$9.50</div>
+  </div>
+  <div class="best-card">
+    <img src="https://via.placeholder.com/200x200?text=Best+3" alt="Best 3">
+    <h4>Body Lotion</h4>
+    <div class="price">$13.00</div>
+  </div>
+</div>
+</section>
+
+<!-- Social Media Section -->
+<section class="social-section">
+  <h2>Follow Us</h2>
+  <div class="social-icons">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+<p>&copy; 2023 Dr. Alaa Pharmacy. All rights reserved.</p>
+</footer>
+
+<script>
+// Hamburger Toggle
+const hamburger = document.getElementById('hamburger');
+const sideMenu = document.getElementById('side-menu');
+const overlay = document.getElementById('overlay');
+
+hamburger.addEventListener('click',()=>{
+  sideMenu.classList.toggle('active');
+  overlay.classList.toggle('active');
+});
+
+overlay.addEventListener('click',()=>{
+  sideMenu.classList.remove('active');
+  overlay.classList.remove('active');
+});
+</script>
+
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDQ2ZkGiIKE5odbXsZD03on_OcIuUbkJmg",
+    authDomain: "pharmacy-store-bc240.firebaseapp.com",
+    projectId: "pharmacy-store-bc240",
+    storageBucket: "pharmacy-store-bc240.appspot.com",
+    messagingSenderId: "328904695111",
+    appId: "1:328904695111:web:4c4d8625e463d127af8062",
+    measurementId: "G-FDCS1S483F"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  window.firebaseApp = app;
+  console.log("Firebase Connected ✅");
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
