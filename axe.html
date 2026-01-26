@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaving Supplies - Dr. Alaa Pharmacy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Axe Products - Dr. Alaa Pharmacy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
         * {
             margin: 0;
@@ -60,6 +60,10 @@
             padding: 10px 15px;
             border-radius: 5px;
             transition: background-color 0.3s;
+        }
+
+        nav a i {
+            font-size: 0.6rem;
         }
 
         nav a:hover {
@@ -119,8 +123,8 @@
 
         .product img {
             width: 100%;
-            height: auto;
-            object-fit: cover;
+            height: 200px;
+            object-fit: contain;
             cursor: pointer;
         }
 
@@ -275,8 +279,8 @@
 </head>
 <body>
     <header>
-        <h1>Shaving Supplies</h1>
-        <p>Quality shaving products for a smooth finish.</p>
+        <h1>Axe Products</h1>
+        <p>Explore our range of Axe deodorants and perfumes for men.</p>
     </header>
 
     <nav>
@@ -291,29 +295,28 @@
             <li><a href="nail-lip-care.html"><i class="fas fa-paint-brush"></i> Nail & Lip Care</a></li>
             <li><a href="sunscreen.html"><i class="fas fa-sun"></i> Sunscreen</a></li>
             <li><a href="childrens-supplies.html"><i class="fas fa-baby"></i> Children's Supplies</a></li>
-            <li><a href="shaving-supplies.html" class="active"><i class="fas fa-cut"></i> Shaving Supplies</a></li>
+            <li><a href="shaving-supplies.html"><i class="fas fa-cut"></i> Shaving Supplies</a></li>
             <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
             <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
             <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-            <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
+            <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         </ul>
     </nav>
 
     <main>
         <section class="section">
-            <h2>Shaving Supplies Products</h2>
+            <h2>Axe Products</h2>
             <div class="search-bar">
-                <input type="text" placeholder="Search products..." class="search-input">
+                <input type="text" placeholder="Search Axe products..." class="search-input">
             </div>
             <div class="products">
-                <div class="product" data-name="Shaving Cream">
-                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Shaving Cream">
+                <div class="product" data-name="Axe Body Spray for Men Ice Chill 150ML">
+                    <img src="https://m.media-amazon.com/images/I/71NO65cEOPL._AC_SY879_.jpg" alt="Axe Body Spray for Men Ice Chill 150ML">
                     <div class="product-content">
-                        <h3>Shaving Cream</h3>
+                        <h3>Axe Body Spray for Men Ice Chill 150ML</h3>
                         <div class="price">
-                            <span class="original-price">$10</span>
-                            <span class="discounted-price">$8</span>
-                            <span class="discount-badge">20% OFF</span>
+                            <span class="original-price"></span>
+                            <span class="discounted-price">price: 195 LE</span>
                         </div>
                         <div class="quantity-selector">
                             <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
@@ -323,14 +326,12 @@
                         <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Razor Blades">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Razor Blades">
+                <div class="product" data-name="AXE Body Spray for Men - Leather & Cookies, 150ml">
+                    <img src="https://m.media-amazon.com/images/I/71CSe0pkLxL._AC_SX679_.jpg" alt="AXE Body Spray for Men - Leather & Cookies, 150ml">
                     <div class="product-content">
-                        <h3>Razor Blades</h3>
+                        <h3>AXE Body Spray for Men - Leather & Cookies, 150ml</h3>
                         <div class="price">
-                            <span class="original-price">$15</span>
-                            <span class="discounted-price">$12</span>
-                            <span class="discount-badge">20% OFF</span>
+                            <span class="discounted-price">price: 195</span>
                         </div>
                         <div class="quantity-selector">
                             <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
@@ -340,48 +341,62 @@
                         <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Aftershave Lotion">
-                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aftershave Lotion">
+                <div class="product" data-name="Axe Body Spray for Men Skateboard & Fresh Roses 150ML">
+                    <img src="https://m.media-amazon.com/images/I/51ohSomismL._AC_SX679_.jpg" alt="Axe Body Spray for Men Skateboard & Fresh Roses 150ML">
                     <div class="product-content">
-                        <h3>Aftershave Lotion</h3>
+                        <h3>Axe Body Spray for Men Skateboard & Fresh Roses 150ML</h3>
                         <div class="price">
-                            <span class="original-price">$18</span>
-                            <span class="discounted-price">$14</span>
-                            <span class="discount-badge">22% OFF</span>
+                            <span class="discounted-price">price: 195</span>
                         </div>
                         <div class="quantity-selector">
                             <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
                             <input type="number" class="quantity-input" value="1" min="1" readonly>
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
+                        <span class="discount-badge" style="background-color:#FF4500;">29% OFF</span>
                         <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Electric Razor">
-                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Electric Razor">
+                <div class="product" data-name="Axe Body Spray for Men Black 150ML">
+                    <img src="https://m.media-amazon.com/images/I/61BadlDxx8L._AC_SY879_.jpg" alt="Axe Body Spray for Men Black 150ML">
                     <div class="product-content">
-                        <h3>Electric Razor</h3>
+                        <h3>Axe Body Spray for Men Black 150ML</h3>
                         <div class="price">
-                            <span class="original-price">$50</span>
-                            <span class="discounted-price">$40</span>
-                            <span class="discount-badge">20% OFF</span>
+                           
+                            <span class="discounted-price">price : 195</span>
                         </div>
                         <div class="quantity-selector">
                             <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
                             <input type="number" class="quantity-input" value="1" min="1" readonly>
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
+                        <span class="discount-badge" style="background-color:#FF4500;">24% OFF</span>
                         <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Shaving Brush">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Shaving Brush">
+                <div class="product" data-name="Axe Body Spray for Men Black Night 150ML">
+                    <img src="https://m.media-amazon.com/images/I/61Bb6UFCf-L._AC_SY879_.jpg" alt="Axe Body Spray for Men Black Night 150ML">
                     <div class="product-content">
-                        <h3>Shaving Brush</h3>
+                        <h3>Axe Body Spray for Men Black Night 150ML</h3>
                         <div class="price">
-                            <span class="original-price">$12</span>
-                            <span class="discounted-price">$9</span>
-                            <span class="discount-badge">25% OFF</span>
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <span class="discount-badge" style="background-color:#FF4500;">28% OFF</span>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                    
+                </div>
+                    <div class="product" data-name="Axe Body Spray for Men Leather & Cookies 150ML">
+                    <img src="https://m.media-amazon.com/images/I/51kRZ5uQxhL._AC_SX679_.jpg" alt="Axe Body Spray for Men Leather & Cookies 150ML">
+                    <div class="product-content">
+                        <h3>AXE Body Spray for Men - Leather & Cookies, 150ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price: 195</span>
                         </div>
                         <div class="quantity-selector">
                             <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
@@ -437,18 +452,26 @@
 
         const addToCartButtons = document.querySelectorAll('.add-to-cart');
 
+        // Quantity change function
+        function changeQuantity(button, change) {
+            const product = button.closest('.product');
+            const quantityInput = product.querySelector('.quantity-input');
+            let currentQuantity = parseInt(quantityInput.value);
+            currentQuantity += change;
+            if (currentQuantity < 1) currentQuantity = 1;
+            quantityInput.value = currentQuantity;
+        }
+
         addToCartButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 const product = e.target.closest('.product');
                 const productName = product.getAttribute('data-name');
                 const discountedPrice = product.querySelector('.discounted-price').textContent;
-                const productImage = product.querySelector('img').src;
                 const quantity = parseInt(product.querySelector('.quantity-input').value);
 
                 const cartItem = {
                     name: productName,
                     price: discountedPrice,
-                    image: productImage,
                     quantity: quantity
                 };
 
@@ -493,14 +516,6 @@
             }
         });
 
-        // Quantity selector function
-        function changeQuantity(button, delta) {
-            const input = button.parentElement.querySelector('.quantity-input');
-            let value = parseInt(input.value) + delta;
-            if (value < 1) value = 1;
-            input.value = value;
-        }
-
         // Notification function
         function showNotification() {
             const notification = document.getElementById('notification');
@@ -512,13 +527,6 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 

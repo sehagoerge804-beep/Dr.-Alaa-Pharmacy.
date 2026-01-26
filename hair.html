@@ -5,505 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hair Care - Dr. Alaa Pharmacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <style>
-        :root {
-            --primary-color: #078140;
-            --secondary-color: #045a41;
-            --accent-color: #ff6b6b;
-            --text-color: #333;
-            --light-text: #666;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--bg-color) 0%, #e9ecef 100%);
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100px); }
-        }
-
-        header h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.5); }
-        }
-
-        header p {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            animation: fadeInUp 1s ease-out;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        nav {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 25px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        nav a i {
-            font-size: 0.5rem;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        nav a:hover::before {
-            left: 100%;
-        }
-
-        nav a:hover, nav a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        main {
-            max-width: 1400px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        .search-bar {
-            max-width: 500px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e9ecef;
-            border-radius: 30px;
-            font-size: 1rem;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(7, 129, 64, 0.1);
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid #e9ecef;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .product img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .product:hover img {
-            transform: scale(1.05);
-        }
-
-        .product-content {
-            padding: 20px;
-        }
-
-        .product h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--text-color);
-        }
-
-        .price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-
-        .discounted-price {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .discount-badge {
-            background: var(--accent-color);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            margin-top: 10px;
-            display: inline-block;
-        }
-
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .quantity-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .quantity-btn:hover {
-            background: var(--secondary-color);
-            transform: scale(1.1);
-        }
-
-        .quantity-input {
-            width: 50px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            padding: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .add-to-cart {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            width: 100%;
-            transition: var(--transition);
-        }
-
-        .add-to-cart:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .close:hover {
-            color: var(--accent-color);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Notification Styles */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--primary-color);
-            color: white;
-            padding: 15px 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            animation: slideInRight 0.3s ease-out;
-            display: none;
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                padding: 60px 15px;
-            }
-
-            header h1 {
-                font-size: 2.2rem;
-            }
-
-            header p {
-                font-size: 1.2rem;
-            }
-
-            nav {
-                padding: 5px 10px;
-            }
-
-            nav ul {
-                gap: 10px;
-            }
-
-            nav a {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-
-            .products {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-            }
-
-            .product img {
-                max-height: 200px;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav a {
-                width: 100%;
-                justify-content: center;
-                max-width: 200px;
-                font-size: 0.6rem;
-            }
-
-            nav a i {
-                font-size: 0.6rem;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .product-content {
-                padding: 15px;
-            }
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Focus styles */
-        nav a:focus,
-        .search-input:focus,
-        .add-to-cart:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-
-        /* Icon container and icons */
-        .icon-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
-        }
-
-        .icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            transition: color 0.3s ease;
-            cursor: default;
-        }
-
-        .icon:hover {
-            color: var(--accent-color);
-        }
-    </style>
+    <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="deodorants-perfumes.css" />
 </head>
 <body>
     <header>
         <h1>Hair Care</h1>
-        <p>Keep your hair healthy, shiny, and beautiful with our range.</p>
-        <nav>
-            <ul>
+        <p>High-quality hair care products for healthy, shiny hair. From shampoos to conditioners, find everything you need.</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Dr. Alaa Pharmacy</div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="hair.html" class="active"><i class="fas fa-cut"></i> Hair Care</a></li>
                 <li><a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a></li>
@@ -518,23 +37,756 @@
                 <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
                 <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
                 <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> cart <span id="cart-count">0</span></a></li>
+                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+
+        <!-- Dropdown Backdrop -->
+        <div class="dropdown-backdrop"></div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu">
+            <div class="icon-grid">
+                <a href="index.html" class="icon-item" data-tooltip="Home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="hair.html" class="icon-item" data-tooltip="Hair Care">
+                    <i class="fas fa-cut"></i>
+                    <span>Hair Care</span>
+                </a>
+                <a href="skin.html" class="icon-item" data-tooltip="Skin Care">
+                    <i class="fas fa-spa"></i>
+                    <span>Skin Care</span>
+                </a>
+                <a href="deodorants-perfumes.html" class="icon-item" data-tooltip="Deodorants & Perfumes">
+                    <i class="fas fa-wind"></i>
+                    <span>Deodorants & Perfumes</span>
+                </a>
+                <a href="sensitive-area-care.html" class="icon-item" data-tooltip="Sensitive Area Care">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Sensitive Area Care</span>
+                </a>
+                <a href="dental-care.html" class="icon-item" data-tooltip="Dental Care">
+                    <i class="fas fa-tooth"></i>
+                    <span>Dental Care</span>
+                </a>
+                <a href="dyes.html" class="icon-item" data-tooltip="Dyes">
+                    <i class="fas fa-palette"></i>
+                    <span>Dyes</span>
+                </a>
+                <a href="nail-lip-care.html" class="icon-item" data-tooltip="Nail & Lip Care">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Nail & Lip Care</span>
+                </a>
+                <a href="sunscreen.html" class="icon-item" data-tooltip="Sunscreen">
+                    <i class="fas fa-sun"></i>
+                    <span>Sunscreen</span>
+                </a>
+                <a href="childrens-supplies.html" class="icon-item" data-tooltip="Children's Supplies">
+                    <i class="fas fa-baby"></i>
+                    <span>Children's Supplies</span>
+                </a>
+                <a href="shaving-supplies.html" class="icon-item" data-tooltip="Shaving Supplies">
+                    <i class="fas fa-cut"></i>
+                    <span>Shaving Supplies</span>
+                </a>
+                <a href="good-supplies.html" class="icon-item" data-tooltip="Good Supplies">
+                    <i class="fas fa-user"></i>
+                    <span>Good Supplies</span>
+                </a>
+                <a href="diapers.html" class="icon-item" data-tooltip="Diapers">
+                    <i class="fas fa-baby-carriage"></i>
+                    <span>Diapers</span>
+                </a>
+                <a href="offers.html" class="icon-item" data-tooltip="Offers">
+                    <i class="fas fa-tags"></i>
+                    <span>Offers</span>
+                </a>
+                <a href="pharmacy_cart.html" class="icon-item" data-tooltip="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                </a>
+            </div>
+        </div>
+    </nav>
 
     <main>
         <section class="section">
-            <h2>Hair Care Products</h2>
+            <h3>Hair Care Products</h3>
             <div class="search-bar">
                 <input type="text" placeholder="Search products..." class="search-input" aria-label="Search products" />
             </div>
             <div class="products" aria-live="polite" aria-relevant="additions removals">
                 <!-- Example product -->
-                <div class="product" data-name="Head & Shoulders Shampoo 400ml">
-                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Head & Shoulders Shampoo 400ml" />
+
+                <div class="product" data-name="Gk Hair Moisturizing Shampoo Color Protection 300 ml">
+                    <img src="https://m.media-amazon.com/images/I/51uq-8Q0kFL._AC_SX679_.jpg" alt="Gk Hair Moisturizing Shampoo Color Protection 300 ml" />
                     <div class="product-content">
-                        <h3>Head & Shoulders Shampoo 400ml</h3>
+                        <h3>Gk Hair Moisturizing Shampoo Color Protection 300 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">575 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Gk Hair Moisturizing Shampoo Color Protection 300 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                
+                
+                <div class="product" data-name="GK Hair Balancing Shampoo For Women, 300 Ml">
+                    <img src="https://m.media-amazon.com/images/I/71zM9+ytb4L._AC_SX679_.jpg" alt="GK Hair Balancing Shampoo For Women, 300 Ml" />
+                    <div class="product-content">
+                        <h3>GK Hair Balancing Shampoo For Women, 300 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">575 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add GK Hair Balancing Shampoo For Women, 300 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+                
+                <div class="product" data-name="VICHY Dercos ANTI-DANDRUFF SHAMPOO FOR DRY Hair (Green) (200 Ml)">
+                                    <img src="https://m.media-amazon.com/images/I/71ePEyy4X7L._AC_SX679_.jpg" alt="VICHY Dercos ANTI-DANDRUFF SHAMPOO FOR DRY Hair (Green) (200 Ml)"/>
+                                    <div class="product-content">
+                                        <h3>VICHY Dercos ANTI-DANDRUFF SHAMPOO FOR DRY Hair (Green) (200 Ml)</h3>
+                                        <div class="price">
+                                            <span class="discounted-price">720 ج.م</span>
+                                        </div>
+                                        <div class="quantity-selector" aria-label="Quantity selector">
+                                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                                        </div>
+                                        <button class="add-to-cart" aria-label="Add VICHY Dercos ANTI-DANDRUFF SHAMPOO FOR DRY Hair (Green) (200 Ml) to cart">Add to cart</button>
+                                    </div>
+                                </div>
+
+                                <div class="product" data-name="LOreal Professionnel Curl Expression Moisturizing Shampoo for Curly and Coily Hair - 300ml">
+                                    <img src="https://m.media-amazon.com/images/I/51cWAME5xsL._AC_SX679_.jpg" alt="LOreal Professionnel Curl Expression Moisturizing Shampoo for Curly and Coily Hair - 300ml"/>
+                                    <div class="product-content">
+                                        <h3>LOreal Professionnel Curl Expression Moisturizing Shampoo for Curly and Coily Hair - 300ml</h3>
+                                        <div class="price">
+                                            <span class="discounted-price">885 ج.م</span>
+                                        </div>
+                                        <div class="quantity-selector" aria-label="Quantity selector">
+                                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                                        </div>
+                                        <button class="add-to-cart" aria-label="Add LOreal Professionnel Curl Expression Moisturizing Shampoo for Curly and Coily Hair - 300ml to cart">Add to cart</button>
+                                    </div>
+                                </div>
+
+                                <div class="product" data-name="Eva Professional Hair Care E-Line Hydra Shampoo 1000 ml">
+                                    <img src="https://m.media-amazon.com/images/I/71f6aJP3O9L._AC_SX679_.jpg" alt="Eva Professional Hair Care E-Line Hydra Shampoo 1000 ml"/>
+                                    <div class="product-content">
+                                        <h3>Eva Professional Hair Care E-Line Hydra Shampoo 1000 ml</h3>
+                                        <div class="price">
+                                            <span class="discounted-price">1600 ج.م</span>
+                                        </div>
+                                        <div class="quantity-selector" aria-label="Quantity selector">
+                                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                                        </div>
+                                        <button class="add-to-cart" aria-label="Add Eva Professional Hair Care E-Line Hydra Shampoo 1000 ml to cart">Add to cart</button>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="product" data-name="Capixy Hair Fertlizer Shampoo 250 Ml">
+                                    <img src="https://m.media-amazon.com/images/I/41s4gkLWoKL._AC_SX679_.jpg" alt="Capixy Hair Fertlizer Shampoo 250 Ml" />
+                    <div class="product-content">
+                        <h3>Capixy Hair Fertlizer Shampoo 250 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">275 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Capixy Hair Fertlizer Shampoo 250 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Capixy Hair Fertlizer Intense Tonic Spray 125 Ml">
+                                    <img src="https://m.media-amazon.com/images/I/51M46PEVAbL._AC_SX679_.jpg" alt="Capixy Hair Fertlizer Intense Tonic Spray 125 Ml" />
+                    <div class="product-content">
+                        <h3>Capixy Hair Fertlizer Intense Tonic Spray 125 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">463 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Capixy Hair Fertlizer Intense Tonic Spray 125 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+                
+<div class="product" data-name="CAPIXY VIALS ANTI HAIR LOSS (7 VIAL X 10ML)">
+                                    <img src="https://m.media-amazon.com/images/I/413M0ta5AlL._AC_SX679_.jpg" alt="CAPIXY VIALS ANTI HAIR LOSS (7 VIAL X 10ML)" />
+                    <div class="product-content">
+                        <h3>CAPIXY VIALS ANTI HAIR LOSS (7 VIAL X 10ML)</h3>
+                        <div class="price">
+                            <span class="discounted-price">1100 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CAPIXY VIALS ANTI HAIR LOSS (7 VIAL X 10ML) to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Capixy Cream Hair Fertlizer 120 Ml">
+                                    <img src="https://sourcebeauty.com/cdn/shop/files/Cream_e46168b1-682e-4dec-9d82-d4814c89dd00.png?v=1719925034&width=1620" alt="Capixy Cream Hair Fertlizer 120 Ml" />
+                    <div class="product-content">
+                        <h3>Capixy Cream Hair Fertlizer 120 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">275 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Capixy Cream Hair Fertlizer 120 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+ <div class="product" data-name="Capixy Lashes Treatment Serum 10Ml">
+                                    <img src="https://m.media-amazon.com/images/I/61g+vjBnbAL._AC_SX679_.jpg" alt="Capixy Lashes Treatment Serum 10Ml" />
+                    <div class="product-content">
+                        <h3>Capixy Lashes Treatment Serum 10Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">570 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Capixy Lashes Treatment Serum 10Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Capixy Hair Hydrating Conditioner 250ml">
+                                    <img src="https://m.media-amazon.com/images/I/414RdG9jzwL._AC_SX679_.jpg" alt="Capixy Hair Hydrating Conditioner 250ml" />
+                    <div class="product-content">
+                        <h3>Capixy Hair Hydrating Conditioner 250ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">295 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Capixy Hair Hydrating Conditioner 250ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Capixy Hair Serum 120ml">
+                                    <img src="https://m.media-amazon.com/images/I/41gY94rYiML._AC_SY879_.jpg" alt="Capixy Hair Serum 120ml" />
+                    <div class="product-content">
+                        <h3>Capixy Hair Serum 120ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">475 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Capixy Hair Serum 120ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Capixy Hair Mask 250ml">
+                                    <img src="https://m.media-amazon.com/images/I/51ruQcOm3wL._AC_SX679_.jpg" alt="Capixy Hair Mask 250ml" />
+                    <div class="product-content">
+                        <h3>Capixy Hair Mask 250ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">329 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Capixy Hair Mask 250ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Capixy Hair Fertlizer Tonic Spray 250 Ml">
+                                    <img src="https://m.media-amazon.com/images/I/41BgWQYxYgL._AC_SX679_.jpg" alt="Capixy Hair Fertlizer Tonic Spray 250 Ml" />
+                    <div class="product-content">
+                        <h3>Capixy Hair Fertlizer Tonic Spray 250 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">224 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Capixy Hair Fertlizer Tonic Spray 250 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+            
+                
+
+
+
+
+
+
+
+<div class="product" data-name="Twist & Go Anti-Hair Loss Lotion 250 Ml">
+                    <img src="https://m.media-amazon.com/images/I/61FpUqEhrxL._AC_SX679_.jpg" alt="Twist & Go Anti-Hair Loss Lotion 250 Ml"/>
+                    <div class="product-content">
+                        <h3>Twist & Go Anti-Hair Loss Lotion 250 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">347.5 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Twist & Go Anti-Hair Loss Lotion 250 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Twist & Go Length Intensive Treatment Lotion 125Ml">
+                    <img src="https://m.media-amazon.com/images/I/71N+SnJWmrL._AC_SY879_.jpg" alt="Twist & Go Length Intensive Treatment Lotion 125Ml"/>
+                    <div class="product-content">
+                        <h3>Twist & Go Length Intensive Treatment Lotion 125Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">311 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Twist & Go Length Intensive Treatment Lotion 125Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Twist & Go Whipped Cream Leave In 250 gm">
+                    <img src="https://m.media-amazon.com/images/I/51S9gzttrTL._AC_SY879_.jpg" alt="Twist & Go Whipped Cream Leave In 250 gm"/>
+                    <div class="product-content">
+                        <h3>Twist & Go Whipped Cream Leave In 250 gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">245 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Twist & Go Whipped Cream Leave In 250 gm to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Twist & Go Whipped Cream Leave-In 250Gm / Intensely Repairing Smooth Formula">
+                    <img src="https://m.media-amazon.com/images/I/51ApxesXBqL._AC_SY879_.jpg" alt="Twist & Go Whipped Cream Leave-In 250Gm / Intensely Repairing Smooth Formula"/>
+                    <div class="product-content">
+                        <h3>Twist & Go Whipped Cream Leave-In 250Gm / Intensely Repairing Smooth Formula</h3>
+                        <div class="price">
+                            <span class="discounted-price">215 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Twist & Go Whipped Cream Leave-In 250Gm / Intensely Repairing Smooth Formula to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Twist & Go Hair Serum Dry Touch 60 Ml">
+                    <img src="https://m.media-amazon.com/images/I/51D-CmVGbDL._AC_SX679_.jpg" alt="Twist & Go Hair Serum Dry Touch 60 Ml"/>
+                    <div class="product-content">
+                        <h3>Twist & Go Hair Serum Dry Touch 60 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">215 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Twist & Go Hair Serum Dry Touch 60 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Twist & Go Hair Mask 250Gm">
+                    <img src="https://m.media-amazon.com/images/I/41Mf-IfCjsL._AC_SX679_.jpg" alt="Twist & Go Hair Mask 250Gm"/>
+                    <div class="product-content">
+                        <h3>Twist & Go Hair Mask 250Gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">210 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Twist & Go Hair Mask 250Gm to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+                
+                <div class="product" data-name="Clary Hair Shampoo 300 ml">
+                    <img src="https://m.media-amazon.com/images/I/61Oshjru3dL._AC_SY879_.jpg" alt="Clary Hair Shampoo 300 ml"/>
+                    <div class="product-content">
+                        <h3>Clary Hair Shampoo 300 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">350 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Clary Hair Shampoo 300 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+                
+                <div class="product" data-name="CLARY Antidandruff Shampoo 300 ml">
+                    <img src="https://m.media-amazon.com/images/I/51dI87+WK1L._AC_SX679_.jpg" alt="CLARY Antidandruff Shampoo 300 ml" />
+                    <div class="product-content">
+                        <h3>CLARY Antidandruff Shampoo 300 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">350 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CLARY Antidandruff Shampoo 300 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+                
+                <div class="product" data-name="Clary Hair Conditioner 300 ml">
+                    <img src="https://m.media-amazon.com/images/I/61Vvtt4wMmL._AC_SY879_.jpg" alt="Clary Hair Conditioner 300 ml" />
+                    <div class="product-content">
+                        <h3>Clary Hair Conditioner 300 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">350 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Clary Hair Conditioner 300 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Clary Hair Mask 300 ml">
+                    <img src="https://m.media-amazon.com/images/I/51I4QFS1EKL._AC_SX679_.jpg" alt="Clary Hair Mask 300 ml" />
+                    <div class="product-content">
+                        <h3>Clary Hair Mask 300 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">350 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Clary Hair Mask 300 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+                 <div class="product" data-name="Clary serum 100 ml">
+                    <img src="https://m.media-amazon.com/images/I/51CdhEEpQ-L._AC_SX679_.jpg" alt="Clary serum 100 ml" />
+                    <div class="product-content">
+                        <h3>Clary serum 100 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">350 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Clary serum 100 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                
+                <div class="product" data-name="Seropipe Intense Nutrition Hair Shampoo 300 ml">
+                    <img src="https://m.media-amazon.com/images/I/61YfGgUhPhL._AC_SY879_.jpg" alt="Seropipe Intense Nutrition Hair Shampoo 300 ml" />
+                    <div class="product-content">
+                        <h3>Seropipe Intense Nutrition Hair Shampoo 300 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">265 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Seropipe Intense Nutrition Hair Shampoo 300 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Seropipe Hair Mask 225gm">
+                    <img src="https://m.media-amazon.com/images/I/61cqVmzPUPL._AC_SX679_.jpg" alt="Seropipe Hair Mask 225gm" />
+                    <div class="product-content">
+                        <h3>Seropipe Hair Mask 225gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">310 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Seropipe Hair Mask 225gm to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Seropipe hair spray 200 ml">
+                    <img src="https://m.media-amazon.com/images/I/51WlOdmJiuL._AC_SY879_.jpg" alt="Seropipe hair spray 200 ml" />
+                    <div class="product-content">
+                        <h3>Seropipe hair spray 200 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">265 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Seropipe hair spray 200 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Seropipe Leave In Conditioner 200 Ml (Packaging May Vary)">
+                    <img src="https://m.media-amazon.com/images/I/41lde5x7CTL._AC_SY879_.jpg" alt="Seropipe Leave In Conditioner 200 Ml (Packaging May Vary)" />
+                    <div class="product-content">
+                        <h3>Seropipe Leave In Conditioner 200 Ml (Packaging May Vary)</h3>
+                        <div class="price">
+                            <span class="discounted-price">295 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Seropipe Leave In Conditioner 200 Ml (Packaging May Vary) to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                 <div class="product" data-name="Seropipe hair dropper - 7 vials">
+                    <img src="https://m.media-amazon.com/images/I/61XIkdriv8L._AC_SX679_.jpg" alt="Seropipe hair dropper - 7 vials" />
+                    <div class="product-content">
+                        <h3>Seropipe hair dropper - 7 vials</h3>
+                        <div class="price">
+                            <span class="discounted-price">450 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Seropipe hair dropper - 7 vials to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Seropipe hair conditioner 200gm">
+                    <img src="https://m.media-amazon.com/images/I/519+DCZD9oL._AC_SY300_SX300_QL70_ML2_.jpg" alt="Seropipe hair conditioner 200gm" />
+                    <div class="product-content">
+                        <h3>Seropipe hair conditioner 200gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">215 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Seropipe hair conditioner 200gm to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Seropipe Extreme Eyelash Serum 10 ml">
+                    <img src="https://m.media-amazon.com/images/I/41Mby46PsHL._AC_.jpg" alt="Seropipe Extreme Eyelash Serum 10 ml" />
+                    <div class="product-content">
+                        <h3>Seropipe Extreme Eyelash Serum 10 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">215 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Seropipe Extreme Eyelash Serum 10 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="product" data-name="Raw African | Argan Oil Shampoo | Moisturizing | Nourishing | Dry & Damaged Hair | Sulfate-free | Paraben-free | No Artificial Colors | Promotes Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 300ml">
+                    <img src="https://m.media-amazon.com/images/I/51sfHJ3ik+L._AC_SX679_.jpg" alt="Raw African | Argan Oil Shampoo | Moisturizing | Nourishing | Dry & Damaged Hair | Sulfate-free | Paraben-free | No Artificial Colors | Promotes Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 300ml" />
+                    <div class="product-content">
+                        <h3>Raw African | Argan Oil Shampoo | Moisturizing | Nourishing | Dry & Damaged Hair | Sulfate-free | Paraben-free | No Artificial Colors | Promotes Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 300ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">200 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African | Argan Oil Shampoo | Moisturizing | Nourishing | Dry & Damaged Hair | Sulfate-free | Paraben-free | No Artificial Colors | Promotes Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 300ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                  <div class="product" data-name="Raw African | Follicle Booster Oil | Hair Growth| For Hair| 100ml">
+                    <img src="https://m.media-amazon.com/images/I/61eQzJYzc4L._AC_SX679_.jpg" alt="Raw African | Follicle Booster Oil | Hair Growth| For Hair| 100ml" />
+                    <div class="product-content">
+                        <h3>Raw African | Follicle Booster Oil | Hair Growth| For Hair| 100ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">250 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African | Follicle Booster Oil | Hair Growth| For Hair| 100ml to cart">Add to cart</button>
+                    </div>
+                </div>
+                
+                 <div class="product" data-name="Raw African | Follicle Booster | Shampoo-300ml">
+                    <img src="https://m.media-amazon.com/images/I/61AqxUnefnL._AC_SX679_.jpg" alt="Raw African | Follicle Booster | Shampoo-300ml"/>
+                    <div class="product-content">
+                        <h3>Raw African | Follicle Booster | Shampoo-300ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">260 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African | Follicle Booster | Shampoo-300ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Raw African Follicle Booster Redencyl Hair Tonic Daily Spray - 125 ML">
+                    <img src="https://m.media-amazon.com/images/I/61ZWISYnVDL._AC_SX679_.jpg" alt="Raw African Follicle Booster Redencyl Hair Tonic Daily Spray - 125 ML"/>
+                    <div class="product-content">
+                        <h3>Raw African Follicle Booster Redencyl Hair Tonic Daily Spray - 125 ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">550 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African Follicle Booster Redencyl Hair Tonic Daily Spray - 125 ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Raw African | Raw Shea Curl Enhancer | Leave-in | Pure Shea Butter | Curl Defining | Moisturizer | Anti-Frizz | 100% Natural ingredients | For Curly & Straight Hair | High Porosity Hair">
+                    <img src="https://m.media-amazon.com/images/I/61aZA-yqd4L._AC_SY300_SX300_QL70_ML2_.jpg" alt="Raw African | Raw Shea Curl Enhancer | Leave-in | Pure Shea Butter | Curl Defining | Moisturizer | Anti-Frizz | 100% Natural ingredients | For Curly & Straight Hair | High Porosity Hair"/>
+                    <div class="product-content">
+                        <h3>Raw African | Raw Shea Curl Enhancer | Leave-in | Pure Shea Butter | Curl Defining | Moisturizer | Anti-Frizz | 100% Natural ingredients | For Curly & Straight Hair | High Porosity Hair</h3>
+                        <div class="price">
+                            <span class="discounted-price">275 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African | Raw Shea Curl Enhancer | Leave-in | Pure Shea Butter | Curl Defining | Moisturizer | Anti-Frizz | 100% Natural ingredients | For Curly & Straight Hair | High Porosity Hair to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Raw African Maya Curl Enhancer Leave-in">
+                    <img src="https://m.media-amazon.com/images/I/61HLbZ9Qa9L._AC_SX679_.jpg" alt="Raw African Maya Curl Enhancer Leave-in"/>
+                    <div class="product-content">
+                        <h3>Raw African Maya Curl Enhancer Leave-in</h3>
+                        <div class="price">
+                            <span class="discounted-price">275 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African Maya Curl Enhancer Leave-in to cart">Add to cart</button>
+                    </div>
+                </div>
+
+<div class="product" data-name="Raw African | Follicle Booster | Eyelash Gel Edition">
+                    <img src="https://m.media-amazon.com/images/I/51yMpophTVL._AC_SX679_.jpg" alt="Raw African | Follicle Booster | Eyelash Gel Edition" />
+                    <div class="product-content">
+                        <h3>Raw African | Follicle Booster | Eyelash Gel Edition</h3>
+                        <div class="price">
+                            <span class="discounted-price">235 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African | Follicle Booster | Eyelash Gel Edition to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Raw African | Follicle Booster Oil | Promotes Growth | Eyebrows | Eyebrows Treatment | Pure Natural Oils | Prevents Hair Loss | Lightweight | Easy Application | Rosemary | Sweet Almond | 15ml">
+                    <img src="https://m.media-amazon.com/images/I/41NY0ahMKnL._AC_SX679_.jpg" alt="Raw African | Follicle Booster Oil | Promotes Growth | Eyebrows | Eyebrows Treatment | Pure Natural Oils | Prevents Hair Loss | Lightweight | Easy Application | Rosemary | Sweet Almond | 15ml" />
+                    <div class="product-content">
+                        <h3>Raw African | Follicle Booster Oil | Promotes Growth | Eyebrows | Eyebrows Treatment | Pure Natural Oils | Prevents Hair Loss | Lightweight | Easy Application | Rosemary | Sweet Almond | 15ml</h3>
                         <div class="price">
                             <span class="discounted-price">150 ج.م</span>
                         </div>
@@ -543,28 +795,223 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
                         </div>
-                        <button class="add-to-cart" aria-label="Add Head & Shoulders Shampoo 400ml to cart">Add to cart</button>
+                        <button class="add-to-cart" aria-label="Add Raw African | Follicle Booster Oil | Promotes Growth | Eyebrows | Eyebrows Treatment | Pure Natural Oils | Prevents Hair Loss | Lightweight | Easy Application | Rosemary | Sweet Almond | 15ml to cart">Add to cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Pantene Conditioner 400ml">
-                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Pantene Conditioner 400ml" />
+
+
+                <div class="product" data-name="Raw African | Argan Oil Shampoo | Moisturizing | Nourishing | Dry & Damaged Hair | Sulfate-free | Paraben-free | No Artificial Colors | Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 500ml">
+                    <img src="https://m.media-amazon.com/images/I/71-IkVbU+YL._AC_SX679_.jpg" alt="Raw African | Argan Oil Shampoo | Moisturizing | Nourishing | Dry & Damaged Hair | Sulfate-free | Paraben-free | No Artificial Colors | Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 500ml" />
                     <div class="product-content">
-                        <h3>Pantene Conditioner 400ml</h3>
+                        <h3>Raw African | Argan Oil Shampoo | Moisturizing | Nourishing | Dry & Damaged Hair | Sulfate-free | Paraben-free | No Artificial Colors | Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 500ml</h3>
                         <div class="price">
-                            <span class="discounted-price">140 ج.م</span>
+                            <span class="discounted-price">250 ج.م</span>
                         </div>
                         <div class="quantity-selector" aria-label="Quantity selector">
                             <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
                             <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
                         </div>
-                        <button class="add-to-cart" aria-label="Add Pantene Conditioner 400ml to cart">Add to cart</button>
+                        <button class="add-to-cart" aria-label="Add Raw African | Argan Oil Shampoo | Moisturizing | Nourishing | Dry & Damaged Hair | Sulfate-free | Paraben-free | No Artificial Colors | Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 500ml to cart">Add to cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Garnier Hair Color 1 Box">
-                    <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="Garnier Hair Color 1 Box" />
+
+                <div class="product" data-name="Raw African | Argan Oil Conditioner | Moisturizing | Nourishing | Dry & Damaged Hair | No Sulfate | No Parabens | No Artificial Colors | Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 500ml">
+                    <img src="https://m.media-amazon.com/images/I/51HYkC1G3kL._AC_SX679_.jpg" alt="Raw African | Argan Oil Conditioner | Moisturizing | Nourishing | Dry & Damaged Hair | No Sulfate | No Parabens | No Artificial Colors | Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 500ml" />
                     <div class="product-content">
-                        <h3>Garnier Hair Color 1 Box</h3>
+                        <h3>Raw African | Argan Oil Conditioner | Moisturizing | Nourishing | Dry & Damaged Hair | No Sulfate | No Parabens | No Artificial Colors | Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 500ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">250 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African | Argan Oil Conditioner | Moisturizing | Nourishing | Dry & Damaged Hair | No Sulfate | No Parabens | No Artificial Colors | Hair Growth | Anti-Frizz | Healthy & Shiny Hair | 500ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Raw African | Raw Shea Hair Mask | 100% Natural Ingredients | Deep Conditioning | Damage Repair |No Split Ends | No Sulfate | No Parabens | No Artificial Colors | For Colored Hair | High Porosity">
+                    <img src="https://m.media-amazon.com/images/I/51V-bro5OmL._AC_SX679_.jpg" alt="Raw African | Raw Shea Hair Mask | 100% Natural Ingredients | Deep Conditioning | Damage Repair |No Split Ends | No Sulfate | No Parabens | No Artificial Colors | For Colored Hair | High Porosity" />
+                    <div class="product-content">
+                        <h3>Raw African | Raw Shea Hair Mask | 100% Natural Ingredients | Deep Conditioning | Damage Repair |No Split Ends | No Sulfate | No Parabens | No Artificial Colors | For Colored Hair | High Porosity</h3>
+                        <div class="price">
+                            <span class="discounted-price">260 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African | Raw Shea Hair Mask | 100% Natural Ingredients | Deep Conditioning | Damage Repair |No Split Ends | No Sulfate | No Parabens | No Artificial Colors | For Colored Hair | High Porosity to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Raw African Shea Butter Hair Conditioner- 300 gm">
+                    <img src="https://m.media-amazon.com/images/I/51Hw29MZVoL._AC_SY879_.jpg" alt="Raw African Shea Butter Hair Conditioner- 300 gm" />
+                    <div class="product-content">
+                        <h3>Raw African Shea Butter Hair Conditioner- 300 gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">205 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African Shea Butter Hair Conditioner- 300 gm to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Raw African HydraNourish Hair Mask">
+                    <img src="https://m.media-amazon.com/images/I/31LxNYgIytL._AC_SX679_.jpg" alt="Raw African HydraNourish Hair Mask" />
+                    <div class="product-content">
+                        <h3>Raw African HydraNourish Hair Mask</h3>
+                        <div class="price">
+                            <span class="discounted-price">350 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Raw African HydraNourish Hair Mask to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+
+                <div class="product" data-name="Bless Shampoo with Argan Oil, 500ml">
+                    <img src="https://m.media-amazon.com/images/I/61yaGV0CcQL._AC_SY879_.jpg" alt="Bless Shampoo with Argan Oil, 500ml" />
+                    <div class="product-content">
+                        <h3>Bless Shampoo with Argan Oil, 500ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">205 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Bless Shampoo with Argan Oil, 500ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Bless hair cream & conditioner, 450 ml">
+                    <img src="https://m.media-amazon.com/images/I/61lBxh9QmBL._AC_SY879_.jpg" alt="Bless hair cream & conditioner, 450 ml" />
+                    <div class="product-content">
+                        <h3>Bless hair cream & conditioner, 450 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">225 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Bless hair cream & conditioner 450 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+<div class="product" data-name="Bless leave in cream argan oil 450 ml">
+                    <img src="https://m.media-amazon.com/images/I/61Tp43Nz3uL._AC_SY879_.jpg" alt="Bless leave in cream argan oil 450 ml" />
+                    <div class="product-content">
+                        <h3>Bless leave in cream argan oil 450 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">225 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Bless leave in cream argan oil 450 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+                <div class="product" data-name="Bless leave in cream with argan oil 250ml">
+                    <img src="https://m.media-amazon.com/images/I/51hToum7weL._AC_SX679_.jpg" alt="Bless leave in cream with argan oil 250ml" />
+                    <div class="product-content">
+                        <h3>Bless leave in cream with argan oil 250ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">130 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Bless leave in cream with argan oil 250ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Bless leave in cream with shea butter 250ml">
+                    <img src="https://m.media-amazon.com/images/I/614NHSev0eL._AC_SX679_.jpg" alt="Bless leave in cream with shea butter 250ml" />
+                    <div class="product-content">
+                        <h3>Bless leave in cream with shea butter 250ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">130 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Bless leave in cream with shea butter 250ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Bless Leave In Cream With Argan Oil - 200Ml">
+                    <img src="https://m.media-amazon.com/images/I/61QVNjDscsL._AC_SY879_.jpg" alt="Bless Leave In Cream With Argan Oil - 200Ml" />
+                    <div class="product-content">
+                        <h3>Bless Leave In Cream With Argan Oil - 200Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">70 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Bless Leave In Cream With Argan Oil 200Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                
+                <div class="product" data-name="Bless Leave In Cream 200 ml">
+                    <img src="https://m.media-amazon.com/images/I/61Iiro7IbpL._AC_SX679_.jpg" alt="Bless Leave In Cream 200 ml" />
+                    <div class="product-content">
+                        <h3>Bless Leave In Cream 200 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">70 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Bless Leave In Cream 200 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            
+
+
+
+  <div class="product" data-name="Aloe Eva strengthening hair shampoo with aloe vera and moroccan argan oil - 230 ml">
+                    <img src="https://m.media-amazon.com/images/I/71dzVJ2NvjL._AC_SY879_.jpg" alt="Aloe Eva strengthening hair shampoo with aloe vera and moroccan argan oil - 230 ml" />
+                    <div class="product-content">
+                        <h3>Aloe Eva strengthening hair shampoo with aloe vera and moroccan argan oil - 230 ml</h3>
                         <div class="price">
                             <span class="discounted-price">80 ج.م</span>
                         </div>
@@ -573,10 +1020,1147 @@
                             <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
                         </div>
-                        <button class="add-to-cart" aria-label="Add Garnier Hair Color 1 Box to cart">Add to cart</button>
+                        <button class="add-to-cart" aria-label="Add Aloe Eva strengthening hair shampoo with aloe vera and moroccan argan oil - 230 ml to cart">Add to cart</button>
                     </div>
                 </div>
-                <!-- Additional products can be added here similarly -->
+
+
+                <div class="product" data-name="Aloe Eva Hair Mask Pouch with Aloe Vera & Yoghurt Proteins 250ml">
+                    <img src="https://m.media-amazon.com/images/I/71k3xf+9ahL._AC_SY879_.jpg" alt="Aloe Eva Hair Mask Pouch with Aloe Vera & Yoghurt Proteins 250ml" />
+                    <div class="product-content">
+                        <h3>Aloe Eva Hair Mask Pouch with Aloe Vera & Yoghurt Proteins 250ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">75 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Aloe Eva Hair Mask Pouch with Aloe Vera & Yoghurt Proteins 250ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Aloe Eva Hair Mask Pouch with Aloe Vera & Silk Proteins 250 gm">
+                    <img src="https://m.media-amazon.com/images/I/71vNz88eP0L._AC_SY879_.jpg" alt="Aloe Eva Hair Mask Pouch with Aloe Vera & Silk Proteins 250 gm" />
+                    <div class="product-content">
+                        <h3>Aloe Eva Hair Mask Pouch with Aloe Vera & Silk Proteins 250 gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">75 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Aloe Eva Hair Mask Pouch with Aloe Vera & Silk Proteins 250 gm to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                 <div class="product" data-name="Aloe Eva Hair Mask Pouch with Aloe Vera 250gm">
+                    <img src="https://m.media-amazon.com/images/I/71rUPZPOCJL._AC_SY879_.jpg" alt="Aloe Eva Hair Mask Pouch with Aloe Vera 250gm" />
+                    <div class="product-content">
+                        <h3>Aloe Eva Hair Mask Pouch with Aloe Vera 250gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">75 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Aloe Eva Hair Mask Pouch with Aloe Vera 250gm to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                  <div class="product" data-name="Aloe Eva Strengthening Hair Oil Replacement, 250 ml">
+                    <img src="https://m.media-amazon.com/images/I/71smoiJApJL._AC_SY879_.jpg" alt="Aloe Eva Strengthening Hair Oil Replacement, 250 ml" />
+                    <div class="product-content">
+                        <h3>Aloe Eva Strengthening Hair Oil Replacement, 250 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">95 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Aloe Eva Strengthening Hair Oil Replacement, 250 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Aloe Eva Hair Oil Replacement with Aloe Vera & Yoghurt Proteins, 250 ml">
+                    <img src="https://m.media-amazon.com/images/I/71Wn8nrvldL._AC_SY879_.jpg" alt="Aloe Eva Hair Oil Replacement with Aloe Vera & Yoghurt Proteins, 250 ml" />
+                    <div class="product-content">
+                        <h3>Aloe Eva Hair Oil Replacement with Aloe Vera & Yoghurt Proteins, 250 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">95 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Aloe Eva Hair Oil Replacement with Aloe Vera & Yoghurt Proteins, 250 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Aloe Eva Strngthning Hair Oil Replcemnt Aloevera And Silk Proteins, 250Ml - Package May Vary">
+                    <img src="https://m.media-amazon.com/images/I/81Fh64ucSsL._AC_SY879_.jpg" alt="Aloe Eva Strngthning Hair Oil Replcemnt Aloevera And Silk Proteins, 250Ml - Package May Vary" />
+                    <div class="product-content">
+                        <h3>Aloe Eva Strngthning Hair Oil Replcemnt Aloevera And Silk Proteins, 250Ml - Package May Vary</h3>
+                        <div class="price">
+                            <span class="discounted-price">95 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Aloe Eva Strngthning Hair Oil Replcemnt Aloevera And Silk Proteins, 250Ml - Package May Vary to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Aloe eva strengthening hair ampoules with aloe vera and argan oil 15ml (4 ampoules)">
+                    <img src="https://m.media-amazon.com/images/I/71vJlw3flBL._AC_SY879_.jpg" alt="Aloe eva strengthening hair ampoules with aloe vera and argan oil 15ml (4 ampoules)" />
+                    <div class="product-content">
+                        <h3>Aloe eva strengthening hair ampoules with aloe vera and argan oil 15ml (4 ampoules)</h3>
+                        <div class="price">
+                            <span class="discounted-price">`105 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Aloe eva strengthening hair ampoules with aloe vera and argan oil 15ml (4 ampoules) to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                 <div class="product" data-name="Aloe Eva Aloe Vera And Yoghurt Proteins Hair Ampoules, 4 Ampoules">
+                    <img src="https://m.media-amazon.com/images/I/61CJthXPQ8L._AC_SX679_.jpg" alt="Aloe Eva Aloe Vera And Yoghurt Proteins Hair Ampoules, 4 Ampoules" />
+                    <div class="product-content">
+                        <h3>Aloe Eva Aloe Vera And Yoghurt Proteins Hair Ampoules, 4 Ampoules</h3>
+                        <div class="price">
+                            <span class="discounted-price">`105 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Aloe Eva Aloe Vera And Yoghurt Proteins Hair Ampoules, 4 Ampoules to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Aloe Eva hair strengthening ampoules with aloe vera 15 ml ( 4 ampoules)">
+                    <img src="https://m.media-amazon.com/images/I/61yodakaaSL._AC_SX679_.jpg" alt="Aloe Eva hair strengthening ampoules with aloe vera 15 ml ( 4 ampoules)" />
+                    <div class="product-content">
+                        <h3>Aloe Eva hair strengthening ampoules with aloe vera 15 ml ( 4 ampoules)</h3>
+                        <div class="price">
+                            <span class="discounted-price">`105 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Aloe Eva hair strengthening ampoules with aloe vera 15 ml ( 4 ampoules) to cart">Add to cart</button>
+                    </div>
+                </div>
+               
+
+
+
+
+
+
+                
+                <div class="product" data-name="Eva Optimum Care Recipe Hydrating Blend Shampoo Berries Scent 350 Ml">
+                    <img src="https://m.media-amazon.com/images/I/41IcXePlJ5L._AC_SX679_.jpg" alt="Eva Optimum Care Recipe Hydrating Blend Shampoo Berries Scent 350 Ml"/>
+                    <div class="product-content">
+                        <h3>Eva Optimum Care Recipe Hydrating Blend Shampoo Berries Scent 350 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">125 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Eva Optimum Care Recipe Hydrating Blend Shampoo Berries Scent 350 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+            
+                <div class="product" data-name="Eva Optimum Care Recipe Nourishing Blend Shampoo Coconut Scent 350 Ml">
+                    <img src="https://m.media-amazon.com/images/I/518qrL4mwmL._AC_SY879_.jpg" alt="Eva Optimum Care Recipe Nourishing Blend Shampoo Coconut Scent 350 Ml"/>
+                    <div class="product-content">
+                        <h3>Eva Optimum Care Recipe Nourishing Blend Shampoo Coconut Scent 350 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">125 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Eva Optimum Care Recipe Nourishing Blend Shampoo Coconut Scent 350 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Eva Optimum Care Recipe Silk & Shine Blend Shampoo Marshmallow Scent 350 Ml">
+                    <img src="https://m.media-amazon.com/images/I/51TghgYLpDL._AC_SY879_.jpg" alt="Eva Optimum Care Recipe Silk & Shine Blend Shampoo Marshmallow Scent 350 Ml"/>
+                    <div class="product-content">
+                        <h3>Eva Optimum Care Recipe Silk & Shine Blend Shampoo Marshmallow Scent 350 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">125 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Eva Optimum Care Recipe Silk & Shine Blend Shampoo Marshmallow Scent 350 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+            
+                <div class="product" data-name="Eva Optimum Care Recipe Strength Booster Blend Shampoo Mocha Scent 350 Ml">
+                    <img src="https://m.media-amazon.com/images/I/517qf2HmyaL._AC_SY879_.jpg" alt="Eva Optimum Care Recipe Strength Booster Blend Shampoo Mocha Scent 350 Ml"/>
+                    <div class="product-content">
+                        <h3>Eva Optimum Care Recipe Strength Booster Blend Shampoo Mocha Scent 350 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">125 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Eva Optimum Care Recipe Strength Booster Blend Shampoo Mocha Scent 350 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Eva Advanced Care Clinic Forever Long Lengthening Shampoo For Damaged Hair 230 Ml">
+                    <img src="https://m.media-amazon.com/images/I/41n2-xFHbmL._AC_SX679_.jpg" alt="Eva Advanced Care Clinic Forever Long Lengthening Shampoo For Damaged Hair 230 Ml"/>
+                    <div class="product-content">
+                        <h3>Eva Advanced Care Clinic Forever Long Lengthening Shampoo For Damaged Hair 230 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">160 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Eva Advanced Care Clinic Forever Long Lengthening Shampoo For Damaged Hair 230 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+            
+               
+                
+                <div class="product" data-name="Strong Ville shampoo 220 ml">
+                    <img src="https://m.media-amazon.com/images/I/612dZQDk9uL._AC_SY879_.jpg" alt="Strong Ville shampoo 220 ml" />
+                    <div class="product-content">
+                        <h3>Strong Ville shampoo 220 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">185 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Strong Ville shampoo 220 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Strongville hair tonic spray 220 ml">
+                    <img src="https://m.media-amazon.com/images/I/41NbOYKmiqL._AC_SX679_.jpg" alt="Strongville hair tonic spray 220 ml" />
+                    <div class="product-content">
+                        <h3>Strongville hair tonic spray 220 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">185 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Strongville hair tonic spray 220 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Strongville Men Hair Shampoo & Conditioner 220 ml">
+                    <img src="https://m.media-amazon.com/images/I/61cm6DIzzkL._AC_SY879_.jpg" alt="Strongville Men Hair Shampoo & Conditioner 220 ml" />
+                    <div class="product-content">
+                        <h3>Strongville Men Hair Shampoo & Conditioner 220 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">195 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Strongville Men Hair Shampoo & Conditioner 220 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Strongville nourishing cream men 120 gm">
+                    <img src="https://m.media-amazon.com/images/I/61bwJh5g0IL._AC_SY879_.jpg" alt="Strongville nourishing cream men 120 gm" />
+                    <div class="product-content">
+                        <h3>Strongville nourishing cream men 120 gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">195 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Strongville nourishing cream men 120 gm to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="product" data-name="Eva Hair Clinic Gold Argan Hair Shampoo - 230 ml">
+                    <img src="https://m.media-amazon.com/images/I/511YrP74T2L._AC_SX679_.jpg" alt="Eva Hair Clinic Gold Argan Hair Shampoo - 230 ml" />
+                    <div class="product-content">
+                        <h3>Eva Hair Clinic Gold Argan Hair Shampoo - 230 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">150 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Eva Hair Clinic Gold Argan Hair Shampoo - 230 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Eva Hair Clinic Curls Leave-In Shea Butter & Linseed 200 Ml">
+                    <img src="https://m.media-amazon.com/images/I/71-w+sV5TsL._AC_SY879_.jpg" alt="Eva Hair Clinic Curls Leave-In Shea Butter & Linseed 200 Ml" />
+                    <div class="product-content">
+                        <h3>Eva Hair Clinic Curls Leave-In Shea Butter & Linseed 200 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">220 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Eva Hair Clinic Curls Leave-In Shea Butter & Linseed 200 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Hair Clinic Keratin Shampoo (EVA 7.77 oz / 230 ml) - Targets Damaged and Stressed Hair, Rebuilds and Maintains Shine and Smoothness for All Types">
+                    <img src="https://m.media-amazon.com/images/I/61UQCn4duHL._AC_SY879_.jpg" alt="Hair Clinic Keratin Shampoo (EVA 7.77 oz / 230 ml) - Targets Damaged and Stressed Hair, Rebuilds and Maintains Shine and Smoothness for All Types" />
+                    <div class="product-content">
+                        <h3>Hair Clinic Keratin Shampoo (EVA 7.77 oz / 230 ml) - Targets Damaged and Stressed Hair, Rebuilds and Maintains Shine and Smoothness for All Types</h3>
+                        <div class="price">
+                            <span class="discounted-price">295 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Hair Clinic Keratin Shampoo (EVA 7.77 oz / 230 ml) - Targets Damaged and Stressed Hair, Rebuilds and Maintains Shine and Smoothness for All Types to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Ekeratin Shampoo for All Hairs - 230 ml">
+                    <img src="https://m.media-amazon.com/images/I/71KFvhDNA-L._AC_SY879_.jpg" alt="Ekeratin Shampoo for All Hairs - 230 ml" />
+                    <div class="product-content">
+                        <h3>Ekeratin Shampoo for All Hairs - 230 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">115 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Ekeratin Shampoo for All Hairs - 230 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="E Keratin Anti-Dindruff Moisturizing Shampoo, 230 ml">
+                    <img src="https://m.media-amazon.com/images/I/61Smi8DLA7L._AC_SX679_.jpg" alt="E Keratin Anti-Dindruff Moisturizing Shampoo, 230 ml" />
+                    <div class="product-content">
+                        <h3>E Keratin Anti-Dindruff Moisturizing Shampoo, 230 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">145 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add E Keratin Anti-Dindruff Moisturizing Shampoo, 230 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+ <div class="product" data-name="E Keratin Hair Conditioning Mask, 200 gm">
+                    <img src="https://m.media-amazon.com/images/I/51WWGpGkkoL._AC_SX679_.jpg" alt="E Keratin Hair Conditioning Mask, 200 gm" />
+                    <div class="product-content">
+                        <h3>E Keratin Hair Conditioning Mask, 200 gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">185 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add E Keratin Hair Conditioning Mask, 200 gm to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="product" data-name="Les Karites Shea Butter Shampoo Deep Moisturizing 400 ml">
+                    <img src="https://m.media-amazon.com/images/I/61GkEpCd6hL._AC_SY879_.jpg" alt="Les Karites Shea Butter Shampoo Deep Moisturizing 400 ml" />
+                    <div class="product-content">
+                        <h3>Les Karites Shea Butter Shampoo Deep Moisturizing 400 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">150 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Les Karites Shea Butter Shampoo Deep Moisturizing 400 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Les Karites Shea Butter Conditioner Deep Moisturizing 400 ml">
+                    <img src="https://m.media-amazon.com/images/I/51NCsL0Q8cL._AC_SX679_.jpg" alt="Les Karites Shea Butter Conditioner Deep Moisturizing 400 ml" />
+                    <div class="product-content">
+                        <h3>Les Karites Shea Butter Conditioner Deep Moisturizing 400 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">150 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Les Karites Shea Butter Conditioner Deep Moisturizing 400 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+ <div class="product" data-name="Les Karites Avocado and Coconut Oil Shampoo 400 ml">
+                    <img src="https://m.media-amazon.com/images/I/71PESmz5jnL._AC_SY879_.jpg" alt="Les Karites Avocado and Coconut Oil Shampoo 400 ml" />
+                    <div class="product-content">
+                        <h3>Les Karites Avocado and Coconut Oil Shampoo 400 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">150 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Les Karites Avocado and Coconut Oil Shampoo 400 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Les Karites Hair Curls Shampoo 400 ml">
+                    <img src="https://m.media-amazon.com/images/I/51syzQ6icgL._AC_SY879_.jpg" alt="Les Karites Hair Curls Shampoo 400 ml" />
+                    <div class="product-content">
+                        <h3>Les Karites Hair Curls Shampoo 400 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">145 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Les Karites Hair Curls Shampoo 400 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Les Karites Curl Conditioner 400 ml">
+                    <img src="https://m.media-amazon.com/images/I/51iE6F56UtL._AC_SY879_.jpg" alt="Les Karites Curl Conditioner 400 ml" />
+                    <div class="product-content">
+                        <h3>Les Karites Curl Conditioner 400 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">145 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Les Karites Curl Conditioner 400 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                 <div class="product" data-name="Les Karites Shea Butter Hair Mask Deep Moisturizing 475 ml">
+                    <img src="https://m.media-amazon.com/images/I/611kaWay6ZL._AC_SX679_.jpg" alt="Les Karites Shea Butter Hair Mask Deep Moisturizing 475 ml" />
+                    <div class="product-content">
+                        <h3>Les Karites Shea Butter Hair Mask Deep Moisturizing 475 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">170 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Les Karites Shea Butter Hair Mask Deep Moisturizing 475 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Les Karites Shea Butter Body Gel Oil for Deep Moisture 200 ml">
+                    <img src="https://m.media-amazon.com/images/I/61BWCRhnItL._AC_SY879_.jpg" alt="Les Karites Shea Butter Body Gel Oil for Deep Moisture 200 ml" />
+                    <div class="product-content">
+                        <h3>Les Karites Shea Butter Body Gel Oil for Deep Moisture 200 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">245 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Les Karites Shea Butter Body Gel Oil for Deep Moisture 200 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Les Karites Argan oil Shampoo Nourish & Total Repair 400 ml">
+                    <img src="https://m.media-amazon.com/images/I/61lAqeiWhCL._AC_SX679_.jpg" alt="Les Karites Argan oil Shampoo Nourish & Total Repair 400 ml" />
+                    <div class="product-content">
+                        <h3>Les Karites Argan oil Shampoo Nourish & Total Repair 400 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">140 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Les Karites Argan oil Shampoo Nourish & Total Repair 400 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                  <div class="product" data-name="Les Karites Argan oil Hair Mask Nourish & Total Repair 475 m">
+                    <img src="https://m.media-amazon.com/images/I/61dNEbVVWqL._AC_SX679_.jpg" alt="Les Karites Argan oil Hair Mask Nourish & Total Repair 475 m" />
+                    <div class="product-content">
+                        <h3>Les Karites Argan oil Hair Mask Nourish & Total Repair 475 m</h3>
+                        <div class="price">
+                            <span class="discounted-price">170 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Les Karites Argan oil Hair Mask Nourish & Total Repair 475 m to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="DERMACTIVE Tricho-Act Anti Hair Loss Shampoo – 200 ml Advanced Anti-Hair Loss Formula, Strengthens & Nourishes, Stimulates Scalp All Hair Types, Gentle & Effective, Daily Use, Hair Perfection System">
+                    <img src="https://m.media-amazon.com/images/I/51T-DMFSrWL._AC_SX679_.jpg" alt="DERMACTIVE Tricho-Act Anti Hair Loss Shampoo – 200 ml Advanced Anti-Hair Loss Formula, Strengthens & Nourishes, Stimulates Scalp All Hair Types, Gentle & Effective, Daily Use, Hair Perfection System" />
+                    <div class="product-content">
+                        <h3>DERMACTIVE Tricho-Act Anti Hair Loss Shampoo – 200 ml Advanced Anti-Hair Loss Formula, Strengthens & Nourishes, Stimulates Scalp All Hair Types, Gentle & Effective, Daily Use, Hair Perfection System</h3>
+                        <div class="price">
+                            <span class="discounted-price">199 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add DERMACTIVE Tricho-Act Anti Hair Loss Shampoo – 200 ml Advanced Anti-Hair Loss Formula, Strengthens & Nourishes, Stimulates Scalp All Hair Types, Gentle & Effective, Daily Use, Hair Perfection System to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                
+                
+
+
+
+
+
+                <div class="product" data-name="Dove Nourishing Secrets Shampoo with Avocado Oil 400ML">
+                    <img src="https://m.media-amazon.com/images/I/61LA9xezK6L._AC_SX679_.jpg" alt="Dove Nourishing Secrets Shampoo with Avocado Oil 400ML"/>
+                    <div class="product-content">
+                        <h3>Dove Nourishing Secrets Shampoo with Avocado Oil 400ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">150 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Dove Nourishing Secrets Shampoo with Avocado Oil 400ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Loreal Paris Elvive Dream Long Straight Shampoo, 600 ml">
+                    <img src="https://m.media-amazon.com/images/I/61wgBkGWAbL._AC_SY879_.jpg" alt="Loreal Paris Elvive Dream Long Straight Shampoo, 600 ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Dream Long Straight Shampoo, 600 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">190 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Dream Long Straight Shampoo, 600 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Oil Replacement for Long and Frizzy Hair - 300 ml">
+                    <img src="https://m.media-amazon.com/images/I/71raVz3VC4L._AC_SY879_.jpg" alt="Loreal Paris Elvive Oil Replacement for Long and Frizzy Hair - 300 ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Oil Replacement for Long and Frizzy Hair - 300 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">160 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Oil Replacement for Long and Frizzy Hair - 300 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Extraordinary Oil Nourishing Shampoo for Dull Hair - 600 ml - Packaging May Vary">
+                    <img src="https://m.media-amazon.com/images/I/61l-meEcL4L._AC_SY879_.jpg" alt="Loreal Paris Elvive Extraordinary Oil Nourishing Shampoo for Dull Hair - 600 ml - Packaging May Vary"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Extraordinary Oil Nourishing Shampoo for Dull Hair - 600 ml - Packaging May Vary</h3>
+                        <div class="price">
+                            <span class="discounted-price">180 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Extraordinary Oil Nourishing Shampoo for Dull Hair - 600 ml - Packaging May Vary to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Extraordinary Oil Conditioner For Normal to Dry Hair- 360ml">
+                    <img src="https://m.media-amazon.com/images/I/51+KK96Nz7L._AC_SX679_.jpg" alt="Loreal Paris Elvive Extraordinary Oil Conditioner For Normal to Dry Hair- 360ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Extraordinary Oil Conditioner For Normal to Dry Hair- 360ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">195 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Extraordinary Oil Conditioner For Normal to Dry Hair- 360ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Extraordinary Oil Midnight Serum for Dry Hair 100ml">
+                    <img src="https://m.media-amazon.com/images/I/61sBXncIkbL._AC_SX679_.jpg" alt="Loreal Paris Elvive Extraordinary Oil Midnight Serum for Dry Hair 100ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Extraordinary Oil Midnight Serum for Dry Hair 100ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">495 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Extraordinary Oil Midnight Serum for Dry Hair 100ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Glycolic Gloss Combing Leave in Cream with Glycolic Acid for Dull and Porous Hair 200ML">
+                    <img src="https://m.media-amazon.com/images/I/51Co5Sy-qkL._AC_SX679_.jpg" alt="Loreal Paris Elvive Glycolic Gloss Combing Leave in Cream with Glycolic Acid for Dull and Porous Hair 200ML"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Glycolic Gloss Combing Leave in Cream with Glycolic Acid for Dull and Porous Hair 200ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">260 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Glycolic Gloss Combing Leave in Cream with Glycolic Acid for Dull and Porous Hair 200ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Extraordinary Oil Mask 300 ML">
+                    <img src="https://m.media-amazon.com/images/I/81B6eDc1EXL._AC_SX679_.jpg" alt="Loreal Paris Elvive Extraordinary Oil Mask 300 ML"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Extraordinary Oil Mask 300 ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">315 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Extraordinary Oil Mask 300 ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+ <div class="product" data-name="Loreal Paris Elvive Dream Long Rescue Mask 300 ml">
+                    <img src="https://m.media-amazon.com/images/I/61Tq04sKLqL._AC_SX679_.jpg" alt="Loreal Paris Elvive Dream Long Rescue Mask 300 ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Dream Long Rescue Mask 300 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">300 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Dream Long Rescue Mask 300 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+
+                <div class="product" data-name="Loreal Paris Dream Long No Hair Cut Cream, 200Ml">
+                    <img src="https://m.media-amazon.com/images/I/51rrnAmQj2L._AC_SY879_.jpg" alt="Loreal Paris Dream Long No Hair Cut Cream, 200Ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Dream Long No Hair Cut Cream, 200Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">225 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Dream Long No Hair Cut Cream, 200Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Hyaluron Pure Purifying Erasing Serum for Oily Hair 102ML">
+                    <img src="https://m.media-amazon.com/images/I/61p1GwuZLpL._AC_SX679_.jpg" alt="Loreal Paris Elvive Hyaluron Pure Purifying Erasing Serum for Oily Hair 102ML"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Hyaluron Pure Purifying Erasing Serum for Oily Hair 102ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">398 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Hyaluron Pure Purifying Erasing Serum for Oily Hair 102ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Loreal Paris Elvive Fall Resist Hair Serum For Weak Hair and Hair Fall 102ML">
+                    <img src="https://m.media-amazon.com/images/I/61u3bPkhsDL._AC_SX679_.jpg" alt="Loreal Paris Elvive Fall Resist Hair Serum For Weak Hair and Hair Fall 102ML"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Fall Resist Hair Serum For Weak Hair and Hair Fall 102ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">550 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Fall Resist Hair Serum For Weak Hair and Hair Fall 102ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                 <div class="product" data-name="Loreal Paris Extraordinary Oil Hair Serum Powered by Floral Oils for All Hair Types, Volume- 100 ml, Makes hair frizz-free, stronger, shiny and provides UV and Heat Protection, Lightweight Formula">
+                    <img src="https://m.media-amazon.com/images/I/51FRsJvhucL._AC_SX679_.jpg" alt="Loreal Paris Extraordinary Oil Hair Serum Powered by Floral Oils for All Hair Types, Volume- 100 ml, Makes hair frizz-free, stronger, shiny and provides UV and Heat Protection, Lightweight Formula"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Extraordinary Oil Hair Serum Powered by Floral Oils for All Hair Types, Volume- 100 ml, Makes hair frizz-free, stronger, shiny and provides UV and Heat Protection, Lightweight Formula</h3>
+                        <div class="price">
+                            <span class="discounted-price">550 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Extraordinary Oil Hair Serum Powered by Floral Oils for All Hair Types, Volume- 100 ml, Makes hair frizz-free, stronger, shiny and provides UV and Heat Protection, Lightweight Formula to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+                 <div class="product" data-name="Loreal Paris elvive extra ordinary oil replacement 300 ml">
+                    <img src="https://m.media-amazon.com/images/I/51e8Zkj0rLL._AC_SY879_.jpg" alt="LOreal Paris elvive extra ordinary oil replacement 300 ml"/>
+                    <div class="product-content">
+                        <h3>LOreal Paris elvive extra ordinary oil replacement 300 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">135 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris elvive extra ordinary oil replacement 300 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Loreal Paris Elvive Hyaluron Moisture Plump Serum 150ml">
+                    <img src="https://m.media-amazon.com/images/I/61RrRhvkfhL._AC_SX679_.jpg" alt="Loreal Paris Elvive Hyaluron Moisture Plump Serum 150ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Hyaluron Moisture Plump Serum 150ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">320 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Hyaluron Moisture Plump Serum 150ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Glycolic Gloss Extra Gloss Conditioner with 4% Glycolic Acid for Dull and Porous Hair 360ML">
+                    <img src="https://m.media-amazon.com/images/I/21rPTwnommL._AC_.jpg" alt="Loreal Paris Elvive Glycolic Gloss Extra Gloss Conditioner with 4% Glycolic Acid for Dull and Porous Hair 360ML"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Glycolic Gloss Extra Gloss Conditioner with 4% Glycolic Acid for Dull and Porous Hair 360ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">215 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Glycolic Gloss Extra Gloss Conditioner with 4% Glycolic Acid for Dull and Porous Hair 360ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+ <div class="product" data-name="Loreal Paris Elvive Glycolic Gloss Extra Gloss Conditioner with 4% Glycolic Acid for Dull and Porous Hair 200ML">
+                    <img src="https://m.media-amazon.com/images/I/51F-Gvvm1qL._AC_SX679_.jpg" alt="Loreal Paris Elvive Glycolic Gloss Extra Gloss Conditioner with 4% Glycolic Acid for Dull and Porous Hair 200ML"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Glycolic Gloss Extra Gloss Conditioner with 4% Glycolic Acid for Dull and Porous Hair 200ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">130 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Glycolic Gloss Extra Gloss Conditioner with 4% Glycolic Acid for Dull and Porous Hair 200ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Hyaluron Moisture - Moisture Filling Night Cream 200ml">
+                    <img src="https://m.media-amazon.com/images/I/713RSC5T4xL._AC_SX679_.jpg" alt="Loreal Paris Elvive Hyaluron Moisture - Moisture Filling Night Cream 200ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Hyaluron Moisture - Moisture Filling Night Cream 200ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">215 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Hyaluron Moisture - Moisture Filling Night Cream 200ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+<div class="product" data-name="Loreal Paris Elvive Leave In, Full Resist Push Pull Hair cream, 200 Ml">
+                    <img src="https://m.media-amazon.com/images/I/61mO5p28T3L._AC_SX679_.jpg" alt="Loreal Paris Elvive Leave In, Full Resist Push Pull Hair cream, 200 Ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Leave In, Full Resist Push Pull Hair cream, 200 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">200 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Leave In, Full Resist Push Pull Hair cream, 200 Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+<div class="product" data-name="Loreal Paris Elvive Extraordinary Oil Nourishing Shampoo 600 ml">
+                    <img src="https://m.media-amazon.com/images/I/81s56fc5HaL._AC_SY879_.jpg" alt="loreal Paris Elvive Extraordinary Oil Nourishing Shampoo, 600 ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Extraordinary Oil Nourishing Shampoo 600 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">270 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Extraordinary Oil Nourishing Shampoo 600 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+                <div class="product" data-name="Loreal Paris elvive extraordinary oils conditioner 200 ml">
+                    <img src="https://m.media-amazon.com/images/I/618+nMnFTKL._AC_SY879_.jpg" alt="Loreal Paris elvive extraordinary oils conditioner 200 ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris elvive extraordinary oils conditioner 200 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">130 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris elvive extraordinary oils conditioner 200 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                 <div class="product" data-name="Loreal Paris Elvive Hyaluron Moisture 72H Moisture Filling Shampoo with Hyaluronic Acid - 600ml">
+                    <img src="https://m.media-amazon.com/images/I/51TAn+MJFSL._AC_SX679_.jpg" alt="Loreal Paris Elvive Hyaluron Moisture 72H Moisture Filling Shampoo with Hyaluronic Acid - 600ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Hyaluron Moisture 72H Moisture Filling Shampoo with Hyaluronic Acid - 600ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">170 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Hyaluron Moisture 72H Moisture Filling Shampoo with Hyaluronic Acid - 600ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Total Repair 5 Repairing Oil Replacement 300 ML">
+                    <img src="https://m.media-amazon.com/images/I/517n5dNOp2L._AC_SY879_.jpg" alt="Loreal Paris Elvive Total Repair 5 Repairing Oil Replacement 300 ML"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Total Repair 5 Repairing Oil Replacement 300 ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">160 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Total Repair 5 Repairing Oil Replacement 300 ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Elvive Full Resist Anti-Hair Fall Oil Replacement 300 ml">
+                    <img src="https://m.media-amazon.com/images/I/61LXYRCrLQL._AC_SX679_.jpg" alt="Loreal Paris Elvive Full Resist Anti-Hair Fall Oil Replacement 300 ml"/>
+                    <div class="product-content">
+                        <h3>Loreal Paris Elvive Full Resist Anti-Hair Fall Oil Replacement 300 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">160 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Elvive Full Resist Anti-Hair Fall Oil Replacement 300 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="سيلينجينا شامبو ضد القشرة 220 مل">
+                    <img src="https://m.media-amazon.com/images/I/712FGJBxTBL._AC_SX679_.jpg" alt="سيلينجينا شامبو ضد القشرة 220 مل" />
+                    <div class="product-content">
+                        <h3>سيلينجينا شامبو ضد القشرة 220 مل</h3>
+                        <div class="price">
+                            <span class="discounted-price">165 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add سيلينجينا شامبو ضد القشرة 220 مل to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+                <div class="product" data-name="Aloekita Shampoo Caffeine & protein 250ml">
+                    <img src="https://m.media-amazon.com/images/I/516XaWLLLHL._AC_SX679_.jpg" alt="Aloekita Shampoo Caffeine & protein 250ml" />
+                    <div class="product-content">
+                        <h3>Aloekita Shampoo Caffeine & protein 250ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">230 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add  Aloekita Shampoo Caffeine & protein 250ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Aloekita Caeffeine Shampoo- 200ML">
+                    <img src="https://m.media-amazon.com/images/I/51AHFJn8RXL._AC_SX679_.jpg" alt="Aloekita Caeffeine Shampoo- 200ML" />
+                    <div class="product-content">
+                        <h3>Aloekita Caeffeine Shampoo- 200ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">200 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add  Aloekita Caeffeine Shampoo- 200ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                
+                <div class="product" data-name="Alokita Hair Nourishing Conditioner 200 ml">
+                    <img src="https://m.media-amazon.com/images/I/51l32opycZL._AC_SX679_.jpg" alt="Alokita Hair Nourishing Conditioner 200 ml" />
+                    <div class="product-content">
+                        <h3>Alokita Hair Nourishing Conditioner 200 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">249 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add  Alokita Hair Nourishing Conditioner 200 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Aloekita Covered Hair Caffeine & Protien Rich Shampoo for Hair Loss, 8.75 Oz (250 ML)">
+                    <img src="https://m.media-amazon.com/images/I/61wegnMjCLL._AC_SX679_.jpg" alt="Aloekita Covered Hair Caffeine & Protien Rich Shampoo for Hair Loss, 8.75 Oz (250 ML)" />
+                    <div class="product-content">
+                        <h3>Aloekita Covered Hair Caffeine & Protien Rich Shampoo for Hair Loss, 8.75 Oz (250 ML)</h3>
+                        <div class="price">
+                            <span class="discounted-price">249 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add  Aloekita Covered Hair Caffeine & Protien Rich Shampoo for Hair Loss, 8.75 Oz (250 ML) to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Aloekita Hair Growth Spray Black 200ml">
+                    <img src="https://m.media-amazon.com/images/I/51cOhvWMY+L._AC_SX679_.jpg" alt="Aloekita Hair Growth Spray Black 200ml" />
+                    <div class="product-content">
+                        <h3>Aloekita Hair Growth Spray Black 200ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">359 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add  Aloekita Hair Growth Spray Black 200ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="Tettello Anti Dandruff Shampoo 150 ml">
+                    <img src="https://m.media-amazon.com/images/I/6144SrxtVHL._AC_SX679_.jpg" alt="Tettello Anti Dandruff Shampoo 150 ml" />
+                    <div class="product-content">
+                        <h3>Tettello Anti Dandruff Shampoo 150 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">215 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Tettello Anti Dandruff Shampoo 150 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="product" data-name="Alejon Anti Hair Loss Shampoo 200ml - Fortifies & Nourishes - Prevents Hair Loss & Promotes Growth - Unisex - Adults">
+                    <img src="https://m.media-amazon.com/images/I/61lfFgfaI1L._AC_SX679_.jpg" alt="Alejon Anti Hair Loss Shampoo 200ml - Fortifies & Nourishes - Prevents Hair Loss & Promotes Growth - Unisex - Adults" />
+                    <div class="product-content">
+                        <h3>Alejon Anti Hair Loss Shampoo 200ml - Fortifies & Nourishes - Prevents Hair Loss & Promotes Growth - Unisex - Adults</h3>
+                        <div class="price">
+                            <span class="discounted-price">250 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add  Alejon Anti Hair Loss Shampoo 200ml - Fortifies & Nourishes - Prevents Hair Loss & Promotes Growth - Unisex - Adults to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+
+                
+
+
+                <div class="product" data-name="SUNSILK Collagen Blends sulfate free Shampoo Moisture Bomb with Collagen & Hyaluronic acid, for instant hydration & frizz control, 350ml">
+                    <img src="https://m.media-amazon.com/images/I/51B9CE7dcgL._AC_SX679_.jpg" alt="SUNSILK Collagen Blends sulfate free Shampoo, Moisture Bomb with Collagen & Hyaluronic acid, for instant hydration & frizz control, 350ml" />
+                    <div class="product-content">
+                        <h3>SUNSILK Collagen Blends sulfate free Shampoo, Moisture Bomb with Collagen & Hyaluronic acid, for instant hydration & frizz control, 350ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">155 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="AddSUNSILK Collagen Blends sulfate free Shampoo, Moisture Bomb with Collagen & Hyaluronic acid, for instant hydration & frizz control, 350ml to cart">Add to cart</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -592,7 +2176,35 @@
         Product added to cart!
     </div>
 
+    <footer>
+        <p>&copy; 2023 Dr. Alaa Pharmacy. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
     <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const dropdownBackdrop = document.querySelector('.dropdown-backdrop');
+
+        hamburger.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('show');
+            dropdownBackdrop.style.display = dropdownMenu.classList.contains('show') ? 'block' : 'none';
+            hamburger.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking backdrop
+        dropdownBackdrop.addEventListener('click', () => {
+            dropdownMenu.classList.remove('show');
+            dropdownBackdrop.style.display = 'none';
+            hamburger.classList.remove('active');
+        });
+
         // Search functionality
         const searchInput = document.querySelector('.search-input');
         const products = document.querySelectorAll('.product');
@@ -693,15 +2305,15 @@
         function showNotification() {
             const notification = document.getElementById('notification');
             notification.style.display = 'block';
+            notification.classList.add('show');
             setTimeout(() => {
-                notification.style.display = 'none';
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 500); // Wait for transition to complete
             }, 3000);
         }
     </script>
 </body>
 </html>
-
-
-
-
 

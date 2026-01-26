@@ -1,491 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Deodorants & Perfumes - Dr. Alaa Pharmacy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #078140;
-            --secondary-color: #045a41;
-            --accent-color: #ff6b6b;
-            --text-color: #333;
-            --light-text: #666;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--bg-color) 0%, #e9ecef 100%);
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100px); }
-        }
-
-        header h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.5); }
-        }
-
-        header p {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            animation: fadeInUp 1s ease-out;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        nav {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 5px 10px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 25px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        nav a i {
-            font-size: 0.5rem;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        nav a:hover::before {
-            left: 100%;
-        }
-
-        nav a:hover, nav a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        main {
-            max-width: 1400px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        .search-bar {
-            max-width: 500px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e9ecef;
-            border-radius: 30px;
-            font-size: 1rem;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(7, 129, 64, 0.1);
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid #e9ecef;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .product img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .product:hover img {
-            transform: scale(1.05);
-        }
-
-        .product-content {
-            padding: 20px;
-        }
-
-        .product h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--text-color);
-        }
-
-        .price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-
-        .discounted-price {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .discount-badge {
-            background: var(--accent-color);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            margin-top: 10px;
-            display: inline-block;
-        }
-
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .quantity-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .quantity-btn:hover {
-            background: var(--secondary-color);
-            transform: scale(1.1);
-        }
-
-        .quantity-input {
-            width: 50px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            padding: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .add-to-cart {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            width: 100%;
-            transition: var(--transition);
-        }
-
-        .add-to-cart:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .close:hover {
-            color: var(--accent-color);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Notification Styles */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--primary-color);
-            color: white;
-            padding: 15px 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            animation: slideInRight 0.3s ease-out;
-            display: none;
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                padding: 60px 15px;
-            }
-
-            header h1 {
-                font-size: 2.2rem;
-            }
-
-            header p {
-                font-size: 1.2rem;
-            }
-
-            nav {
-                padding: 5px 10px;
-            }
-
-            nav ul {
-                gap: 10px;
-            }
-
-            nav a {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-
-            .products {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-            }
-
-            .product img {
-                max-height: 200px;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav a {
-                width: 100%;
-                justify-content: center;
-                max-width: 200px;
-                font-size: 0.6rem;
-            }
-
-            nav a i {
-                font-size: 0.5rem;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .product-content {
-                padding: 15px;
-            }
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Focus styles */
-        nav a:focus,
-        .search-input:focus,
-        .add-to-cart:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="deodorants-perfumes.css" />
 </head>
 <body>
     <header>
         <h1>Deodorants & Perfumes</h1>
-        <p>Stay fresh and confident with our fragrances.</p>
-        <nav>
-            <ul>
-                <li><a href="pharmacy.html"><i class="fas fa-home"></i> Home</a></li>
+        <p>Professional deodorants and perfumes for all-day freshness. Discover your signature scent.</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Dr. Alaa Pharmacy</div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a></li>
                 <li><a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a></li>
                 <li><a href="deodorants-perfumes.html" class="active"><i class="fas fa-wind"></i> Deodorants & Perfumes</a></li>
@@ -499,16 +37,17 @@
                 <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
                 <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
                 <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> cart <span id="cart-count">0</span></a></li>
+                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <main>
         <section class="section">
-            <h2>Deodorants & Perfumes</h2>
+            <h3>Deodorants & Perfumes</h3>
             <div class="search-bar">
                 <input type="text" placeholder="Search products..." class="search-input">
+                <a href="axe.html" id="axe-button">Axe</a>
             </div>
             <div class="products">
                 <div class="product" data-name="Axe Body Spray for Men Ice Chill 150ML">
@@ -542,57 +81,1086 @@
                         <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Floral Perfume">
-                    <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Floral Perfume">
+                <div class="product" data-name="Axe Body Spray for Men Skateboard & Fresh Roses 150ML">
+                    <img src="https://m.media-amazon.com/images/I/51ohSomismL._AC_SX679_.jpg" alt="Axe Body Spray for Men Skateboard & Fresh Roses 150ML">
                     <div class="product-content">
-                        <h3>Floral Perfume</h3>
+                        <h3>Axe Body Spray for Men Skateboard & Fresh Roses 150ML</h3>
                         <div class="price">
-                            <span class="original-price">$45</span>
-                            <span class="discounted-price">$32</span>
+                            <span class="discounted-price">price: 195</span>
                         </div>
                         <div class="quantity-selector">
                             <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
                             <input type="number" class="quantity-input" value="1" min="1" readonly>
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
-                        <span class="discount-badge">29% OFF</span>
+                        <span class="discount-badge" style="background-color:#FF4500;">29% OFF</span>
                         <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Men's Cologne">
-                    <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59db9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Men's Cologne">
+                <div class="product" data-name="Axe Body Spray for Men Black 150ML">
+                    <img src="https://m.media-amazon.com/images/I/61BadlDxx8L._AC_SY879_.jpg" alt="Axe Body Spray for Men Black 150ML">
                     <div class="product-content">
-                        <h3>Men's Cologne</h3>
+                        <h3>Axe Body Spray for Men Black 150ML</h3>
                         <div class="price">
-                            <span class="original-price">$50</span>
-                            <span class="discounted-price">$38</span>
+                           
+                            <span class="discounted-price">price : 195</span>
                         </div>
                         <div class="quantity-selector">
                             <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
                             <input type="number" class="quantity-input" value="1" min="1" readonly>
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
-                        <span class="discount-badge">24% OFF</span>
+                        <span class="discount-badge" style="background-color:#FF4500;">24% OFF</span>
                         <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
-                <div class="product" data-name="Body Mist">
-                    <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Body Mist">
+                <div class="product" data-name="Axe Body Spray for Men Black Night 150ML">
+                    <img src="https://m.media-amazon.com/images/I/61Bb6UFCf-L._AC_SY879_.jpg" alt="Axe Body Spray for Men Black Night 150ML">
                     <div class="product-content">
-                        <h3>Body Mist</h3>
+                        <h3>Axe Body Spray for Men Black Night 150ML</h3>
                         <div class="price">
-                            <span class="original-price">$25</span>
-                            <span class="discounted-price">$18</span>
+                            <span class="discounted-price">price : 195</span>
                         </div>
                         <div class="quantity-selector">
                             <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
                             <input type="number" class="quantity-input" value="1" min="1" readonly>
                             <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
                         </div>
-                        <span class="discount-badge">28% OFF</span>
+                        <span class="discount-badge" style="background-color:#FF4500;">28% OFF</span>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                    
+                </div>
+                    <div class="product" data-name="Axe Body Spray for Men Leather & Cookies 150ML">
+                    <img src="https://m.media-amazon.com/images/I/51kRZ5uQxhL._AC_SX679_.jpg" alt="Axe Body Spray for Men Leather & Cookies 150ML">
+                    <div class="product-content">
+                        <h3>AXE Body Spray for Men - Leather & Cookies, 150ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price: 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
                         <button class="add-to-cart">Add to cart</button>
                     </div>
                 </div>
+                 <div class="product" data-name="Eva Skin Care Senses Gold Spell Shimmer Fragrance Mist 150 Ml">
+                    <img src="https://m.media-amazon.com/images/I/61NO6jWxsAL._AC_SY879_.jpg" alt="Eva Skin Care Senses Gold Spell Shimmer Fragrance Mist 150 Ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses Gold Spell Shimmer Fragrance Mist 150 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 200</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <span class="discount-badge" style="background-color:#FF4500;">28% OFF</span>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                  </div>
+
+   <div class="product" data-name="Eva Skin Care Senses Fine Fragrance Mist - Summer Twist 240 ml">
+                    <img src="https://f.nooncdn.com/p/pzsku/ZE9FBB81A90AF971FC315Z/45/_/1678878856/de2f674f-7ab0-492d-95a5-9419079ab2b5.jpg?width=800" alt="Eva Skin Care Senses Fine Fragrance Mist - Summer Twist 240 ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses Fine Fragrance Mist - Summer Twist 240 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Eva Skin Care Senses Body Splash - Cozy Dream 240 ml">
+                    <img src="https://m.media-amazon.com/images/I/61GVyoR3BBL._AC_SY879_.jpg" alt="Eva Skin Care Senses Body Splash - Cozy Dream 240 ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses Body Splash - Cozy Dream 240 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                      <div class="product" data-name="Eva Skin Care Senses body splash -Night Out 240ml">
+                    <img src="https://m.media-amazon.com/images/I/614DjDDmyuL._AC_SY879_.jpg" alt="Eva Skin Care Senses body splash -Night Out 240ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses body splash -Night Out 240ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                       <div class="product" data-name="Eva Skin Care Senses Body Splash - Gold Spell 240 ml">
+                    <img src="https://m.media-amazon.com/images/I/61zU2QYCUWL._AC_SY879_.jpg" alt="Eva Skin Care Senses Body Splash - Gold Spell 240 ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses Body Splash - Gold Spell 240 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+                     
+                     <div class="product" data-name="Eva Skin Care Senses Body Splash - In the Clouds 240 ml">
+                    <img src="https://m.media-amazon.com/images/I/61bfaQ8VmQL._AC_SY879_.jpg" alt="Eva Skin Care Senses Body Splash - In the Clouds 240 ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses Body Splash - In the Clouds 240 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Eva Skin Care Senses body splash - Red Glamour 240ml">
+                    <img src="https://m.media-amazon.com/images/I/61MY2idrKgL._AC_SY879_.jpg" alt="Eva Skin Care Senses body splash - Red Glamour 240ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses body splash - Red Glamour 240ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                      <div class="product" data-name="EVA MUSKY JASMINE BODY MIST SENSES 240ML">
+                    <img src="https://m.media-amazon.com/images/I/41coEq6pKvL._AC_SX679_.jpg" alt="EVA MUSKY JASMINE BODY MIST SENSES 240ML">
+                    <div class="product-content">
+                        <h3>EVA MUSKY JASMINE BODY MIST SENSES 240ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="EVA MORNING BLOSSOM BODY MIST SENSES 240ML">
+                    <img src="https://m.media-amazon.com/images/I/6140uJgR48L._AC_SY879_.jpg" alt="EVA MORNING BLOSSOM BODY MIST SENSES 240ML">
+                    <div class="product-content">
+                        <h3>EVA MORNING BLOSSOM BODY MIST SENSES 240ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Eva Skin Care Senses Body Splash Mystic Orchid 240 Ml">
+                    <img src="https://m.media-amazon.com/images/I/61MjW01FpkL._AC_SY879_.jpg" alt="Eva Skin Care Senses Body Splash Mystic Orchid 240 Ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses Body Splash Mystic Orchid 240 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+<div class="product" data-name="Eva Skin Care Senses body splash- Spring Lilies 240ml">
+                    <img src="https://m.media-amazon.com/images/I/61StNjKPrbL._AC_SY879_.jpg" alt="Eva Skin Care Senses body splash- Spring Lilies 240ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses body splash- Spring Lilies 240ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Eva Skin Care Senses Body Splash - Love Tale 240 ml">
+                    <img src="https://m.media-amazon.com/images/I/41o+osMGseL._AC_SX679_.jpg" alt="Eva Skin Care Senses Body Splash - Love Tale 240 ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses Body Splash - Love Tale 240 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                       <div class="product" data-name="AVUVA Body Splash Vanilla Coconut 55ml">
+                    <img src="https://m.media-amazon.com/images/I/314MHe2UjWL._AC_US40_.jpg" alt="AVUVA Body Splash Vanilla Coconut 55ml">
+                    <div class="product-content">
+                        <h3>AVUVA Body Splash Vanilla Coconut 55ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 45</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="AVUVA Body Splash Passion Fruit 253 ml">
+                    <img src="https://m.media-amazon.com/images/I/31c6SFEFeOL._AC_US40_.jpg" alt="AVUVA Body Splash Passion Fruit 253 ml">
+                    <div class="product-content">
+                        <h3>AVUVA Body Splash Passion Fruit 253 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 170</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Eva Skin Care Senses Pearly Haze Shimmer Fragrance Mist 150 Ml">
+                    <img src="https://m.media-amazon.com/images/I/41cLU5y8VvL._AC_.jpg" alt="Eva Skin Care Senses Pearly Haze Shimmer Fragrance Mist 150 Ml">
+                    <div class="product-content">
+                        <h3>Eva Skin Care Senses Pearly Haze Shimmer Fragrance Mist 150 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 200</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Bobana Pink At Heart Body Splash, 250Ml">
+                    <img src="https://m.media-amazon.com/images/I/41ot0G07ubL._AC_SX679_.jpg" alt="Bobana Pink At Heart Body Splash, 250Mll">
+                    <div class="product-content">
+                        <h3>Bobana Pink At Heart Body Splash, 250Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 150</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                      <div class="product" data-name="AVUVA Body Splash Vanilla Coconut 253 ml">
+                    <img src="https://m.media-amazon.com/images/I/5199cOxfqDL._AC_SX679_.jpg" alt="AVUVA Body Splash Vanilla Coconut 253 ml">
+                    <div class="product-content">
+                        <h3>AVUVA Body Splash Vanilla Coconut 253 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 170</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Bodylicious Coconut Breeze Antiperspirant Deodorant 50ml">
+                    <img src="https://m.media-amazon.com/images/I/41N21p6ZEHL._AC_SX679_.jpg" alt="Bodylicious Coconut Breeze Antiperspirant Deodorant 50ml">
+                    <div class="product-content">
+                        <h3>Bodylicious Coconut Breeze Antiperspirant Deodorant 50ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 65</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Bodylicious pure seduction body spray - 217 ml">
+                    <img src="https://m.media-amazon.com/images/I/61k6-os-3IL._AC_SY879_.jpg" alt="Bodylicious pure seduction body spray - 217 ml">
+                    <div class="product-content">
+                        <h3>Bodylicious pure seduction body spray - 217 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 220</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Bodylicious Pink Vanilla Fusion Body Spray - 217 Ml">
+                    <img src="https://m.media-amazon.com/images/I/61MnzP7n+jL._AC_SY879_.jpg" alt="Bodylicious Pink Vanilla Fusion Body Spray - 217 Ml">
+                    <div class="product-content">
+                        <h3>Bodylicious Pink Vanilla Fusion Body Spray - 217 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 220</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Bodylicious roll-on deodorant 48 hour protection Vanilla scent">
+                    <img src="https://m.media-amazon.com/images/I/61C3xNd5f1L._AC_SX679_.jpg" alt="Bodylicious roll-on deodorant 48 hour protection Vanilla scent">
+                    <div class="product-content">
+                        <h3>Bodylicious roll-on deodorant 48 hour protection Vanilla scent</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 65</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Bodylicious good vibes only fragranced body mist - 217 ml">
+                    <img src="https://m.media-amazon.com/images/I/61LoecT1EnL._AC_SY879_.jpg" alt="Bodylicious good vibes only fragranced body mist - 217 ml">
+                    <div class="product-content">
+                        <h3>Bodylicious good vibes only fragranced body mist - 217 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 220</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Bodylicious Pomegranate Crush Body Mist for Women 217 ml">
+                    <img src="https://m.media-amazon.com/images/I/71TSgcAgXkL._AC_SY879_.jpg" alt="Bodylicious Pomegranate Crush Body Mist for Women 217 ml">
+                    <div class="product-content">
+                        <h3>Bodylicious Pomegranate Crush Body Mist for Women 217 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 220</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Bodylicious Coconut Breeze Body Spray - 217 Ml">
+                    <img src="https://m.media-amazon.com/images/I/51NRV8W6uGL._AC_SX679_.jpg" alt="Bodylicious Coconut Breeze Body Spray - 217 Ml">
+                    <div class="product-content">
+                        <h3>Bodylicious Coconut Breeze Body Spray - 217 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 220</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+
+                       <div class="product" data-name="Fogg Dynamic Perfume Spray For Unisex - 120 Ml">
+                    <img src="https://m.media-amazon.com/images/I/61-feXipltL._AC_SY879_.jpg" alt="Fogg Dynamic Perfume Spray For Unisex - 120 Ml">
+                    <div class="product-content">
+                        <h3>Fogg Dynamic Perfume Spray For Unisex - 120 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Fogg Marco Perfume Spray For Men - 120 Ml">
+                    <img src="https://m.media-amazon.com/images/I/615o0mQ0eQL._AC_SY879_.jpg" alt="Fogg Marco Perfume Spray For Men - 120 Ml">
+                    <div class="product-content">
+                        <h3>Fogg Marco Perfume Spray For Men - 120 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Fogg Royal Perfume Spray Men - 120 Ml">
+                    <img src="https://m.media-amazon.com/images/I/61vSWu3Gg4L._AC_SY879_.jpg" alt="Fogg Royal Perfume Spray Men - 120 Ml">
+                    <div class="product-content">
+                        <h3>Fogg Royal Perfume Spray Men - 120 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                      <div class="product" data-name="Fogg Monarch Perfume Spray For Men - 120Ml">
+                    <img src="https://m.media-amazon.com/images/I/61hLTGVMshL._AC_SY879_.jpg" alt="Fogg Monarch Perfume Spray For Men - 120Ml">
+                    <div class="product-content">
+                        <h3>Fogg Monarch Perfume Spray For Men - 120Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Fogg Master Oak Deodorant Body Spray - 120 Ml">
+                    <img src="https://m.media-amazon.com/images/I/51IQWn5u5QL._AC_SY879_.jpg" alt="Fogg Master Oak Deodorant Body Spray - 120 Ml">
+                    <div class="product-content">
+                        <h3>Fogg Master Oak Deodorant Body Spray - 120 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Fogg Fine Rio Wave 120Ml">
+                    <img src="https://m.media-amazon.com/images/I/51kQZe04DqL._AC_SX679_.jpg" alt="Fogg Fine Rio Wave 120Ml">
+                    <div class="product-content">
+                        <h3>Fogg Fine Rio Wave 120Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Fogg Essence Perfume Spray For Women - 120Ml">
+                    <img src="https://m.media-amazon.com/images/I/61m0MwiUg5L._AC_SY879_.jpg" alt="Fogg Essence Perfume Spray For Women - 120Ml">
+                    <div class="product-content">
+                        <h3>Fogg Essence Perfume Spray For Women - 120Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                      <div class="product" data-name="Fogg Extreme Perfume Spray For Unisex - 120 Ml">
+                    <img src="https://m.media-amazon.com/images/I/61tNYCok4cL._AC_SY879_.jpg" alt="Fogg Extreme Perfume Spray For Unisex - 120 Ml">
+                    <div class="product-content">
+                        <h3>Fogg Extreme Perfume Spray For Unisex - 120 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Fogg Absolute Unisex Perfume Spray, 120Ml">
+                    <img src="https://m.media-amazon.com/images/I/613RWlA2KxL._AC_SY879_.jpg" alt="Fogg Absolute Unisex Perfume Spray, 120Ml">
+                    <div class="product-content">
+                        <h3>Fogg Absolute Unisex Perfume Spray, 120Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                      <div class="product" data-name="Fogg Victor Perfume Spray For Unisex - 120 Ml">
+                    <img src="https://m.media-amazon.com/images/I/61BwTdAgfML._AC_SY879_.jpg" alt="Fogg Victor Perfume Spray For Unisex - 120 Ml">
+                    <div class="product-content">
+                        <h3>Fogg Victor Perfume Spray For Unisex - 120 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Fogg Napoleon Perfume Spray - 120 Ml">
+                    <img src="https://m.media-amazon.com/images/I/61Gf8oDQgrL._AC_SY879_.jpg" alt="Fogg Napoleon Perfume Spray - 120 Ml">
+                    <div class="product-content">
+                        <h3>Fogg Napoleon Perfume Spray - 120 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                      <div class="product" data-name="Fogg Master Fragrance Body Spray Agar 120Ml">
+                    <img src="https://m.media-amazon.com/images/I/51vgY7SHtCL._AC_SY879_.jpg" alt="Fogg Master Fragrance Body Spray Agar 120Ml">
+                    <div class="product-content">
+                        <h3>Fogg Master Fragrance Body Spray Agar 120Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                      <div class="product" data-name="Fogg Master Fragrance Body Spray Agar 120Ml">
+                    <img src="https://m.media-amazon.com/images/I/51vgY7SHtCL._AC_SY879_.jpg" alt="Fogg Master Fragrance Body Spray Agar 120Ml">
+                    <div class="product-content">
+                        <h3>Fogg Master Fragrance Body Spray Agar 120Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Fogg Paradise Perfume Spray For Women - 120 Ml">
+                    <img src="https://m.media-amazon.com/images/I/615R6x1ojYL._AC_SY879_.jpg" alt="Fogg Paradise Perfume Spray For Women - 120 Ml">
+                    <div class="product-content">
+                        <h3>Fogg Paradise Perfume Spray For Women - 120 Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Fogg Perfume Spray 120 Ml - Celebrate">
+                    <img src="https://m.media-amazon.com/images/I/61Emhy8PjfL._AC_SY879_.jpg" alt="Fogg Perfume Spray 120 Ml - Celebrate">
+                    <div class="product-content">
+                        <h3>Fogg Perfume Spray 120 Ml - Celebrate</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 135</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="StarVille whitening roll on fresh breeze 60 ml">
+                    <img src="https://m.media-amazon.com/images/I/61Tgk0GFMdL._AC_SY879_.jpg" alt="StarVille whitening roll on fresh breeze 60 ml">
+                    <div class="product-content">
+                        <h3>StarVille whitening roll on fresh breeze 60 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 130</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                      <div class="product" data-name="StarVille whitening roll on sweet vanilla 60 ml">
+                    <img src="https://m.media-amazon.com/images/I/61gxPEPTuAL._AC_SY879_.jpg" alt="StarVille whitening roll on sweet vanilla 60 ml">
+                    <div class="product-content">
+                        <h3>StarVille whitening roll on sweet vanilla 60 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 130</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="StarVille whitening roll on redberry 60 ml">
+                    <img src="https://m.media-amazon.com/images/I/61zKD0RrtgL._AC_SY879_.jpg" alt="StarVille whitening roll on redberry 60 ml">
+                    <div class="product-content">
+                        <h3>StarVille whitening roll on redberry 60 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 130</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Starville Whitening Roll On Orient Pearl Scent">
+                    <img src="https://m.media-amazon.com/images/I/51VD87dNQIL._AC_SX679_.jpg" alt="Starville Whitening Roll On Orient Pearl Scent">
+                    <div class="product-content">
+                        <h3>Starville Whitening Roll On Orient Pearl Scent</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 130</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Starville Whitening Roll On Hair Reducer 60 ml">
+                    <img src="https://m.media-amazon.com/images/I/615KzkAmNnL._AC_SY879_.jpg" alt="Starville Whitening Roll On Hair Reducer 60 ml">
+                    <div class="product-content">
+                        <h3>Starville Whitening Roll On Hair Reducer 60 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 160</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Starville Skin Lightening Roll-On Deodorant Unscented, 60 ml">
+                    <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRKGdbNIyRFSag5RCCFclN6QkpRWdbLWTofRX7jtnVKDU4G3_UyS8ALImAhxxL_PeNBizJobb8uDFi-wHCEmHDBnsA9KM0aOOIL7S3_ddiMXyQqUAQoOfHc17kwF2jjR1CtmfrhWVx5eg&usqp=CAc" alt="Starville Skin Lightening Roll-On Deodorant Unscented, 60 ml">
+                    <div class="product-content">
+                        <h3>Starville Skin Lightening Roll-On Deodorant Unscented, 60 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 130</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Lady Speed Stick, 24/7 Fresh Fusion, Antiperspirant Deodorant, 65G">
+                    <img src="https://m.media-amazon.com/images/I/710MVo7RmLL._AC_SY879_.jpg" alt="Lady Speed Stick, 24/7 Fresh Fusion, Antiperspirant Deodorant, 65G">
+                    <div class="product-content">
+                        <h3>Lady Speed Stick, 24/7 Fresh Fusion, Antiperspirant Deodorant, 65G</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 370</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Lady Speed Stick Wild Freesia Deodorant 65G">
+                    <img src="https://m.media-amazon.com/images/I/61i-DW0LM2L._AC_SY879_.jpg" alt="Lady Speed Stick Wild Freesia Deodorant 65G">
+                    <div class="product-content">
+                        <h3>Lady Speed Stick Wild Freesia Deodorant 65G</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 370</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                      <div class="product" data-name="Lady Speed Stick Cherry Blossom , 65gm">
+                    <img src="https://m.media-amazon.com/images/I/81KbboBrBHL._AC_SX679_.jpg" alt="Lady Speed Stick Cherry Blossom , 65gm">
+                    <div class="product-content">
+                        <h3>Lady Speed Stick Cherry Blossom , 65gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 370</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Lady Speed Invisible Dry Powder Fresh Stick Deodorant for Women, 40 gm">
+                    <img src="https://m.media-amazon.com/images/I/71SNEIEzfOL._AC_SY879_.jpg" alt="Lady Speed Invisible Dry Powder Fresh Stick Deodorant for Women, 40 gm">
+                    <div class="product-content">
+                        <h3>Lady Speed Invisible Dry Powder Fresh Stick Deodorant for Women, 40 gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 300</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Lady Speed Stick Lady Speed Powder Fresh Deodorant Stick 65g">
+                    <img src="https://m.media-amazon.com/images/I/61UsorAr8ML._AC_SY879_.jpg" alt="Lady Speed Stick Lady Speed Powder Fresh Deodorant Stick 65g">
+                    <div class="product-content">
+                        <h3>Lady Speed Stick Lady Speed Powder Fresh Deodorant Stick 65g</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 370</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Lady Speed Stick Aloe protection 48H 45G">
+                    <img src="https://m.media-amazon.com/images/I/81vZkPEUUJL._AC_SX679_.jpg" alt="Lady Speed Stick Aloe protection 48H 45G">
+                    <div class="product-content">
+                        <h3>Lady Speed Stick Aloe protection 48H 45G</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 300</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="lady speed stick fitness 45gm">
+                    <img src="https://m.media-amazon.com/images/I/51uKut1WJFL._AC_SX679_.jpg" alt="lady speed stick fitness 45gm">
+                    <div class="product-content">
+                        <h3>lady speed stick fitness 45gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 300</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Lady Speed Stick Orchard Blossom, 65gm">
+                    <img src="https://m.media-amazon.com/images/I/81xYWIWxryL._AC_SX679_.jpg" alt="Lady Speed Stick Orchard Blossom, 65gm">
+                    <div class="product-content">
+                        <h3>Lady Speed Stick Orchard Blossom, 65gm</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 370</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="Lady Speed Stick Fresh Deodorant - Shower Fresh 39.6g">
+                    <img src="https://m.media-amazon.com/images/I/81xYWIWxryL._AC_SX679_.jpg" alt="Lady Speed Stick Fresh Deodorant - Shower Fresh 39.6g">
+                    <div class="product-content">
+                        <h3>Lady Speed Stick Fresh Deodorant - Shower Fresh 39.6g/h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 370</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="NIVEA MEN Antiperspirant Spray for Men, Fresh Active 150ml">
+                    <img src="https://m.media-amazon.com/images/I/61YOLquJpdL._AC_SX679_.jpg" alt="NIVEA MEN Antiperspirant Spray for Men, Fresh Active 150ml">
+                    <div class="product-content">
+                        <h3>NIVEA MEN Antiperspirant Spray for Men, Fresh Active 150ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="NIVEA MEN Antiperspirant Spray for Men, DEEP Black Carbon Antibacterial, 150ml">
+                    <img src="https://m.media-amazon.com/images/I/71Xfra8n2PL._AC_SX679_.jpg" alt="NIVEA MEN Antiperspirant Spray for Men, DEEP Black Carbon Antibacterial, 150ml">
+                    <div class="product-content">
+                        <h3>NIVEA MEN Antiperspirant Spray for Men, DEEP Black Carbon Antibacterial, 150ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="NIVEA MEN Black & White Invisible Antiperspirant Deodorant Spray, Original, 72H Active Protection, 5IN1, Anti-Odour, Sweat, Stains, Residues & Irritation, 150ml">
+                    <img src="https://m.media-amazon.com/images/I/61GzEeWpD5L._AC_SX679_.jpg" alt="NIVEA MEN Black & White Invisible Antiperspirant Deodorant Spray, Original, 72H Active Protection, 5IN1, Anti-Odour, Sweat, Stains, Residues & Irritation, 150ml">
+                    <div class="product-content">
+                        <h3>NIVEA MEN Black & White Invisible Antiperspirant Deodorant Spray, Original, 72H Active Protection, 5IN1, Anti-Odour, Sweat, Stains, Residues & Irritation, 150ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="NIVEA MEN Deep Espresso Spray 150ml, with Black Carbon, 72H Sweat & Odor Protection, Energizing Espresso Scent">
+                    <img src="https://m.media-amazon.com/images/I/71AVg4o2PHL._AC_SX679_.jpg" alt="NIVEA MEN Deep Espresso Spray 150ml, with Black Carbon, 72H Sweat & Odor Protection, Energizing Espresso Scent">
+                    <div class="product-content">
+                        <h3>NIVEA MEN Deep Espresso Spray 150ml, with Black Carbon, 72H Sweat & Odor Protection, Energizing Espresso Scent</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="NIVEA MEN Silver Protect, Antiperspirant for Men, Antibacterial Protection, Roll-on 50ml">
+                    <img src="https://m.media-amazon.com/images/I/61gaRyYtqmL._AC_SX679_.jpg" alt="NIVEA MEN Silver Protect, Antiperspirant for Men, Antibacterial Protection, Roll-on 50ml">
+                    <div class="product-content">
+                        <h3>NIVEA MEN Silver Protect, Antiperspirant for Men, Antibacterial Protection, Roll-on 50ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 95</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="NIVEA MEN Antiperspirant Roll-on for Men, DEEP Black Carbon Antibacterial, Espresso Scent, 50ml">
+                    <img src="https://m.media-amazon.com/images/I/71KiprI0z+L._AC_SX679_.jpg" alt="NIVEA MEN Antiperspirant Roll-on for Men, DEEP Black Carbon Antibacterial, Espresso Scent, 50ml">
+                    <div class="product-content">
+                        <h3>NIVEA MEN Antiperspirant Roll-on for Men, DEEP Black Carbon Antibacterial, Espresso Scent, 50ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 95</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                       <div class="product" data-name="NIVEA MEN Antiperspirant Roll-on for Men, Fresh Active Fresh Scent, 50ml - Package May Vary">
+                    <img src="https://m.media-amazon.com/images/I/61i8q04WzdL._AC_SX679_.jpg" alt="NIVEA MEN Antiperspirant Roll-on for Men, Fresh Active Fresh Scent, 50ml - Package May Vary">
+                    <div class="product-content">
+                        <h3>NIVEA MEN Antiperspirant Roll-on for Men, DEEP Black Carbon Antibacterial, Espresso Scent, 50ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 95</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="NIVEA MEN Antiperspirant Roll-on for Men, DEEP Black Carbon Antibacterial, Dark Wood Scent, 50ml">
+                    <img src="https://m.media-amazon.com/images/I/71YD+C0zhHL._AC_SX679_.jpg" alt="NIVEA MEN Antiperspirant Roll-on for Men, DEEP Black Carbon Antibacterial, Dark Wood Scent, 50ml">
+                    <div class="product-content">
+                        <h3>NIVEA MEN Antiperspirant Roll-on for Men, DEEP Black Carbon Antibacterial, Dark Wood Scent, 50ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 95</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+                     <div class="product" data-name="NIVEA MEN Antiperspirant Spray for Men, Silver Protect Antibacterial Protection, 150ml">
+                    <img src="https://m.media-amazon.com/images/I/61+ie0LAc-L._AC_SX679_.jpg" alt="NIVEA MEN Antiperspirant Spray for Men, Silver Protect Antibacterial Protection, 150ml">
+                    <div class="product-content">
+                        <h3>NIVEA MEN Antiperspirant Spray for Men, Silver Protect Antibacterial Protection, 150ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">price : 195</span>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly>
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to cart</button>
+                    </div>
+                     </div>
+
+
+                     
+                     
+
+
             </div>
         </section>
     </main>
@@ -609,6 +1177,15 @@
     </div>
 
     <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
         // Search functionality
         const searchInput = document.querySelector('.search-input');
         const products = document.querySelectorAll('.product');
@@ -624,6 +1201,8 @@
                 }
             });
         });
+
+
 
         // Add to cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -714,6 +1293,11 @@
     </script>
 </body>
 </html>
+
+
+
+
+
 
 
 

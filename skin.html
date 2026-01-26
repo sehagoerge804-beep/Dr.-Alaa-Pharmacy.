@@ -5,505 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Skin Care - Dr. Alaa Pharmacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <style>
-        :root {
-            --primary-color: #078140;
-            --secondary-color: #045a41;
-            --accent-color: #ff6b6b;
-            --text-color: #333;
-            --light-text: #666;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--bg-color) 0%, #e9ecef 100%);
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100px); }
-        }
-
-        header h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.5); }
-        }
-
-        header p {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            animation: fadeInUp 1s ease-out;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        nav {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 5px 10px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 25px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        nav a i {
-            font-size: 0.5rem;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        nav a:hover::before {
-            left: 100%;
-        }
-
-        nav a:hover, nav a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        main {
-            max-width: 1400px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        .search-bar {
-            max-width: 500px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e9ecef;
-            border-radius: 30px;
-            font-size: 1rem;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(7, 129, 64, 0.1);
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid #e9ecef;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .product img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .product:hover img {
-            transform: scale(1.05);
-        }
-
-        .product-content {
-            padding: 20px;
-        }
-
-        .product h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--text-color);
-        }
-
-        .price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-
-        .discounted-price {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .discount-badge {
-            background: var(--accent-color);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            margin-top: 10px;
-            display: inline-block;
-        }
-
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .quantity-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .quantity-btn:hover {
-            background: var(--secondary-color);
-            transform: scale(1.1);
-        }
-
-        .quantity-input {
-            width: 50px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            padding: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .add-to-cart {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            width: 100%;
-            transition: var(--transition);
-        }
-
-        .add-to-cart:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .close:hover {
-            color: var(--accent-color);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Notification Styles */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--primary-color);
-            color: white;
-            padding: 15px 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            animation: slideInRight 0.3s ease-out;
-            display: none;
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                padding: 60px 15px;
-            }
-
-            header h1 {
-                font-size: 2.2rem;
-            }
-
-            header p {
-                font-size: 1.2rem;
-            }
-
-            nav {
-                padding: 5px 10px;
-            }
-
-            nav ul {
-                gap: 10px;
-            }
-
-            nav a {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-
-            .products {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-            }
-
-            .product img {
-                max-height: 200px;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav a {
-                width: 100%;
-                justify-content: center;
-                max-width: 200px;
-                font-size: 0.6rem;
-            }
-
-        nav a i {
-            font-size: 0.5rem;
-        }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .product-content {
-                padding: 15px;
-            }
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Focus styles */
-        nav a:focus,
-        .search-input:focus,
-        .add-to-cart:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-
-        /* Icon container and icons */
-        .icon-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
-        }
-
-        .icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            transition: color 0.3s ease;
-            cursor: default;
-        }
-
-        .icon:hover {
-            color: var(--accent-color);
-        }
-    </style>
+    <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="deodorants-perfumes.css" />
 </head>
 <body>
     <header>
         <h1>Skin Care</h1>
-        <p>Nourish and rejuvenate your skin with our range.</p>
-        <nav>
-            <ul>
+        <p>Professional skincare products for all skin types. Nourish and rejuvenate your skin with our premium range.</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Dr. Alaa Pharmacy</div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a></li>
                 <li><a href="skin.html" class="active"><i class="fas fa-spa"></i> Skin Care</a></li>
@@ -518,10 +37,79 @@
                 <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
                 <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
                 <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> cart <span id="cart-count">0</span></a></li>
+                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+
+        <!-- Dropdown Backdrop -->
+        <div class="dropdown-backdrop"></div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu">
+            <div class="icon-grid">
+                <a href="index.html" class="icon-item" data-tooltip="Home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="hair.html" class="icon-item" data-tooltip="Hair Care">
+                    <i class="fas fa-cut"></i>
+                    <span>Hair Care</span>
+                </a>
+                <a href="skin.html" class="icon-item" data-tooltip="Skin Care">
+                    <i class="fas fa-spa"></i>
+                    <span>Skin Care</span>
+                </a>
+                <a href="deodorants-perfumes.html" class="icon-item" data-tooltip="Deodorants & Perfumes">
+                    <i class="fas fa-wind"></i>
+                    <span>Deodorants & Perfumes</span>
+                </a>
+                <a href="sensitive-area-care.html" class="icon-item" data-tooltip="Sensitive Area Care">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Sensitive Area Care</span>
+                </a>
+                <a href="dental-care.html" class="icon-item" data-tooltip="Dental Care">
+                    <i class="fas fa-tooth"></i>
+                    <span>Dental Care</span>
+                </a>
+                <a href="dyes.html" class="icon-item" data-tooltip="Dyes">
+                    <i class="fas fa-palette"></i>
+                    <span>Dyes</span>
+                </a>
+                <a href="nail-lip-care.html" class="icon-item" data-tooltip="Nail & Lip Care">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Nail & Lip Care</span>
+                </a>
+                <a href="sunscreen.html" class="icon-item" data-tooltip="Sunscreen">
+                    <i class="fas fa-sun"></i>
+                    <span>Sunscreen</span>
+                </a>
+                <a href="childrens-supplies.html" class="icon-item" data-tooltip="Children's Supplies">
+                    <i class="fas fa-baby"></i>
+                    <span>Children's Supplies</span>
+                </a>
+                <a href="shaving-supplies.html" class="icon-item" data-tooltip="Shaving Supplies">
+                    <i class="fas fa-cut"></i>
+                    <span>Shaving Supplies</span>
+                </a>
+                <a href="good-supplies.html" class="icon-item" data-tooltip="Good Supplies">
+                    <i class="fas fa-user"></i>
+                    <span>Good Supplies</span>
+                </a>
+                <a href="diapers.html" class="icon-item" data-tooltip="Diapers">
+                    <i class="fas fa-baby-carriage"></i>
+                    <span>Diapers</span>
+                </a>
+                <a href="offers.html" class="icon-item" data-tooltip="Offers">
+                    <i class="fas fa-tags"></i>
+                    <span>Offers</span>
+                </a>
+                <a href="pharmacy_cart.html" class="icon-item" data-tooltip="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                </a>
+            </div>
+        </div>
+    </nav>
 
     <main>
         <section class="section">
@@ -531,12 +119,15 @@
             </div>
             <div class="products" aria-live="polite" aria-relevant="additions removals">
                 <!-- Example product -->
+
+
+
                 <div class="product" data-name="CeraVe Hydrating Cleanser 236ml">
                     <img src="https://i.ebayimg.com/images/g/3UYAAOSwHK9lT-zq/s-l1600.webp" alt="CeraVe Hydrating Cleanser 236ml" />
                     <div class="product-content">
                         <h3>CeraVe Hydrating Cleanser 236ml</h3>
                         <div class="price">
-                            <span class="discounted-price">545 ج.م</span>
+                            <span class="discounted-price">600 ج.م</span>
                         </div>
                         <div class="quantity-selector" aria-label="Quantity selector">
                             <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
@@ -546,6 +137,1019 @@
                         <button class="add-to-cart" aria-label="Add CeraVe Hydrating Cleanser 236ml to cart">Add to cart</button>
                     </div>
                 </div>
+
+                <div class="product" data-name="Cerave Moisturizing Cleansing Foam, 8.1 fl oz (236 ml)">
+                    <img src="https://m.media-amazon.com/images/I/51YGhCTOHbL._AC_SX679_.jpg" alt="Cerave Moisturizing Cleansing Foam, 8.1 fl oz (236 ml)" />
+                    <div class="product-content">
+                        <h3>Cerave Moisturizing Cleansing Foam, 8.1 fl oz (236 ml)</h3>
+                        <div class="price">
+                            <span class="discounted-price">600 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Cerave Moisturizing Cleansing Foam, 8.1 fl oz (236 ml) to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="CeraVe Renewing Salicylic Acid Cleanser, Formulated With Hyaluronic Acid, Niacinamide, & Ceramides, Gentle BHA Exfoliating Face Wash Smooths & Softens Skin, Non Comedogenic & Fragrance Free, 8 Ounce">
+                    <img src="https://m.media-amazon.com/images/I/618sG1QinaL._AC_SX679_.jpg" alt="CeraVe Renewing Salicylic Acid Cleanser, Formulated With Hyaluronic Acid, Niacinamide, & Ceramides, Gentle BHA Exfoliating Face Wash Smooths & Softens Skin, Non Comedogenic & Fragrance Free, 8 Ounce" />
+                    <div class="product-content">
+                        <h3>CeraVe Renewing Salicylic Acid Cleanser, Formulated With Hyaluronic Acid, Niacinamide, & Ceramides, Gentle BHA Exfoliating Face Wash Smooths & Softens Skin, Non Comedogenic & Fragrance Free, 8 Ounce</h3>
+                        <div class="price">
+                            <span class="discounted-price">680 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe Renewing Salicylic Acid Cleanser, Formulated With Hyaluronic Acid, Niacinamide, & Ceramides, Gentle BHA Exfoliating Face Wash Smooths & Softens Skin, Non Comedogenic & Fragrance Free, 8 Ounce to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                <div class="product" data-name="CeraVe Moisturising Lotion | 236ml/8oz | Daily Face & Body Moisturiser for Dry To Very Dry Skin">
+                    <img src="https://m.media-amazon.com/images/I/619Qnxc33IL._AC_SX679_.jpg" alt="CeraVe Moisturising Lotion | 236ml/8oz | Daily Face & Body Moisturiser for Dry To Very Dry Skin" />
+                    <div class="product-content">
+                        <h3>CeraVe Moisturising Lotion | 236ml/8oz | Daily Face & Body Moisturiser for Dry To Very Dry Skin</h3>
+                        <div class="price">
+                            <span class="discounted-price">575 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe Moisturising Lotion | 236ml/8oz | Daily Face & Body Moisturiser for Dry To Very Dry Skin to cart">Add to cart</button>
+                    </div>
+                </div>
+
+        
+
+                <div class="product" data-name="VICHY NORMADERM NO PHYTO-A CLEANS (400ML)">
+                    <img src="https://m.media-amazon.com/images/I/61vD7eBUisL._AC_SX679_.jpg" alt="VICHY NORMADERM NO PHYTO-A CLEANS (400ML)" />
+                    <div class="product-content">
+                        <h3>VICHY NORMADERM NO PHYTO-A CLEANS (400ML)</h3>
+                        <div class="price">
+                            <span class="discounted-price">1015 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add VICHY NORMADERM NO PHYTO-A CLEANS (400ML) to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                 <div class="product" data-name="CeraVe Normal Grasa Fragance Free Limpiator Spot Skin Gel, 473ml">
+                    <img src="https://m.media-amazon.com/images/I/51RiGKi9zVL._AC_SY879_.jpg" alt="CeraVe Normal Grasa Fragance Free Limpiator Spot Skin Gel, 473ml" />
+                    <div class="product-content">
+                        <h3>CeraVe Normal Grasa Fragance Free Limpiator Spot Skin Gel, 473ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">935 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe Normal Grasa Fragance Free Limpiator Spot Skin Gel, 473ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+
+                 <div class="product" data-name="CeraVe Blemish Control Face Cleanser with 2% Salicylic Acid & Niacinamide for Blemish-Prone Skin 236ml, Unscented">
+                    <img src="https://m.media-amazon.com/images/I/71n-0Y94l5L._AC_SX679_.jpg" alt="CeraVe Blemish Control Face Cleanser with 2% Salicylic Acid & Niacinamide for Blemish-Prone Skin 236ml, Unscented" />
+                    <div class="product-content">
+                        <h3>CeraVe Blemish Control Face Cleanser with 2% Salicylic Acid & Niacinamide for Blemish-Prone Skin 236ml, Unscented</h3>
+                        <div class="price">
+                            <span class="discounted-price">660 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe Blemish Control Face Cleanser with 2% Salicylic Acid & Niacinamide for Blemish-Prone Skin 236ml, Unscented to cart">Add to cart</button>
+                    </div>
+                </div>
+
+ <div class="product" data-name="CeraVe Moisturizing Cream For Dry Skin With Hyaluronic Acid">
+                    <img src="https://m.media-amazon.com/images/I/612ngqcfd0L._AC_SX679_.jpg" alt="CeraVe Moisturizing Cream For Dry Skin With Hyaluronic Acid" />
+                    <div class="product-content">
+                        <h3>CeraVe Moisturizing Cream For Dry Skin With Hyaluronic Acid</h3>
+                        <div class="price">
+                            <span class="discounted-price">835 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe Moisturizing Cream For Dry Skin With Hyaluronic Acid to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="CeraVe Oil Control Gel-Cream Moisturiser With Oil Absorbing Technology & Ceramides For Combination and Oily Skin 52ml">
+                    <img src="https://m.media-amazon.com/images/I/618wPz3BRSL._AC_SX679_.jpg" alt="CeraVe Oil Control Gel-Cream Moisturiser With Oil Absorbing Technology & Ceramides For Combination and Oily Skin 52ml" />
+                    <div class="product-content">
+                        <h3>CeraVe Oil Control Gel-Cream Moisturiser With Oil Absorbing Technology & Ceramides For Combination and Oily Skin 52ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">650 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe Oil Control Gel-Cream Moisturiser With Oil Absorbing Technology & Ceramides For Combination and Oily Skin 52ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                  <div class="product" data-name="CeraVe Moisturising lotion | 473ml/16oz | Daily Face & Body Moisturiser">
+                    <img src="https://m.media-amazon.com/images/I/51Q+4mzKS5L._AC_SX679_.jpg" alt="CeraVe Moisturising lotion | 473ml/16oz | Daily Face & Body Moisturiser" />
+                    <div class="product-content">
+                        <h3>CeraVe Moisturising lotion | 473ml/16oz | Daily Face & Body Moisturiser</h3>
+                        <div class="price">
+                            <span class="discounted-price">920 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe Moisturising lotion | 473ml/16oz | Daily Face & Body Moisturiser to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="CeraVe Reparative Hand Cream | Hand Cream for Dry and Rough Hands with Hyaluronic acid and Ceramides | Fragrance Free | 1.69Oz, 50 ML">
+                    <img src="https://m.media-amazon.com/images/I/51VrMdJkJtL._AC_SX679_.jpg" alt="CeraVe Reparative Hand Cream | Hand Cream for Dry and Rough Hands with Hyaluronic acid and Ceramides | Fragrance Free | 1.69Oz, 50 ML" />
+                    <div class="product-content">
+                        <h3>CeraVe Reparative Hand Cream | Hand Cream for Dry and Rough Hands with Hyaluronic acid and Ceramides | Fragrance Free | 1.69Oz, 50 ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">375 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe Reparative Hand Cream | Hand Cream for Dry and Rough Hands with Hyaluronic acid and Ceramides | Fragrance Free | 1.69Oz, 50 ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="CeraVe - PM Facial Moisturising Lotion For Normal to Dry Skin - 52ml/1.75oz">
+                    <img src="https://m.media-amazon.com/images/I/61NsunzEV8L._AC_SX679_.jpg" alt="CeraVe - PM Facial Moisturising Lotion For Normal to Dry Skin - 52ml/1.75oz" />
+                    <div class="product-content">
+                        <h3>CeraVe - PM Facial Moisturising Lotion For Normal to Dry Skin - 52ml/1.75oz</h3>
+                        <div class="price">
+                            <span class="discounted-price">545 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe - PM Facial Moisturising Lotion For Normal to Dry Skin - 52ml/1.75oz to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="CeraVe SA Smoothing Cleanser | 236ml/8oz | Face and Body Wash with Salicylic Acid">
+                    <img src="https://m.media-amazon.com/images/I/61rMXY4j7IS._AC_SX679_.jpg" alt="CeraVe SA Smoothing Cleanser | 236ml/8oz | Face and Body Wash with Salicylic Acid" />
+                    <div class="product-content">
+                        <h3>CeraVe SA Smoothing Cleanser | 236ml/8oz | Face and Body Wash with Salicylic Acid</h3>
+                        <div class="price">
+                            <span class="discounted-price">710 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe SA Smoothing Cleanser | 236ml/8oz | Face and Body Wash with Salicylic Acid to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="CeraVe Blemish Control Gel Moisturiser with 2% Salicylic Acid & Niacinamide for Blemish-Prone Skin 40ml">
+                    <img src="https://m.media-amazon.com/images/I/61SCVi6ncdL._AC_SX679_.jpg" alt="CeraVe Blemish Control Gel Moisturiser with 2% Salicylic Acid & Niacinamide for Blemish-Prone Skin 40ml" />
+                    <div class="product-content">
+                        <h3>CeraVe Blemish Control Gel Moisturiser with 2% Salicylic Acid & Niacinamide for Blemish-Prone Skin 40ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">530 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe Blemish Control Gel Moisturiser with 2% Salicylic Acid & Niacinamide for Blemish-Prone Skin 40ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="CeraVe Skin Renewing Vitamin C Eye Cream | Vitamin C, Hyaluronic Acid, Ceramides & Caffeine | Under Eye Cream For Dark Circles and Puffiness | Fragrance Free & Ophthalmologist Tested | 0.5 Fl. Oz">
+                    <img src="https://m.media-amazon.com/images/I/71eXA9R1ITL._AC_SX679_.jpg" alt="CeraVe Skin Renewing Vitamin C Eye Cream | Vitamin C, Hyaluronic Acid, Ceramides & Caffeine | Under Eye Cream For Dark Circles and Puffiness | Fragrance Free & Ophthalmologist Tested | 0.5 Fl. Oz" />
+                    <div class="product-content">
+                        <h3>CeraVe Skin Renewing Vitamin C Eye Cream | Vitamin C, Hyaluronic Acid, Ceramides & Caffeine | Under Eye Cream For Dark Circles and Puffiness | Fragrance Free & Ophthalmologist Tested | 0.5 Fl. Oz</h3>
+                        <div class="price">
+                            <span class="discounted-price">3945 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add CeraVe Skin Renewing Vitamin C Eye Cream | Vitamin C, Hyaluronic Acid, Ceramides & Caffeine | Under Eye Cream For Dark Circles and Puffiness | Fragrance Free & Ophthalmologist Tested | 0.5 Fl. Oz to cart">Add to cart</button>
+                    </div>
+                </div>
+                  <div class="product" data-name="Eucerin Dermopurifyer Cleansing Gel, 200 Ml, White">
+                    <img src="https://m.media-amazon.com/images/I/61j7hVpTkTL._AC_SX679_.jpg" alt="Eucerin Dermopurifyer Cleansing Gel, 200 Ml, White" />
+                    <div class="product-content">
+                        <h3>Eucerin Dermopurifyer Cleansing Gel, 200 Ml, White</h3>
+                        <div class="price">
+                            <span class="discounted-price">590 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Eucerin Dermopurifyer Cleansing Gel, 200 Ml, White to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="La Roche-Posay Roche Posay Pure Retinol Face Serum with Vitamin B3. Anti Aging Face Serum for Lines, Wrinkles & Premature Sun Damage to Resurface & Hydrate. Suitable for Sensitive Skin, 1.0 Fl. Oz">
+                    <img src="https://m.media-amazon.com/images/I/51DZTlPbYbL._AC_SX679_.jpg" alt="La Roche-Posay Roche Posay Pure Retinol Face Serum with Vitamin B3. Anti Aging Face Serum for Lines, Wrinkles & Premature Sun Damage to Resurface & Hydrate. Suitable for Sensitive Skin, 1.0 Fl. Oz" />
+                    <div class="product-content">
+                        <h3>La Roche-Posay Roche Posay Pure Retinol Face Serum with Vitamin B3. Anti Aging Face Serum for Lines, Wrinkles & Premature Sun Damage to Resurface & Hydrate. Suitable for Sensitive Skin, 1.0 Fl. Oz</h3>
+                        <div class="price">
+                            <span class="discounted-price">1480 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La Roche-Posay Roche Posay Pure Retinol Face Serum with Vitamin B3. Anti Aging Face Serum for Lines, Wrinkles & Premature Sun Damage to Resurface & Hydrate. Suitable for Sensitive Skin, 1.0 Fl. Oz to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="LA ROCHE-POSAY C10 Pure Vitamin C Serum 30ml">
+                    <img src="https://m.media-amazon.com/images/I/612rQ+tTL6L._AC_SX679_.jpg" alt="LA ROCHE-POSAY C10 Pure Vitamin C Serum 30ml" />
+                    <div class="product-content">
+                        <h3>LA ROCHE-POSAY C10 Pure Vitamin C Serum 30ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">1460 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add LA ROCHE-POSAY C10 Pure Vitamin C Serum 30ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="La Roche-Posay Effaclar Micellar Water Ultra Oily Skin 200 mL">
+                    <img src="https://m.media-amazon.com/images/I/51RkXJYiIOL._AC_SX679_.jpg" alt="La Roche-Posay Effaclar Micellar Water Ultra Oily Skin 200 mL" />
+                    <div class="product-content">
+                        <h3>La Roche-Posay Effaclar Micellar Water Ultra Oily Skin 200 mL</h3>
+                        <div class="price">
+                            <span class="discounted-price">915 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La Roche-Posay Effaclar Micellar Water Ultra Oily Skin 200 mL to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="La Roche-Posay Cicaplast Balm B5+ 40ml">
+                    <img src="https://m.media-amazon.com/images/I/61k3+iTHgoL._AC_SX679_.jpg" alt="La Roche-Posay Cicaplast Balm B5+ 40ml" />
+                    <div class="product-content">
+                        <h3>La Roche-Posay Cicaplast Balm B5+ 40ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">900 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La Roche-Posay Cicaplast Balm B5+ 40ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="La Roche-Posay Effaclar Purifying Foaming Cleansing Gel (200ml)">
+                    <img src="https://m.media-amazon.com/images/I/51hJMEoMGjL._AC_SX679_.jpg" alt="La Roche-Posay Effaclar Purifying Foaming Cleansing Gel (200ml)" />
+                    <div class="product-content">
+                        <h3>La Roche-Posay Effaclar Purifying Foaming Cleansing Gel (200ml)</h3>
+                        <div class="price">
+                            <span class="discounted-price">660 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La Roche-Posay Effaclar Purifying Foaming Cleansing Gel (200ml) to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                  <div class="product" data-name="La Roche-Posay Toleriane Sensitive Face Cream 40 ml - Soothing Moisturising Cream for Dry, Sensitive Skin">
+                    <img src="https://m.media-amazon.com/images/I/71KE767DDKL._AC_SX679_.jpg" alt="La Roche-Posay Toleriane Sensitive Face Cream 40 ml - Soothing Moisturising Cream for Dry, Sensitive Skin" />
+                    <div class="product-content">
+                        <h3>La Roche-Posay Toleriane Sensitive Face Cream 40 ml - Soothing Moisturising Cream for Dry, Sensitive Skin</h3>
+                        <div class="price">
+                            <span class="discounted-price">1145 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La Roche-Posay Toleriane Sensitive Face Cream 40 ml - Soothing Moisturising Cream for Dry, Sensitive Skin to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                   <div class="product" data-name="La roche posay effclar micro peeling purifying gel 200 ml">
+                    <img src="https://m.media-amazon.com/images/I/71CZ-5V8pIL._AC_SX679_.jpg" alt="La roche posay effclar micro peeling purifying gel 200 ml" />
+                    <div class="product-content">
+                        <h3>La Roche-Posay Toleriane Sensitive Face Cream 40 ml - Soothing Moisturising Cream for Dry, Sensitive Skin</h3>
+                        <div class="price">
+                            <span class="discounted-price">710 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La roche posay effclar micro peeling purifying gel 200 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                  <div class="product" data-name="La Roche-Posay Mela B3 Anti-dark spots cleanser with Niacinamide for all skin types 200ml">
+                    <img src="https://m.media-amazon.com/images/I/61W5ehE2OIL._AC_SY300_SX300_QL70_ML2_.jpg" alt="La Roche-Posay Mela B3 Anti-dark spots cleanser with Niacinamide for all skin types 200ml" />
+                    <div class="product-content">
+                        <h3>La Roche-Posay Mela B3 Anti-dark spots cleanser with Niacinamide for all skin types 200ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">840 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La Roche-Posay Mela B3 Anti-dark spots cleanser with Niacinamide for all skin types 200ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                
+                  <div class="product" data-name="La Roche-Posay Effaclar Duo+ M 40ml">
+                    <img src="https://m.media-amazon.com/images/I/51rZVFAgrjL._AC_SX679_.jpg" alt="La Roche-Posay Effaclar Duo+ M 40ml" />
+                    <div class="product-content">
+                        <h3>La Roche-Posay Effaclar Duo+ M 40ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">890 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La Roche-Posay Effaclar Duo+ M 40ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="La Roche-Posay Effaclar Mat Cr Anti-Brillance Anti Poros Moisturizer, 40ml">
+                    <img src="https://m.media-amazon.com/images/I/51qREZZsgWL._AC_SX679_.jpg" alt="La Roche-Posay Effaclar Mat Cr Anti-Brillance Anti Poros Moisturizer, 40ml" />
+                    <div class="product-content">
+                        <h3>La Roche-Posay Effaclar Mat Cr Anti-Brillance Anti Poros Moisturizer, 40ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">830 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La Roche-Posay Effaclar Mat Cr Anti-Brillance Anti Poros Moisturizer, 40ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="La Roche Posay EFFACLAR H ISO-BIOME soin reparateur creme, 40ml">
+                    <img src="https://m.media-amazon.com/images/I/61QVD9C-ZCL._AC_SX679_.jpg" alt="La Roche Posay EFFACLAR H ISO-BIOME soin reparateur creme, 40ml" />
+                    <div class="product-content">
+                        <h3>La Roche Posay EFFACLAR H ISO-BIOME soin reparateur creme, 40ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">850 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La Roche Posay EFFACLAR H ISO-BIOME soin reparateur creme, 40ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="La Roche-Posay Pigmentclar Eyes for Dark Circles, 15ml">
+                    <img src="https://m.media-amazon.com/images/I/51gJDmlFQwL._AC_SX679_.jpg" alt="La Roche-Posay Pigmentclar Eyes for Dark Circles, 15ml" />
+                    <div class="product-content">
+                        <h3>La Roche-Posay Pigmentclar Eyes for Dark Circles, 15ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">825 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add La Roche-Posay Pigmentclar Eyes for Dark Circles, 15ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                   <div class="product" data-name="Loreal Paris Hyaluron Expert Day Cream - 50ML">
+                    <img src="https://m.media-amazon.com/images/I/41JbYyL05HL._AC_SX679_.jpg" alt="Loreal Paris Hyaluron Expert Day Cream - 50ML" />
+                    <div class="product-content">
+                        <h3>Loreal Paris Hyaluron Expert Day Cream - 50ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">480 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Hyaluron Expert Day Cream - 50ML cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Loreal Paris Glycolic Bright Glowing Day Cream 50ML">
+                    <img src="https://m.media-amazon.com/images/I/61N4DfoqjmL._AC_SX679_.jpg" alt="Loreal Paris Glycolic Bright Glowing Day Cream 50ML" />
+                    <div class="product-content">
+                        <h3>Loreal Paris Glycolic Bright Glowing Day Cream 50ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">400 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Glycolic Bright Glowing Day Cream 50ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                  <div class="product" data-name="Loreal Paris Glycolic Bright Glowing Night Cream 50ML">
+                    <img src="https://m.media-amazon.com/images/I/618tn5t5ZHL._AC_SX679_.jpg" alt="Loreal Paris Glycolic Bright Glowing Night Cream 50ML" />
+                    <div class="product-content">
+                        <h3>Loreal Paris Glycolic Bright Glowing Night Cream 50ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">498 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Glycolic Bright Glowing Night Cream 50ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product" data-name="Loreal Paris Hyaluron Expert Replumping Face Wash with Hyaluronic Acid, 200ml">
+                    <img src="https://m.media-amazon.com/images/I/51R9ISO8vNL._AC_SX679_.jpg" alt="Loreal Paris Hyaluron Expert Replumping Face Wash with Hyaluronic Acid, 200ml" />
+                    <div class="product-content">
+                        <h3>Loreal Paris Hyaluron Expert Replumping Face Wash with Hyaluronic Acid, 200ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">240 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Hyaluron Expert Replumping Face Wash with Hyaluronic Acid, 200ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                   <div class="product" data-name="Loreal Paris Hyaluron Expert Serum with Hyaluronic Acid - 30 ml">
+                    <img src="https://m.media-amazon.com/images/I/51CpzXjr76L._AC_SX679_.jpg" alt="Loreal Paris Hyaluron Expert Serum with Hyaluronic Acid - 30 ml" />
+                    <div class="product-content">
+                        <h3>Loreal Paris Hyaluron Expert Serum with Hyaluronic Acid - 30 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">405 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Hyaluron Expert Serum with Hyaluronic Acid - 30 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                  <div class="product" data-name="Loreal Paris Glycolic Bright Glowing Daily Cleanser Foam 100Ml">
+                    <img src="https://m.media-amazon.com/images/I/51iQHX8RHiL._AC_SX679_.jpg" alt="Loreal Paris Glycolic Bright Glowing Daily Cleanser Foam 100Ml" />
+                    <div class="product-content">
+                        <h3>Loreal Paris Glycolic Bright Glowing Daily Cleanser Foam 100Ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">200 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Glycolic Bright Glowing Daily Cleanser Foam 100Ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Loreal Paris Pure Clay Red Face Cleanser with Red Algae, Exfoliates and Brightens, 150 ml">
+                    <img src="https://m.media-amazon.com/images/I/61L9p5GOurL._AC_SY879_.jpg" alt="Loreal Paris Pure Clay Red Face Cleanser with Red Algae, Exfoliates and Brightens, 150 ml" />
+                    <div class="product-content">
+                        <h3>Loreal Paris Pure Clay Red Face Cleanser with Red Algae, Exfoliates and Brightens, 150 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">228 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Pure Clay Red Face Cleanser with Red Algae, Exfoliates and Brightens, 150 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 <div class="product" data-name="Loreal Paris Hyaluron Expert Oil Control Deep Cleansing Gel With Hyaluronic Acid - 200ml">
+                    <img src="https://m.media-amazon.com/images/I/71akYVxRmgL._AC_SX679_.jpg" alt="Loreal Paris Hyaluron Expert Oil Control Deep Cleansing Gel With Hyaluronic Acid - 200ml" />
+                    <div class="product-content">
+                        <h3>Loreal Paris Hyaluron Expert Oil Control Deep Cleansing Gel With Hyaluronic Acid - 200ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">325 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Hyaluron Expert Oil Control Deep Cleansing Gel With Hyaluronic Acid - 200ml to cart">Add to cart</button>
+                    </div>
+                </div>
+                   <div class="product" data-name="Loreal Paris Skin Care Pure Clay Cleanser Green, Purifies & Matifies, 150ml">
+                    <img src="https://m.media-amazon.com/images/I/61qduRIPinL._AC_SY879_.jpg" alt="Loreal Paris Skin Care Pure Clay Cleanser Green, Purifies & Matifies, 150ml" />
+                    <div class="product-content">
+                        <h3>Loreal Paris Skin Care Pure Clay Cleanser Green, Purifies & Matifies, 150ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">218 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Skin Care Pure Clay Cleanser Green, Purifies & Matifies, 150ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                   <div class="product" data-name="Loreal Paris Glycolic Bright Glowing Serum 30ml">
+                    <img src="https://m.media-amazon.com/images/I/41LIXFAVz2L._AC_SX679_.jpg" alt="Loreal Paris Glycolic Bright Glowing Serum 30ml" />
+                    <div class="product-content">
+                        <h3>Loreal Paris Glycolic Bright Glowing Serum 30ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">445 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Loreal Paris Glycolic Bright Glowing Serum 30ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                  <div class="product" data-name="BIODERMA SENSIBIO GEL MOUSSANT FP200ML">
+                    <img src="https://m.media-amazon.com/images/I/415niaNiH3L._AC_SX679_.jpg" alt="BIODERMA SENSIBIO GEL MOUSSANT FP200ML" />
+                    <div class="product-content">
+                        <h3>BIODERMA SENSIBIO GEL MOUSSANT FP200ML</h3>
+                        <div class="price">
+                            <span class="discounted-price">810 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add BIODERMA SENSIBIO GEL MOUSSANT FP200ML to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                 
+                  <div class="product" data-name="Neutrogena Hydro Boost Gel Face Cream, Moisturizes Dry Skin, Keeps It Soft and Elastic, Lightweight Formula Absorbs Quickly Into Skin, 50ml">
+                    <img src="https://m.media-amazon.com/images/I/61CKpLSjCvL._AC_SX679_.jpg" alt="Neutrogena Hydro Boost Gel Face Cream, Moisturizes Dry Skin, Keeps It Soft and Elastic, Lightweight Formula Absorbs Quickly Into Skin, 50ml" />
+                    <div class="product-content">
+                        <h3>Neutrogena Hydro Boost Gel Face Cream, Moisturizes Dry Skin, Keeps It Soft and Elastic, Lightweight Formula Absorbs Quickly Into Skin, 50ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">340 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Neutrogena Hydro Boost Gel Face Cream, Moisturizes Dry Skin, Keeps It Soft and Elastic, Lightweight Formula Absorbs Quickly Into Skin, 50ml to cart">Add to cart</button>
+                    </div>
+                </div>
+
+                
+                <div class="product" data-name="Neutrogena Face Moisturizer Water Gel, Hydro Boost, Normal To Combination Skin, Lightweight and Oil-free, 100% Alcohol Free, suitable for sensitive skin, 50 ml">
+                    <img src="https://m.media-amazon.com/images/I/71F4euJMeiL._AC_SX679_.jpg" alt="Neutrogena Face Moisturizer Water Gel, Hydro Boost, Normal To Combination Skin, Lightweight and Oil-free, 100% Alcohol Free, suitable for sensitive skin, 50 ml" />
+                    <div class="product-content">
+                        <h3>Neutrogena Face Moisturizer Water Gel, Hydro Boost, Normal To Combination Skin, Lightweight and Oil-free, 100% Alcohol Free, suitable for sensitive skin, 50 ml</h3>
+                        <div class="price">
+                            <span class="discounted-price">340 ج.م</span>
+                        </div>
+                        <div class="quantity-selector" aria-label="Quantity selector">
+                            <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                            <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                        </div>
+                        <button class="add-to-cart" aria-label="Add Neutrogena Face Moisturizer Water Gel, Hydro Boost, Normal To Combination Skin, Lightweight and Oil-free, 100% Alcohol Free, suitable for sensitive skin, 50 ml to cart">Add to cart</button>
+                    </div>
+                </div>
+                
+                <div class="product" data-name="StarVille acne prone skin facial cleanser 400 ml">
+                 <img src="https://m.media-amazon.com/images/I/61bpfxKkmuL._AC_SY879_.jpg" alt="StarVille acne prone skin facial cleanser 400 ml" />
+                 <div class="product-content">
+                     <h3>StarVille acne prone skin facial cleanser 400 ml</h3>
+                     <div class="price">
+                         <span class="discounted-price">210 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add StarVille acne prone skin facial cleanser 400 ml to cart">Add to cart</button>
+                 </div>
+             </div>
+
+               <div class="product" data-name="Starville Whitening Cleanser 400 ml">
+                 <img src="https://m.media-amazon.com/images/I/4102uN2pLIL._AC_SX679_.jpg" alt="Starville Whitening Cleanser 400 ml" />
+                 <div class="product-content">
+                     <h3>Starville Whitening Cleanser 400 ml</h3>
+                     <div class="price">
+                         <span class="discounted-price">250 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Whitening Cleanser 400 ml to cart">Add to cart</button>
+                 </div>
+             </div>
+             <div class="product" data-name="Starville acne cleanser gel 200 ml">
+                 <img src="https://m.media-amazon.com/images/I/51Ghdhbn4zL._AC_SX679_.jpg" alt="Starville acne cleanser gel 200 ml" />
+                 <div class="product-content">
+                     <h3>Starville acne cleanser gel 200 ml</h3>
+                     <div class="price">
+                         <span class="discounted-price">125 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville acne cleanser gel 200 ml to cart">Add to cart</button>
+                 </div>
+             </div>
+
+             <div class="product" data-name="StarVille acne prone skin facial cleanser 100 ml">
+                 <img src="https://m.media-amazon.com/images/I/61qC3+FklXL._AC_SY879_.jpg" alt="StarVille acne prone skin facial cleanser 100 ml" />
+                 <div class="product-content">
+                     <h3>StarVille acne prone skin facial cleanser 100 ml</h3>
+                     <div class="price">
+                         <span class="discounted-price">80 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add StarVille acne prone skin facial cleanser 100 ml to cart">Add to cart</button>
+                 </div>
+             </div>
+             <div class="product" data-name="Starville Whitening Cleanser 100 ml">
+                 <img src="https://m.media-amazon.com/images/I/21SmWJHlPrL._AC_.jpg" alt="Starville Whitening Cleanser 100 ml" />
+                 <div class="product-content">
+                     <h3>Starville Whitening Cleanser 100 ml</h3>
+                     <div class="price">
+                         <span class="discounted-price">95 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Whitening Cleanser 100 ml to cart">Add to cart</button>
+                 </div>
+             </div>
+
+             <div class="product" data-name="StarVille whitening skin cream 60 gm">
+                 <img src="https://m.media-amazon.com/images/I/71Zq41kgTVL._AC_SX679_.jpg" alt="StarVille whitening skin cream 60 gm" />
+                 <div class="product-content">
+                     <h3>StarVille whitening skin cream 60 gm</h3>
+                     <div class="price">
+                         <span class="discounted-price">130 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add StarVille whitening skin cream 60 gm to cart">Add to cart</button>
+                 </div>
+             </div>
+             
+              <div class="product" data-name="Starville Whitening Night Care Gel 60 gm">
+                 <img src="https://m.media-amazon.com/images/I/512n3QM3AcL._AC_SY879_.jpg" alt="Starville Whitening Night Care Gel 60 gm" />
+                 <div class="product-content">
+                     <h3>Starville Whitening Night Care Gel 60 gm</h3>
+                     <div class="price">
+                         <span class="discounted-price">135 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Whitening Night Care Gel 60 gm to cart">Add to cart</button>
+                 </div>
+             </div>
+
+             
+             <div class="product" data-name="Starville acne-prone skin cream 60 gm">
+                 <img src="https://m.media-amazon.com/images/I/610KV2aNDDL._AC_SY879_.jpg" alt="Starville acne-prone skin cream 60 gm" />
+                 <div class="product-content">
+                     <h3>Starville acne-prone skin cream 60 gm</h3>
+                     <div class="price">
+                         <span class="discounted-price">85 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville acne-prone skin cream 60 gm to cart">Add to cart</button>
+                 </div>
+             </div>
+
+               
+             <div class="product" data-name="Starville Whitening Micellar water 100 ml">
+                 <img src="https://m.media-amazon.com/images/I/61Kv-Z6cxJL._AC_SX679_.jpg" alt="Starville Whitening Micellar water 100 ml" />
+                 <div class="product-content">
+                     <h3>Starville Whitening Micellar water 100 ml</h3>
+                     <div class="price">
+                         <span class="discounted-price">75 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Whitening Micellar water 100 ml to cart">Add to cart</button>
+                 </div>
+             </div>
+
+              <div class="product" data-name="Starville Acne Prone Skin Face Mask 1Sheet">
+                 <img src="https://m.media-amazon.com/images/I/61wpHjVHW4L._AC_SY879_.jpg" alt="Starville Acne Prone Skin Face Mask 1Sheet" />
+                 <div class="product-content">
+                     <h3>Starville Acne Prone Skin Face Mask 1Sheet</h3>
+                     <div class="price">
+                         <span class="discounted-price">45 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Acne Prone Skin Face Mask 1Sheet to cart">Add to cart</button>
+                 </div>
+             </div>
+
+             <div class="product" data-name="Starville Whitening Face Mask 1Sheet">
+                 <img src="https://m.media-amazon.com/images/I/61zd-HugT1L._AC_SY879_.jpg" alt="Starville Whitening Face Mask 1Sheet" />
+                 <div class="product-content">
+                     <h3>Starville Whitening Face Mask 1Sheet</h3>
+                     <div class="price">
+                         <span class="discounted-price">45 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Whitening Face Mask 1Sheet to cart">Add to cart</button>
+                 </div>
+             </div>
+
+             <div class="product" data-name="Starville Hyaluronic Acid Serum">
+                 <img src="https://m.media-amazon.com/images/I/61v9I6zSejL._AC_SX679_.jpg" alt="Starville Hyaluronic Acid Serum" />
+                 <div class="product-content">
+                     <h3>Starville Hyaluronic Acid Serum</h3>
+                     <div class="price">
+                         <span class="discounted-price">290 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Hyaluronic Acid Serum to cart">Add to cart</button>
+                 </div>
+             </div>
+
+              <div class="product" data-name="Starville vit c serum 30 ml">
+                 <img src="https://m.media-amazon.com/images/I/610Uj9L+H7L._AC_SX679_.jpg" alt="Starville vit c serum 30 ml" />
+                 <div class="product-content">
+                     <h3>Starville vit c serum 30 ml</h3>
+                     <div class="price">
+                         <span class="discounted-price">290 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville vit c serum 30 ml to cart">Add to cart</button>
+                 </div>
+             </div>
+
+               <div class="product" data-name="Starville eye contour gel 30 gm">
+                 <img src="https://m.media-amazon.com/images/I/61akKlaYLcL._AC_SX679_.jpg" alt="Starville eye contour gel 30 gm" />
+                 <div class="product-content">
+                     <h3>Starville eye contour gel 30 gm</h3>
+                     <div class="price">
+                         <span class="discounted-price">250 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville eye contour gel 30 gm to cart">Add to cart</button>
+                 </div>
+             </div>
+
+             <div class="product" data-name="Starville Acne prone skin Hydrating Gel 200 gm">
+                 <img src="https://m.media-amazon.com/images/I/61ev9stbRGL._AC_SY879_.jpg" alt="Starville Acne prone skin Hydrating Gel 200 gm" />
+                 <div class="product-content">
+                     <h3>Starville Acne prone skin Hydrating Gel 200 gm</h3>
+                     <div class="price">
+                         <span class="discounted-price">250 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Acne prone skin Hydrating Gel 200 gm to cart">Add to cart</button>
+                 </div>
+             </div>
+
+             <div class="product" data-name="Starville Acne Prone Skin Hydrate Gel 100 ml">
+                 <img src="https://m.media-amazon.com/images/I/61ev9stbRGL._AC_SY879_.jpg" alt="Starville Acne Prone Skin Hydrate Gel 100 ml" />
+                 <div class="product-content">
+                     <h3>Starville Acne Prone Skin Hydrate Gel 100 ml</h3>
+                     <div class="price">
+                         <span class="discounted-price">175 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Acne Prone Skin Hydrate Gel 100 ml to cart">Add to cart</button>
+                 </div>
+             </div>
+
+               <div class="product" data-name="Starville Acne Prone Skin Gel For Oily Skin 30 g">
+                 <img src="https://m.media-amazon.com/images/I/317ClqQXzML._AC_.jpg" alt="Starville Acne Prone Skin Gel For Oily Skin 30 g" />
+                 <div class="product-content">
+                     <h3>Starville Acne Prone Skin Gel For Oily Skin 30 g</h3>
+                     <div class="price">
+                         <span class="discounted-price">120 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Acne Prone Skin Gel For Oily Skin 30 g to cart">Add to cart</button>
+                 </div>
+             </div>
+
+              <div class="product" data-name="Starville Whitening Care Soap 100 gm">
+                 <img src="https://m.media-amazon.com/images/I/51qf8ZKjvJL._AC_SX679_.jpg" alt="Starville Whitening Care Soap 100 gm" />
+                 <div class="product-content">
+                     <h3>Starville Whitening Care Soap 100 gm</h3>
+                     <div class="price">
+                         <span class="discounted-price">50 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Whitening Care Soap 100 gm to cart">Add to cart</button>
+                 </div>
+             </div>
+
+              <div class="product" data-name="Starville Acne-prone skin Soap 90 gm">
+                 <img src="https://m.media-amazon.com/images/I/61c5dJJkxLL._AC_SX679_.jpg" alt="Starville Acne-prone skin Soap 90 gm" />
+                 <div class="product-content">
+                     <h3>Starville Acne-prone skin Soap 90 gm</h3>
+                     <div class="price">
+                         <span class="discounted-price">50 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Starville Acne-prone skin Soap 90 gm to cart">Add to cart</button>
+                 </div>
+             </div>
+
+             <div class="product" data-name="NanoTreat Salicylic Acid & Niacinamide Daily Gentle Cleanser 200ml">
+                 <img src="https://m.media-amazon.com/images/I/61Snk6WQyAL._AC_SY879_.jpg" alt="NanoTreat Salicylic Acid & Niacinamide Daily Gentle Cleanser 200ml" />
+                 <div class="product-content">
+                     <h3>NanoTreat Salicylic Acid & Niacinamide Daily Gentle Cleanser 200ml</h3>
+                     <div class="price">
+                         <span class="discounted-price">107 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add NanoTreat Salicylic Acid & Niacinamide Daily Gentle Cleanser 200ml to cart">Add to cart</button>
+                 </div>
+             </div>
+
+              <div class="product" data-name="Argento clear facial cleanser skin cleanser 200ml">
+                 <img src="https://m.media-amazon.com/images/I/51KdkuatNfL._AC_SY879_.jpg" alt="Argento clear facial cleanser skin cleanser 200ml" />
+                 <div class="product-content">
+                     <h3>Argento clear facial cleanser skin cleanser 200ml</h3>
+                     <div class="price">
+                         <span class="discounted-price">219 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add Argento clear facial cleanser skin cleanser 200ml to cart">Add to cart</button>
+                 </div>
+             </div>
+
+                <div class="product" data-name="MALINDA GEL FACE CLEANSER AHA&BHA 250ML">
+                 <img src="https://m.media-amazon.com/images/I/31OAln6G84L._AC_.jpg" alt="MALINDA GEL FACE CLEANSER AHA&BHA 250ML" />
+                 <div class="product-content">
+                     <h3>MALINDA GEL FACE CLEANSER AHA&BHA 250ML</h3>
+                     <div class="price">
+                         <span class="discounted-price">300 ج.م</span>
+                     </div>
+                     <div class="quantity-selector" aria-label="Quantity selector">
+                         <button class="quantity-btn" onclick="changeQuantity(this, -1)" aria-label="Decrease quantity">-</button>
+                         <input type="number" class="quantity-input" value="1" min="1" readonly aria-live="polite" aria-atomic="true" />
+                         <button class="quantity-btn" onclick="changeQuantity(this, 1)" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" aria-label="Add MALINDA GEL FACE CLEANSER AHA&BHA 250ML to cart">Add to cart</button>
+                 </div>
+             </div>
+
+
+            
+
+              
+               
+                
+                
+                
+                
+
+
+
+
+
                 <!-- Additional products can be added here similarly -->
             </div>
         </section>
@@ -667,10 +1271,55 @@
                 notification.style.display = 'none';
             }, 3000);
         }
+
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const dropdownBackdrop = document.querySelector('.dropdown-backdrop');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            dropdownBackdrop.classList.toggle('active');
+            dropdownMenu.classList.toggle('show');
+        });
+
+        dropdownBackdrop.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            dropdownBackdrop.classList.remove('active');
+            dropdownMenu.classList.remove('show');
+        });
+
+        // Bar size toggle logic
+        function adjustBarSize() {
+            const header = document.getElementById('main-header');
+            if (localStorage.getItem('largeBar') === 'true') {
+                header.classList.remove('small-bar');
+            } else {
+                header.classList.add('small-bar');
+            }
+        }
+
+        function addNavLinkListeners() {
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    localStorage.setItem('largeBar', 'true');
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            adjustBarSize();
+            addNavLinkListeners();
+
+            setTimeout(() => {
+                localStorage.removeItem('largeBar');
+            }, 5000);
+        });
     </script>
 </body>
 </html>
-
 
 
 
