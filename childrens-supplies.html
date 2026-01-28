@@ -740,14 +740,87 @@
             }, 3000);
         }
     </script>
+<script type="module">
+  /* ================= Firebase ================= */
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDQ2ZkGiIKE5odbXsZD03on_OcIuUbkJmg",
+    authDomain: "pharmacy-store-bc240.firebaseapp.com",
+    projectId: "pharmacy-store-bc240",
+    storageBucket: "pharmacy-store-bc240.appspot.com",
+    messagingSenderId: "328904695111",
+    appId: "1:328904695111:web:4c4d8625e463d127af8062",
+    measurementId: "G-FDCS1S483F"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  window.firebaseApp = app;
+  const db = getDatabase(app);
+
+  /* ============== اسم الصفحة ============== */
+  const PAGE_NAME = "childrens-supplies";
+  // 👆 غيرها حسب الصفحة
+
+  const productsRef = ref(db, `products/${PAGE_NAME}`);
+  const container = document.querySelector(".products");
+
+  onValue(productsRef, (snapshot) => {
+    container.innerHTML = "";
+
+    if (!snapshot.exists()) {
+      container.innerHTML = "<p>لا توجد منتجات</p>";
+      return;
+    }
+
+    snapshot.forEach((child) => {
+      const product = child.val();
+
+      container.innerHTML += '<div class="product" data-name="' + product.name + '">' +
+        '<img src="' + product.image + '" alt="' + product.name + '">' +
+        '<div class="product-content">' +
+          '<h3>' + product.name + '</h3>' +
+          '<div class="price">' +
+            '<span class="original-price">$10</span>' +
+            '<span class="discounted-price">$' + product.price + '</span>' +
+            '<span class="discount-badge">10% OFF</span>' +
+          '</div>' +
+          '<div class="quantity-selector">' +
+            '<button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>' +
+            '<input type="number" class="quantity-input" value="1" min="1" readonly>' +
+            '<button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>' +
+          '</div>' +
+          '<button class="add-to-cart">Add to cart</button>' +
+        '</div>' +
+      '</div>';
+    });
+  });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const products = [];
+  document.querySelectorAll('.product').forEach(product => {
+    const name = product.getAttribute('data-name');
+    const priceText = product.querySelector('.discounted-price').textContent;
+    const price = priceText.replace(/[^0-9]/g, ''); // Extract only digits
+    const image = product.querySelector('img').src;
+    products.push({ name, price, image });
+  });
+
+  // Upload to Firebase
+  const { getFirestore, setDoc, doc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+  const db = getFirestore(window.firebaseApp || app); // Use existing app if available
+
+  for (const product of products) {
+    await setDoc(doc(db, 'childrens-supplies', product.name), product);
+  }
+
+  console.log('Children's supplies products uploaded to Firebase');
+});
+</script>
 </body>
 </html>
-
-
-
-
-
-
 
 
 

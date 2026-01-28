@@ -1,3 +1,4 @@
-- [x] Replace the entire <style> section in skin.html with the one from hair.html to match styles, including responsiveness and icon sizes.
-- [x] Replace the complex <nav> section in skin.html with the simple <nav> from hair.html.
-- [x] Remove JavaScript related to hamburger menu and dropdown functionality in skin.html.
+- [ ] Fix index.html: Remove malformed HTML "widNaNv class="price">$22.00</div>"
+- [ ] Fix hair.html: Remove "NaN" placeholders in nav and invalid JavaScript
+- [ ] Fix skin.html: Remove "NaN" in nav and fix malformed HTML
+- [ ] Fix diapers.html: Correct Firebase PAGE_NAME to "diapers", fix ref to "products/diapers", and correct any other issues
