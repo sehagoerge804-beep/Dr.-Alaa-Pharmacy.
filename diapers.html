@@ -750,6 +750,85 @@
             }, 3000);
         }
     </script>
+    <!-- ========== PRODUCTS VIEW ========== -->
+<div id="productsContainer" class="products-grid"></div>
+
+<script type="module">
+  /* ================= Firebase ================= */
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "PUT_YOUR_API_KEY",
+    authDomain: "PROJECT.firebaseapp.com",
+    databaseURL: "https://PROJECT-default-rtdb.firebaseio.com",
+    projectId: "PROJECT",
+    storageBucket: "PROJECT.appspot.com",
+    messagingSenderId: "ID",
+    appId: "APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  /* ============== اسم الصفحة ============== */
+  const PAGE_NAME = "diapers";
+  // 👆 غيرها حسب الصفحة
+
+  const productsRef = ref(db, `products/diapers`);
+  const container = document.getElementById("productsContainer");
+
+  onValue(productsRef, (snapshot) => {
+    container.innerHTML = "";
+
+    if (!snapshot.exists()) {
+      container.innerHTML = "<p>لا توجد منتجات</p>";
+      return;
+    }
+
+    snapshot.forEach((child) => {
+      const product = child.val();
+
+      container.innerHTML += `
+        <div class="product-card">
+          <img src="${product.image}" alt="">
+          <h4>${product.name}</h4>
+          <span>${product.price} جنيه</span>
+        </div>
+      `;
+    });
+  });
+</script>
+
+<style>
+  .products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+    gap:12px;
+    padding:10px;
+  }
+  .product-card{
+    background:#fff;
+    border-radius:12px;
+    padding:10px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+  }
+  .product-card img{
+    width:100%;
+    height:120px;
+    object-fit:contain;
+  }
+  .product-card h4{
+    font-size:14px;
+    margin:5px 0;
+  }
+  .product-card span{
+    color:#0a7cff;
+    font-weight:bold;
+  }
+</style>
+<!-- ========== END PRODUCTS VIEW ========== -->
 </body>
 </html>
 
