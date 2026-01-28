@@ -878,7 +878,7 @@
   const productsRef = ref(db, `products/${PAGE_NAME}`);
   const container = document.querySelector(".products");
 
-  onValue(productsRef, (snapshot) => {
+  onValue(productsRef, (snapshot) => { 
     container.innerHTML = "";
 
     if (!snapshot.exists()) {
