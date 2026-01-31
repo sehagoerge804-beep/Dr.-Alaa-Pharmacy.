@@ -1,95 +1,147 @@
-// Firebase Service for Products
+// Firebase Admin Dashboard JS
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, ref, set, get, update, remove, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDQ2ZkGiIKE5odbXsZD03on_OcIuUbkJmg",
-  authDomain: "pharmacy-store-bc240.firebaseapp.com",
-  projectId: "pharmacy-store-bc240",
-  storageBucket: "pharmacy-store-bc240.appspot.com",
-  messagingSenderId: "328904695111",
-  appId: "1:328904695111:web:4c4d8625e463d127af8062",
-  measurementId: "G-FDCS1S483F"
+/* ========== Firebase Config ========== */
+const app = initializeApp({
+    apiKey: "AIzaSyDQ2ZkGiIKE5odbXsZD03on_OcIuUbkJmg",
+    authDomain: "pharmacy-store-bc240.firebaseapp.com",
+    projectId: "pharmacy-store-bc240"
+});
+const db = getFirestore(app);
+
+/* ========== صفحات المشروع الكبير ========== */
+const pagesData = {
+    "Index.html": "🏠",
+    "Childrens-supplies": "👶",
+    "Dental-care": "🦷",
+    "Deodorants-perfumes": "🌸",
+    "Diapers": "🧷",
+    "Dyes": "🎨",
+    "Good-supplies": "🛍️",
+    "Hair": "💇‍♀️",
+    "Offer": "🏷️",
+    "Sensitive-area-care": "🧴",
+    "Shaving-supplies": "🪒",
+    "Skin": "🧴",
+    "Sunscreen": "☀️"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+let currentPage = "", products = [], editId = null;
 
-class ProductService {
-  constructor() {
-    this.db = db;
-  }
+window.addEventListener('DOMContentLoaded', () => {
+    const pages = document.getElementById("pages");
+    const productsDiv = document.getElementById("products");
+    const popup = document.getElementById("popup");
 
-  // Generate unique product ID from name
-  generateProductId(name) {
-    return name.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_');
-  }
-
-  // Read all products
-  async getAllProducts() {
-    const productsRef = ref(this.db, 'products');
-    const snapshot = await get(productsRef);
-    if (snapshot.exists()) {
-      return snapshot.val();
+    /* إنشاء أيقونات الصفحات */
+    for (let p in pagesData) {
+        pages.innerHTML += `
+        <div class="page" onclick="openPage('${p}')">
+            ${pagesData[p]}<br>${p}
+        </div>`;
     }
-    return {};
-  }
 
-  // Read products by category
-  async getProductsByCategory(category) {
-    const products = await this.getAllProducts();
-    const categoryProducts = {};
-    Object.keys(products).forEach(id => {
-      if (products[id].category === category) {
-        categoryProducts[id] = products[id];
-      }
-    });
-    return categoryProducts;
-  }
+    /* فتح صفحة */
+    window.openPage = async (p) => {
+        currentPage = p;
+        pages.style.display = "none";
+        document.getElementById("header").style.display = "flex";
+        document.getElementById("searchBox").style.display = "flex";
+        productsDiv.style.display = "grid";
+        await loadProducts();
+    }
 
-  // Write product
-  async addProduct(product) {
-    const id = this.generateProductId(product.name);
-    const productRef = ref(this.db, `products/${id}`);
-    await set(productRef, product);
-    return id;
-  }
+    /* تحميل المنتجات */
+    async function loadProducts() {
+        products = [];
+        const snap = await getDocs(collection(db, currentPage));
+        snap.forEach(d => products.push({ id: d.id, ...d.data() }));
+        render();
+    }
 
-  // Update product
-  async updateProduct(id, updates) {
-    const productRef = ref(this.db, `products/${id}`);
-    await update(productRef, updates);
-  }
+    /* عرض المنتجات */
+    function render() {
+        productsDiv.innerHTML = "";
+        products.forEach((p, i) => {
+            productsDiv.innerHTML += `
+            <div class="card">
+                <div class="menu" onclick="this.children[0].style.display='block'">⋮
+                    <div class="menu-content">
+                        <button onclick="editProduct('${p.id}')">تعديل</button>
+                        <button onclick="deleteProduct('${p.id}')">حذف</button>
+                    </div>
+                </div>
+                <img src="${p.image || 'https://via.placeholder.com/100'}" alt="${p.name}">
+                <h4>${p.name}</h4>
+                <span>${p.price} ج</span>
+            </div>`;
+        });
+    }
 
-  // Delete product
-  async deleteProduct(id) {
-    const productRef = ref(this.db, `products/${id}`);
-    await remove(productRef);
-  }
+    /* إضافة منتج */
+    document.getElementById("addBtn").onclick = () => {
+        editId = null;
+        document.getElementById("pName").value = "";
+        document.getElementById("pPrice").value = "";
+        document.getElementById("pImg").value = "";
+        popup.style.display = "flex";
+    }
 
-  // Real-time listener for products
-  onProductsChange(callback) {
-    const productsRef = ref(this.db, 'products');
-    onValue(productsRef, (snapshot) => {
-      const products = snapshot.exists() ? snapshot.val() : {};
-      callback(products);
-    });
-  }
+    /* حفظ المنتج */
+    window.saveProduct = async (e) => {
+        e.preventDefault();
+        const name = document.getElementById("pName").value;
+        const price = +document.getElementById("pPrice").value;
+        const image = document.getElementById("pImg").value;
 
-  // Real-time listener for category
-  onCategoryChange(category, callback) {
-    const productsRef = ref(this.db, 'products');
-    onValue(productsRef, (snapshot) => {
-      const allProducts = snapshot.exists() ? snapshot.val() : {};
-      const categoryProducts = {};
-      Object.keys(allProducts).forEach(id => {
-        if (allProducts[id].category === category) {
-          categoryProducts[id] = allProducts[id];
+        if (editId) {
+            await updateDoc(doc(db, currentPage, editId), { name, price, image });
+        } else {
+            await addDoc(collection(db, currentPage), { name, price, image });
         }
-      });
-      callback(categoryProducts);
-    });
-  }
-}
 
-export default new ProductService();
+        popup.style.display = "none";
+        await loadProducts();
+        alert("تم الحفظ بنجاح ✅");
+    }
+
+    /* تعديل المنتج */
+    window.editProduct = (id) => {
+        const p = products.find(x => x.id === id);
+        if (!p) return;
+        editId = id;
+        document.getElementById("pName").value = p.name;
+        document.getElementById("pPrice").value = p.price;
+        document.getElementById("pImg").value = p.image || "";
+        popup.style.display = "flex";
+    }
+
+    /* حذف المنتج */
+    window.deleteProduct = async (id) => {
+        if (!confirm("هل تريد حذف المنتج؟")) return;
+        await deleteDoc(doc(db, currentPage, id));
+        await loadProducts();
+        alert("تم حذف المنتج ✅");
+    }
+
+    /* بحث */
+    window.filterProducts = () => {
+        const v = document.getElementById("searchInput").value.toLowerCase();
+        const t = document.getElementById("searchType").value;
+        document.querySelectorAll(".card").forEach((c, i) => {
+            const ok = t === "name"
+                ? products[i].name.toLowerCase().includes(v)
+                : products[i].price.toString().includes(v);
+            c.style.display = ok ? "block" : "none";
+        });
+    }
+
+    /* رجوع */
+    document.getElementById("backBtn").onclick = () => {
+        pages.style.display = "grid";
+        document.getElementById("header").style.display = "none";
+        document.getElementById("searchBox").style.display = "none";
+        productsDiv.style.display = "none";
+    };
+});

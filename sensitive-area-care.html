@@ -5,285 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sensitive Area Care - Dr. Alaa Pharmacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="nav.css" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: white;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #1e8449;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        nav {
-            background-color: #27ae60;
-            padding: 10px;
-            margin-bottom: 30px;
-            
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: #229954;
-        }
-
-
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .description {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            color: #555;
-        }
-
-        .search-bar {
-            max-width: 500px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e9ecef;
-            border-radius: 30px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: #27ae60;
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product {
-            background-color: white;
-            
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
-        }
-
-        .product img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            cursor: pointer;
-        }
-
-        .product-content {
-            padding: 20px;
-        }
-
-        .product h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #1e8449;
-        }
-
-        .price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .discounted-price {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #27ae60;
-        }
-
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .quantity-btn {
-            background: #27ae60;
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .quantity-btn:hover {
-            background: #229954;
-        }
-
-        .quantity-input {
-            width: 50px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            
-            padding: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .add-to-cart {
-            background: #27ae60;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
-
-        .add-to-cart:hover {
-            background: #229954;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
-            
-            overflow: hidden;
-        }
-
-        .modal img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: #27ae60;
-        }
-
-        /* Notification Styles */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #27ae60;
-            color: white;
-            padding: 15px 20px;
-            
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .products {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 15px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="search.css" />
 </head>
 <body>
-    <header>
-        <h1>Sensitive Area Care</h1>
-        <p>Gentle and effective care for your most sensitive areas. Discover products designed for comfort and hygiene.</p>
-    </header>
-
     <nav>
         <div class="nav-container">
             <div class="logo">Dr. Alaa Pharmacy</div>
-            <button class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -306,10 +35,8 @@
                 <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
             </ul>
         </div>
-
         <!-- Dropdown Backdrop -->
         <div class="dropdown-backdrop"></div>
-
         <!-- Dropdown Menu -->
         <div class="dropdown-menu">
             <div class="icon-grid">
@@ -376,10 +103,18 @@
             </div>
         </div>
     </nav>
+<div id="floating-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
 
     <main>
         <section class="section">
-            <h2>Sensitive Area Care Products</h2>
+             <h1>Sensitive Area Care</h1>
+        <p>Gentle and effective care for your most sensitive areas. Discover products designed for comfort and hygiene.</p>
+  
             <div class="search-bar">
                 <input type="text" placeholder="Search products..." class="search-input" aria-label="Search products" />
             </div>
@@ -585,28 +320,17 @@
             }, 3000);
         }
 
-        // Hamburger menu functionality
-        const hamburger = document.getElementById('hamburger');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-        const dropdownBackdrop = document.querySelector('.dropdown-backdrop');
 
-        hamburger.addEventListener('click', () => {
-            dropdownMenu.classList.toggle('show');
-            dropdownBackdrop.style.display = dropdownMenu.classList.contains('show') ? 'block' : 'none';
-            hamburger.classList.toggle('active');
-        });
-
-        // Close dropdown when clicking backdrop
-        dropdownBackdrop.addEventListener('click', () => {
-            dropdownMenu.classList.remove('show');
-            dropdownBackdrop.style.display = 'none';
-            hamburger.classList.remove('active');
-        });
     </script>
-<script type="module" src="js/products.service.js"></script>
+<script src="shared-ui.js"></script>
+    <script type="module" src="js/products.service.js"></script>
 <script type="module" src="js/products.ui.js"></script>
 </body>
 </html>
+
+
+
+
 
 
 

@@ -4,22 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offers - Dr. Alaa Pharmacy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="nav.css" />
-    <style>
-        
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="shared.css" />
 </head>
 <body>
-<header>
-        <h1>Special Offers</h1>
-        <p>Don't miss out on our amazing deals!</p>
-    </header>
-
+    <!-- Navigation Bar Component -->
     <nav>
-        <div class="nav-container">
-            <div class="logo">Dr. Alaa Pharmacy</div>
-            <button class="hamburger" id="hamburger">
+    <div class="nav-container">
+        <div class="logo">Dr. Alaa Pharmacy</div>
+       
+        <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -38,7 +32,7 @@
                 <li><a href="shaving-supplies.html"><i class="fas fa-cut"></i> Shaving Supplies</a></li>
                 <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
                 <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
-                <li><a href="offers.html"><i class="fas fa-tags"></i> Offers <span class="badge">New</span></a></li>
+                <li><a href="offers.html" class="active"><i class="fas fa-tags"></i> Offers</a></li>
                 <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
             </ul>
         </div>
@@ -112,10 +106,21 @@
             </div>
         </div>
     </nav>
+<div id="floating-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+
+    <script src="shared-ui.js"></script>
+
+    
 
     <main>
         <section class="section">
-            <h2>Special Offers</h2>
+              <h1>Special Offers</h1>
+        <p>Don't miss out on our amazing deals!</p>
             <div class="search-bar">
                 <input type="text" placeholder="Search offers..." class="search-input">
             </div>
@@ -235,130 +240,32 @@
         Product added to cart!
     </div>
 
-    <script>
-        // Navigation functionality
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        const dropdownBackdrop = document.querySelector('.dropdown-backdrop');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
 
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            dropdownBackdrop.classList.toggle('active');
-            dropdownMenu.classList.toggle('show');
-        });
+<script>
+    // Search functionality
+    const searchInput = document.querySelector('.search-input');
+    const products = document.querySelectorAll('.product');
 
-        dropdownBackdrop.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            dropdownBackdrop.classList.remove('active');
-            dropdownMenu.classList.remove('show');
-        });
-
-        // Search functionality
-        const searchInput = document.querySelector('.search-input');
-        const products = document.querySelectorAll('.product');
-
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            products.forEach(product => {
-                const productName = product.getAttribute('data-name').toLowerCase();
-                if (productName.includes(searchTerm)) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-        });
-
-        // Add to cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Function to update cart count display
-        function updateCartCount() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-count').textContent = totalItems;
-        }
-
-        // Initialize cart count on page load
-        updateCartCount();
-
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const product = e.target.closest('.product');
-                const productName = product.getAttribute('data-name');
-                const discountedPrice = product.querySelector('.discounted-price').textContent;
-                const productImage = product.querySelector('img').src;
-                const quantity = parseInt(product.querySelector('.quantity-input').value);
-
-                const cartItem = {
-                    name: productName,
-                    price: discountedPrice,
-                    image: productImage,
-                    quantity: quantity
-                };
-
-                // Check if item already in cart
-                const existingItem = cart.find(item => item.name === productName);
-                if (existingItem) {
-                    existingItem.quantity += quantity;
-                } else {
-                    cart.push(cartItem);
-                }
-
-                // Save to localStorage
-                localStorage.setItem('cart', JSON.stringify(cart));
-
-                // Update cart count display
-                updateCartCount();
-
-                // Show notification
-                showNotification();
-            });
-        });
-
-        // Image modal functionality
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeBtn = document.querySelector('.close');
-
-        document.querySelectorAll('.product img').forEach(img => {
-            img.addEventListener('click', (e) => {
-                modal.style.display = 'block';
-                modalImg.src = e.target.src;
-            });
-        });
-
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        products.forEach(product => {
+            const productName = product.getAttribute('data-name').toLowerCase();
+            if (productName.includes(searchTerm)) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
             }
         });
-
-        // Quantity selector function
-        function changeQuantity(button, delta) {
-            const input = button.parentElement.querySelector('.quantity-input');
-            let value = parseInt(input.value) + delta;
-            if (value < 1) value = 1;
-            input.value = value;
-        }
-
-        // Notification function
-        function showNotification() {
-            const notification = document.getElementById('notification');
-            notification.style.display = 'block';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }
-    </script>
+    });
+</script>
+<script type="module" src="js/products.service.js"></script>
+<script type="module" src="js/products.ui.js"></script>
 </body>
 </html>
+
+
+
+
 
 
 

@@ -3,445 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cart - Dr. Alaa Pharmacy</title>
+    <title>Cart - Dr. Alaa Pharmacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #078140;
-            --secondary-color: #045a41;
-            --accent-color: #ff6b6b;
-            --text-color: #333;
-            --light-text: #666;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--bg-color) 0%, #e9ecef 100%);
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 50px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100px); }
-        }
-
-        header h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.5); }
-        }
-
-        header p {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            animation: fadeInUp 1s ease-out;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        nav {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 25px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        nav a i { font-size: 0.3rem; }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        nav a:hover::before {
-            left: 100%;
-        }
-
-        nav a:hover, nav a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        main {
-            max-width: 1400px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .pharmacy-cart-section h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        .pharmacy-cart-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        .pharmacy-cart-items {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .pharmacy-cart-item {
-            background: linear-gradient(135deg, var(--card-bg) 0%, #f1f3f4 100%);
-            border-radius: var(--border-radius);
-            padding: 25px;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .pharmacy-cart-item:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
-        }
-
-        .pharmacy-cart-item img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        .pharmacy-cart-item img:hover {
-            transform: scale(1.05);
-        }
-
-        .pharmacy-cart-item-details {
-            flex: 1;
-        }
-
-        .pharmacy-cart-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--text-color);
-        }
-
-        .pharmacy-cart-item p {
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .pharmacy-quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .pharmacy-quantity-controls button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: var(--transition);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .pharmacy-quantity-controls button:hover {
-            background: var(--secondary-color);
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .pharmacy-quantity-controls button:active {
-            transform: scale(0.95);
-        }
-
-        .quantity {
-            font-size: 1.1rem;
-            font-weight: bold;
-            min-width: 30px;
-            text-align: center;
-        }
-
-        .remove-pharmacy-item {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .remove-pharmacy-item:hover {
-            background: #e55a5a;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .remove-pharmacy-item:active {
-            transform: translateY(0);
-        }
-
-        .pharmacy-cart-total {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .pharmacy-cart-total h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--text-color);
-        }
-
-        .pharmacy-total-price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .empty-pharmacy-cart {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--light-text);
-            margin-top: 50px;
-        }
-
-        .continue-pharmacy-shopping {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 20px;
-        }
-
-        .continue-pharmacy-shopping:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-
-        .confirm-pharmacy-order {
-            background: #25d366;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .confirm-pharmacy-order:hover {
-            background: #128c7e;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-
-        .confirm-pharmacy-order i {
-            font-size: 1.2rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                padding: 30px 15px;
-            }
-
-            header h1 {
-                font-size: 2.2rem;
-            }
-
-            header p {
-                font-size: 1.2rem;
-            }
-
-            nav ul {
-                gap: 10px;
-            }
-
-            nav a {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-
-            .pharmacy-cart-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .pharmacy-cart-item img {
-                width: 100px;
-                height: 100px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav a {
-                width: 100%;
-                justify-content: center;
-                max-width: 200px;
-            }
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Focus styles */
-        nav a:focus,
-        .quantity-controls button:focus,
-        .remove-item:focus,
-        .continue-shopping:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-
-        /* cart Badge */
-        .pharmacy-cart-badge {
-            background-color: var(--accent-color);
-            color: white;
-            border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            position: relative;
-            top: -5px;
-            margin-left: 5px;
-            min-width: 18px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="cart.css">
 </head>
 <body>
-    <header>
-        <h1>Your cart</h1>
-        <p>Review and manage your selected products.</p>
-        <nav>
-            <ul>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Dr. Alaa Pharmacy</div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a></li>
                 <li><a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a></li>
@@ -456,138 +33,344 @@
                 <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
                 <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
                 <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-                <li><a href="pharmacy_cart.html" class="active"><i class="fas fa-shopping-cart"></i> cart <span id="pharmacy-cart-count" class="pharmacy-cart-badge">0</span></a></li>
+                <li><a href="pharmacy_cart.html" class="active"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+
+        <!-- Dropdown Backdrop -->
+        <div class="dropdown-backdrop"></div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu">
+            <div class="icon-grid">
+                <a href="index.html" class="icon-item" data-tooltip="Home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="hair.html" class="icon-item" data-tooltip="Hair Care">
+                    <i class="fas fa-cut"></i>
+                    <span>Hair Care</span>
+                </a>
+                <a href="skin.html" class="icon-item" data-tooltip="Skin Care">
+                    <i class="fas fa-spa"></i>
+                    <span>Skin Care</span>
+                </a>
+                <a href="deodorants-perfumes.html" class="icon-item" data-tooltip="Deodorants & Perfumes">
+                    <i class="fas fa-wind"></i>
+                    <span>Deodorants & Perfumes</span>
+                </a>
+                <a href="sensitive-area-care.html" class="icon-item" data-tooltip="Sensitive Area Care">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Sensitive Area Care</span>
+                </a>
+                <a href="dental-care.html" class="icon-item" data-tooltip="Dental Care">
+                    <i class="fas fa-tooth"></i>
+                    <span>Dental Care</span>
+                </a>
+                <a href="dyes.html" class="icon-item" data-tooltip="Dyes">
+                    <i class="fas fa-palette"></i>
+                    <span>Dyes</span>
+                </a>
+                <a href="nail-lip-care.html" class="icon-item" data-tooltip="Nail & Lip Care">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Nail & Lip Care</span>
+                </a>
+                <a href="sunscreen.html" class="icon-item" data-tooltip="Sunscreen">
+                    <i class="fas fa-sun"></i>
+                    <span>Sunscreen</span>
+                </a>
+                <a href="childrens-supplies.html" class="icon-item" data-tooltip="Children's Supplies">
+                    <i class="fas fa-baby"></i>
+                    <span>Children's Supplies</span>
+                </a>
+                <a href="shaving-supplies.html" class="icon-item" data-tooltip="Shaving Supplies">
+                    <i class="fas fa-cut"></i>
+                    <span>Shaving Supplies</span>
+                </a>
+                <a href="good-supplies.html" class="icon-item" data-tooltip="Good Supplies">
+                    <i class="fas fa-user"></i>
+                    <span>Good Supplies</span>
+                </a>
+                <a href="diapers.html" class="icon-item" data-tooltip="Diapers">
+                    <i class="fas fa-baby-carriage"></i>
+                    <span>Diapers</span>
+                </a>
+                <a href="offers.html" class="icon-item" data-tooltip="Offers">
+                    <i class="fas fa-tags"></i>
+                    <span>Offers</span>
+                </a>
+                <a href="pharmacy_cart.html" class="icon-item" data-tooltip="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+<div id="floating-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
 
     <main>
-        <section class="pharmacy-cart-section">
-            <h2>Shopping cart</h2>
-            <div id="cart-items" class="pharmacy-cart-items">
-                <!-- cart items will be dynamically added here -->
+            <h1>Your Cart</h1>
+        <p>Review and manage your selected items</p>
+ 
+        <div class="cart-container" id="cart-container">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+
+        <!-- Order Summary and Delivery Address -->
+            
             </div>
-            <div id="cart-total" class="pharmacy-cart-total" style="display: none;">
-                <h3>Total</h3>
-                <p class="pharmacy-total-price" id="total-price">LE 0.00</p>
-                <button class="confirm-pharmacy-order" onclick="confirmOrder()"><i class="fab fa-whatsapp"></i> Confirm Order on WhatsApp</button>
+
+            <div class="delivery-note">
+                <div class="note-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="note-content">
+                    <h4>Important: Complete Your Order</h4>
+                    <p>Please enter your delivery address below and click "Send Order via WhatsApp" to complete and confirm your order. Our team will contact you shortly to process your delivery.</p>
+                </div>
             </div>
-            <div id="empty-cart" class="empty-pharmacy-cart">
-                <p>Your cart is empty.</p>
-                <button class="continue-pharmacy-shopping" onclick="window.location.href='index.html'">Continue Shopping</button>
+
+            <div class="delivery-address">
+                <h3>Delivery Address</h3>
+                <textarea id="delivery-address" placeholder="Enter your full delivery address here..." rows="4" required></textarea>
             </div>
-        </section>
+
+            <button id="send-whatsapp-btn" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+            </button>
+        </div>
     </main>
 
+    <footer>
+        <p>&copy; 2023 Dr. Alaa Pharmacy. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
     <script>
+        // Load cart from localStorage
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         // Function to update cart count display
         function updateCartCount() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('pharmacy-cart-count').textContent = totalItems;
+            document.getElementById('cart-count').textContent = totalItems;
         }
 
         // Function to render cart items
         function renderCart() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            const emptyCart = document.getElementById('empty-cart');
-            const totalPriceElement = document.getElementById('total-price');
-
-            cartItemsContainer.innerHTML = '';
-            let total = 0;
+            const container = document.getElementById('cart-container');
+            container.innerHTML = '';
 
             if (cart.length === 0) {
-                cartTotal.style.display = 'none';
-                emptyCart.style.display = 'block';
+                container.innerHTML = `
+                    <div class="empty-cart">
+                        <h2>Your cart is empty</h2>
+                        <p>Add some products to get started!</p>
+                        <a href="index.html" class="shop-btn">Start Shopping</a>
+                    </div>
+                `;
                 return;
             }
 
-            emptyCart.style.display = 'none';
-            cartTotal.style.display = 'block';
+            let total = 0;
 
             cart.forEach((item, index) => {
-                const itemTotal = parseFloat(item.price.replace('LE', '').replace(' ج', '')) * item.quantity;
+                const itemTotal = parseFloat(item.price.replace(/[^0-9.-]+/g, '')) * item.quantity;
                 total += itemTotal;
 
-                const cartItem = document.createElement('div');
-                cartItem.className = 'pharmacy-cart-item';
-                cartItem.innerHTML = `
-                    <img src="${item.image || ''}" alt="${item.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Tm8gSW1hZ2U8L3RleHQ+PC9zdmc+'">
-                    <div class="pharmacy-cart-item-details">
-                        <h3>${item.name}</h3>
-                        <p>${item.price}</p>
-                        <div class="pharmacy-quantity-controls">
-                            <button onclick="changeQuantity(${index}, -1)" title="Decrease quantity"><i class="fas fa-minus"></i></button>
-                            <span class="quantity">${item.quantity}</span>
-                            <button onclick="changeQuantity(${index}, 1)" title="Increase quantity"><i class="fas fa-plus"></i></button>
-                            <button class="remove-pharmacy-item" onclick="removeItem(${index})" title="Remove item"><i class="fas fa-trash"></i> Remove</button>
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <h3>${item.name}</h3>
+                            <div class="cart-item-price">${item.price}</div>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="changeQuantity(${index}, -1)">-</button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+                                <button class="quantity-btn" onclick="changeQuantity(${index}, 1)">+</button>
+                            </div>
                         </div>
+                        <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
                     </div>
                 `;
-                cartItemsContainer.appendChild(cartItem);
             });
 
-            totalPriceElement.textContent = `$${total.toFixed(2)}`;
+            // Add total section
+            container.innerHTML += `
+                <div class="cart-total">
+                    <h2>Total</h2>
+                    <div class="total-price">${total.toFixed(2)} LE</div>
+                </div>
+            `;
         }
 
         // Function to change quantity
-        function changeQuantity(index, change) {
-            cart[index].quantity += change;
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
+        function changeQuantity(index, delta) {
+            cart[index].quantity += delta;
+            if (cart[index].quantity < 1) cart[index].quantity = 1;
+            saveCart();
             renderCart();
+        }
+
+        // Function to update quantity directly
+        function updateQuantity(index, value) {
+            const quantity = parseInt(value);
+            if (quantity >= 1) {
+                cart[index].quantity = quantity;
+                saveCart();
+                renderCart();
+            }
         }
 
         // Function to remove item
         function removeItem(index) {
             cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
+            saveCart();
             renderCart();
         }
 
-        // Function to confirm order on WhatsApp
-        function confirmOrder() {
+        // Function to save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        // Function to render order summary
+        function renderOrderSummary() {
+            const orderItems = document.getElementById('order-items');
+            const orderTotalPrice = document.getElementById('order-total-price');
+            orderItems.innerHTML = '';
+
             if (cart.length === 0) {
-                alert('Your cart is empty!');
+                orderItems.innerHTML = '<p>Your cart is empty.</p>';
+                orderTotalPrice.textContent = '0 EGP';
                 return;
             }
 
-            let message = 'Hello! I would like to confirm my order:\n\n';
             let total = 0;
 
-            cart.forEach(item => {
-                const itemTotal = parseFloat(item.price.replace('LE', '').replace(' ج', '')) * item.quantity;
+            cart.forEach((item) => {
+                const itemTotal = parseFloat(item.price.replace(/[^0-9.-]+/g, '')) * item.quantity;
                 total += itemTotal;
-                message += `${item.name} - Quantity: ${item.quantity} - Price: ${item.price}\n`;
+
+                orderItems.innerHTML += `
+                    <div class="order-item">
+                        <div class="order-item-name">${item.name}</div>
+                        <div class="order-item-details">
+                            <div class="order-item-quantity">Qty: ${item.quantity}</div>
+                            <div class="order-item-price">${itemTotal.toFixed(2)} EGP</div>
+                        </div>
+                    </div>
+                `;
             });
 
-            message += `\nTotal: $${total.toFixed(2)}\n\nPlease confirm my order.`;
+            orderTotalPrice.textContent = total.toFixed(2) + ' EGP';
+        }
 
-            // Replace with your WhatsApp number (include country code, e.g., 1234567890)
-            const phoneNumber = '+201274446330'; // Update this with the actual WhatsApp number
-            const whatsappUrl = `https://wa.me/${+201274446330}?text=${encodeURIComponent(message)}`;
+        // Function to send order via WhatsApp
+        function sendOrderViaWhatsApp() {
+            const address = document.getElementById('delivery-address').value.trim();
+
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add some items before placing an order.');
+                return;
+            }
+
+            if (!address) {
+                alert('Please enter your delivery address.');
+                document.getElementById('delivery-address').focus();
+                return;
+            }
+
+            let message = '🛒 *New Order from Dr. Alaa Pharmacy*\n\n📦 *Order Details:*\n';
+
+            cart.forEach((item) => {
+                const itemTotal = parseFloat(item.price.replace(/[^0-9.-]+/g, '')) * item.quantity;
+                message += `• ${item.name} (Qty: ${item.quantity}) - ${itemTotal.toFixed(2)} EGP\n`;
+            });
+
+            const total = cart.reduce((sum, item) => sum + parseFloat(item.price.replace(/[^0-9.-]+/g, '')) * item.quantity, 0);
+            message += `\n💰 *Total: ${total.toFixed(2)} EGP*\n\n📍 *Delivery Address:*\n${address}\n\nThank you for shopping with us! 🌟`;
+
+            const phoneNumber = '+201234567890'; // Replace with actual pharmacy WhatsApp number
+            const whatsappUrl = `https://wa.me/${+201206818675}?text=${encodeURIComponent(message)}`;
 
             window.open(whatsappUrl, '_blank');
         }
 
-        // Initialize
+        // Function to handle checkout (placeholder)
+        function checkout() {
+            alert('Checkout functionality would be implemented here. Total: ' + document.querySelector('.total-price').textContent);
+        }
+
+        // Add event listener for WhatsApp button
+        document.getElementById('send-whatsapp-btn').addEventListener('click', sendOrderViaWhatsApp);
+
+        // Initialize page
         updateCartCount();
         renderCart();
+
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const dropdownBackdrop = document.querySelector('.dropdown-backdrop');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    dropdownBackdrop.classList.toggle('active');
+                    dropdownMenu.classList.toggle('show');
+                    hamburger.classList.toggle('active');
+                });
+            }
+
+            // Close dropdown when clicking backdrop
+            if (dropdownBackdrop) {
+                dropdownBackdrop.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    dropdownBackdrop.classList.remove('active');
+                    dropdownMenu.classList.remove('show');
+                    hamburger.classList.remove('active');
+                });
+            }
+
+            // Cart functionality
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Function to update cart count display
+            function updateCartCount() {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                const cartCountElements = document.querySelectorAll('#cart-count');
+                cartCountElements.forEach(element => {
+                    element.textContent = totalItems;
+                });
+            }
+
+            // Initialize cart count on page load
+            updateCartCount();
+
+            // Update cart count when cart changes (for cross-page updates)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'cart') {
+                    cart = JSON.parse(e.newValue) || [];
+                    updateCartCount();
+                }
+            });
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
