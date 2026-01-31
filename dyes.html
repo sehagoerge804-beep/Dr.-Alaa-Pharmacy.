@@ -5,261 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dyes - Dr. Alaa Pharmacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="nav.css" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: white;
-            padding: 20px;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 90%, 0 80%);
-            z-index: -1;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #1e8449;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-
-
-
-        main {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .description {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            color: #555;
-        }
-
-        .search-bar {
-            max-width: 500px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e9ecef;
-            border-radius: 30px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: #27ae60;
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product {
-            background-color: white;
-            
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
-        }
-
-        .product img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            cursor: pointer;
-        }
-
-        .product-content {
-            padding: 20px;
-        }
-
-        .product h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #1e8449;
-        }
-
-        .price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .discounted-price {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #27ae60;
-        }
-
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .quantity-btn {
-            background: #27ae60;
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .quantity-btn:hover {
-            background: #229954;
-        }
-
-        .quantity-input {
-            width: 50px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            
-            padding: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .add-to-cart {
-            background: #27ae60;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
-
-        .add-to-cart:hover {
-            background: #229954;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
-            
-            overflow: hidden;
-        }
-
-        .modal img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: #27ae60;
-        }
-
-        /* Notification Styles */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #27ae60;
-            color: white;
-            padding: 15px 20px;
-            
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .products {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 15px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="search.css" />
 </head>
 <body>
     <nav>
         <div class="nav-container">
             <div class="logo">Dr. Alaa Pharmacy</div>
+        
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -283,17 +36,87 @@
                 <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
             </ul>
         </div>
+        <!-- Dropdown Backdrop -->
+        <div class="dropdown-backdrop"></div>
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu">
+            <div class="icon-grid">
+                <a href="index.html" class="icon-item" data-tooltip="Home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="hair.html" class="icon-item" data-tooltip="Hair Care">
+                    <i class="fas fa-cut"></i>
+                    <span>Hair Care</span>
+                </a>
+                <a href="skin.html" class="icon-item" data-tooltip="Skin Care">
+                    <i class="fas fa-spa"></i>
+                    <span>Skin Care</span>
+                </a>
+                <a href="deodorants-perfumes.html" class="icon-item" data-tooltip="Deodorants & Perfumes">
+                    <i class="fas fa-wind"></i>
+                    <span>Deodorants & Perfumes</span>
+                </a>
+                <a href="sensitive-area-care.html" class="icon-item" data-tooltip="Sensitive Area Care">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Sensitive Area Care</span>
+                </a>
+                <a href="dental-care.html" class="icon-item" data-tooltip="Dental Care">
+                    <i class="fas fa-tooth"></i>
+                    <span>Dental Care</span>
+                </a>
+                <a href="dyes.html" class="icon-item" data-tooltip="Dyes">
+                    <i class="fas fa-palette"></i>
+                    <span>Dyes</span>
+                </a>
+                <a href="nail-lip-care.html" class="icon-item" data-tooltip="Nail & Lip Care">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Nail & Lip Care</span>
+                </a>
+                <a href="sunscreen.html" class="icon-item" data-tooltip="Sunscreen">
+                    <i class="fas fa-sun"></i>
+                    <span>Sunscreen</span>
+                </a>
+                <a href="childrens-supplies.html" class="icon-item" data-tooltip="Children's Supplies">
+                    <i class="fas fa-baby"></i>
+                    <span>Children's Supplies</span>
+                </a>
+                <a href="shaving-supplies.html" class="icon-item" data-tooltip="Shaving Supplies">
+                    <i class="fas fa-cut"></i>
+                    <span>Shaving Supplies</span>
+                </a>
+                <a href="good-supplies.html" class="icon-item" data-tooltip="Good Supplies">
+                    <i class="fas fa-user"></i>
+                    <span>Good Supplies</span>
+                </a>
+                <a href="diapers.html" class="icon-item" data-tooltip="Diapers">
+                    <i class="fas fa-baby-carriage"></i>
+                    <span>Diapers</span>
+                </a>
+                <a href="offers.html" class="icon-item" data-tooltip="Offers">
+                    <i class="fas fa-tags"></i>
+                    <span>Offers</span>
+                </a>
+                <a href="pharmacy_cart.html" class="icon-item" data-tooltip="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                </a>
+            </div>
+        </div>
     </nav>
-    <header>
-        <h1>Dyes</h1>
-        <p>Express yourself with our vibrant collection of dyes and colors.</p>
-    </header>
+<div id="floating-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
 
 
 
     <main>
         <section class="section">
-            <h2>Dyes Products</h2>
+            <h1>Dyes</h1>
+        <p>Express yourself with our vibrant collection of dyes and colors.</p>
             <div class="search-bar">
                 <input type="text" placeholder="Search products..." class="search-input" aria-label="Search products" />
             </div>
@@ -691,31 +514,7 @@
         Product added to cart!
     </div>
 
-    <script>
-        // Hamburger menu functionality
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
 
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
-
-        // Close mobile menu when clicking a link
-        navMenu.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        });
 
         // Search functionality
         const searchInput = document.querySelector('.search-input');
@@ -822,7 +621,7 @@
             }, 3000);
         }
     </script>
-<script type="module" src="js/products.service.js"></script>
+    <script type="module" src="js/products.service.js"></script>
 <script type="module" src="js/products.ui.js"></script>
 </body>
 </html>
@@ -838,3 +637,6 @@
 
 
  
+
+
+

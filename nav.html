@@ -1,0 +1,70 @@
+<!-- Navigation Bar Component -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<nav>
+    <div class="nav-container">
+        <div class="logo">Dr. Alaa Pharmacy</div>
+
+        <!-- ✅ HAMBURGER ICON (3 LINES) -->
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a></li>
+            <li><a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a></li>
+            <li><a href="deodorants-perfumes.html"><i class="fas fa-wind"></i> Deodorants & Perfumes</a></li>
+            <li><a href="sensitive-area-care.html"><i class="fas fa-shield-alt"></i> Sensitive Area Care</a></li>
+            <li><a href="dental-care.html"><i class="fas fa-tooth"></i> Dental Care</a></li>
+            <li><a href="dyes.html"><i class="fas fa-palette"></i> Dyes</a></li>
+            <li><a href="nail-lip-care.html"><i class="fas fa-paint-brush"></i> Nail & Lip Care</a></li>
+            <li><a href="sunscreen.html"><i class="fas fa-sun"></i> Sunscreen</a></li>
+            <li><a href="childrens-supplies.html"><i class="fas fa-baby"></i> Children's Supplies</a></li>
+            <li><a href="shaving-supplies.html"><i class="fas fa-cut"></i> Shaving Supplies</a></li>
+            <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
+            <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
+            <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
+            <li>
+                <a href="pharmacy_cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    Cart <span id="cart-count">0</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ✅ BACKDROP -->
+    <div class="dropdown-backdrop"></div>
+
+    <!-- ✅ SIDE MENU (ICONS) -->
+    <div class="dropdown-menu">
+        <div class="icon-grid">
+            <a href="index.html" class="icon-item"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="hair.html" class="icon-item"><i class="fas fa-cut"></i><span>Hair Care</span></a>
+            <a href="skin.html" class="icon-item"><i class="fas fa-spa"></i><span>Skin Care</span></a>
+            <a href="deodorants-perfumes.html" class="icon-item"><i class="fas fa-wind"></i><span>Perfumes</span></a>
+            <a href="sensitive-area-care.html" class="icon-item"><i class="fas fa-shield-alt"></i><span>Sensitive</span></a>
+            <a href="dental-care.html" class="icon-item"><i class="fas fa-tooth"></i><span>Dental</span></a>
+            <a href="dyes.html" class="icon-item"><i class="fas fa-palette"></i><span>Dyes</span></a>
+            <a href="nail-lip-care.html" class="icon-item"><i class="fas fa-paint-brush"></i><span>Nail & Lip</span></a>
+            <a href="sunscreen.html" class="icon-item"><i class="fas fa-sun"></i><span>Sunscreen</span></a>
+            <a href="childrens-supplies.html" class="icon-item"><i class="fas fa-baby"></i><span>Kids</span></a>
+            <a href="shaving-supplies.html" class="icon-item"><i class="fas fa-cut"></i><span>Shaving</span></a>
+            <a href="good-supplies.html" class="icon-item"><i class="fas fa-user"></i><span>Supplies</span></a>
+            <a href="diapers.html" class="icon-item"><i class="fas fa-baby-carriage"></i><span>Diapers</span></a>
+            <a href="offers.html" class="icon-item"><i class="fas fa-tags"></i><span>Offers</span></a>
+            <a href="pharmacy_cart.html" class="icon-item"><i class="fas fa-shopping-cart"></i><span>Cart</span></a>
+        </div>
+    </div>
+</nav>
+<div id="floating-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+
+<!-- ✅ SHARED JS (مهم يكون موجود في كل الصفحات) -->
+<script src="shared-ui.js"></script>

@@ -5,501 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Children's Supplies - Dr. Alaa Pharmacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #078140;
-            --secondary-color: #045a41;
-            --accent-color: #ff6b6b;
-            --text-color: #333;
-            --light-text: #666;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: linear-gradient(135deg, var(--bg-color) 0%, #e9ecef 100%);
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100px); }
-        }
-
-        header h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.5); }
-        }
-
-        header p {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            animation: fadeInUp 1s ease-out;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        nav {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 25px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        nav a i {
-            font-size: 0.6rem;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        nav a:hover::before {
-            left: 100%;
-        }
-
-        nav a:hover, nav a.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        main {
-            max-width: 1400px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        .search-bar {
-            max-width: 500px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e9ecef;
-            border-radius: 30px;
-            font-size: 1rem;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(7, 129, 64, 0.1);
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid #e9ecef;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .product img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .product:hover img {
-            transform: scale(1.05);
-        }
-
-        .product-content {
-            padding: 20px;
-        }
-
-        .product h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--text-color);
-        }
-
-        .price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-
-        .discounted-price {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .discount-badge {
-            background: var(--accent-color);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .quantity-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .quantity-btn:hover {
-            background: var(--secondary-color);
-            transform: scale(1.1);
-        }
-
-        .quantity-input {
-            width: 50px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            
-            padding: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .add-to-cart {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            width: 100%;
-            transition: var(--transition);
-        }
-
-        .add-to-cart:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .close:hover {
-            color: var(--accent-color);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Notification Styles */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--primary-color);
-            color: white;
-            padding: 15px 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            animation: slideInRight 0.3s ease-out;
-            display: none;
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Footer */
-        footer {
-            background: white;
-            color: var(--text-color);
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-        }
-
-        footer p {
-            margin-bottom: 10px;
-        }
-
-        footer .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        footer .social-links a {
-            color: var(--text-color);
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        footer .social-links a:hover {
-            color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                padding: 30px 15px;
-            }
-
-            header h1 {
-                font-size: 2.2rem;
-            }
-
-            header p {
-                font-size: 1.2rem;
-            }
-
-            nav ul {
-                gap: 10px;
-            }
-
-            nav a {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-
-            .products {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 15px;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav a {
-                width: 100%;
-                justify-content: center;
-                max-width: 200px;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .product-content {
-                padding: 10px;
-            }
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Focus styles */
-        nav a:focus,
-        .search-input:focus,
-        .add-to-cart:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-    </style>
+    <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="search.css" />
 </head>
 <body>
-    <header>
-        <h1>Children's Supplies</h1>
-        <p>Gentle care for your little ones.</p>
-        <nav>
-            <ul>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Dr. Alaa Pharmacy</div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="hair.html"><i class="fas fa-cut"></i> Hair Care</a></li>
                 <li><a href="skin.html"><i class="fas fa-spa"></i> Skin Care</a></li>
@@ -514,14 +32,90 @@
                 <li><a href="good-supplies.html"><i class="fas fa-user"></i> Good Supplies</a></li>
                 <li><a href="diapers.html"><i class="fas fa-baby-carriage"></i> Diapers</a></li>
                 <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
-                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> cart <span id="cart-count">0</span></a></li>
+                <li><a href="pharmacy_cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">0</span></a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+        <!-- Dropdown Backdrop -->
+        <div class="dropdown-backdrop"></div>
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu">
+            <div class="icon-grid">
+                <a href="index.html" class="icon-item" data-tooltip="Home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="hair.html" class="icon-item" data-tooltip="Hair Care">
+                    <i class="fas fa-cut"></i>
+                    <span>Hair Care</span>
+                </a>
+                <a href="skin.html" class="icon-item" data-tooltip="Skin Care">
+                    <i class="fas fa-spa"></i>
+                    <span>Skin Care</span>
+                </a>
+                <a href="deodorants-perfumes.html" class="icon-item" data-tooltip="Deodorants & Perfumes">
+                    <i class="fas fa-wind"></i>
+                    <span>Deodorants & Perfumes</span>
+                </a>
+                <a href="sensitive-area-care.html" class="icon-item" data-tooltip="Sensitive Area Care">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Sensitive Area Care</span>
+                </a>
+                <a href="dental-care.html" class="icon-item" data-tooltip="Dental Care">
+                    <i class="fas fa-tooth"></i>
+                    <span>Dental Care</span>
+                </a>
+                <a href="dyes.html" class="icon-item" data-tooltip="Dyes">
+                    <i class="fas fa-palette"></i>
+                    <span>Dyes</span>
+                </a>
+                <a href="nail-lip-care.html" class="icon-item" data-tooltip="Nail & Lip Care">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Nail & Lip Care</span>
+                </a>
+                <a href="sunscreen.html" class="icon-item" data-tooltip="Sunscreen">
+                    <i class="fas fa-sun"></i>
+                    <span>Sunscreen</span>
+                </a>
+                <a href="childrens-supplies.html" class="icon-item" data-tooltip="Children's Supplies">
+                    <i class="fas fa-baby"></i>
+                    <span>Children's Supplies</span>
+                </a>
+                <a href="shaving-supplies.html" class="icon-item" data-tooltip="Shaving Supplies">
+                    <i class="fas fa-cut"></i>
+                    <span>Shaving Supplies</span>
+                </a>
+                <a href="good-supplies.html" class="icon-item" data-tooltip="Good Supplies">
+                    <i class="fas fa-user"></i>
+                    <span>Good Supplies</span>
+                </a>
+                <a href="diapers.html" class="icon-item" data-tooltip="Diapers">
+                    <i class="fas fa-baby-carriage"></i>
+                    <span>Diapers</span>
+                </a>
+                <a href="offers.html" class="icon-item" data-tooltip="Offers">
+                    <i class="fas fa-tags"></i>
+                    <span>Offers</span>
+                </a>
+                <a href="pharmacy_cart.html" class="icon-item" data-tooltip="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+<div id="floating-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+
+    
 
     <main>
         <section class="section">
-            <h2>Children's Supplies Products</h2>
+       <h1>Children's Supplies</h1>
+        <p>Gentle care for your little ones.</p>
             <div class="search-bar">
                 <input type="text" placeholder="Search products..." class="search-input">
             </div>
@@ -739,6 +333,48 @@
                 notification.style.display = 'none';
             }, 3000);
         }
+
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const dropdownBackdrop = document.querySelector('.dropdown-backdrop');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    dropdownBackdrop.classList.toggle('active');
+                    dropdownMenu.classList.toggle('show');
+                    hamburger.classList.toggle('active');
+                });
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownBackdrop.classList.remove('active');
+                    dropdownMenu.classList.remove('show');
+                    hamburger.classList.remove('active');
+                }
+            });
+
+            // Close mobile menu when clicking a link
+            dropdownMenu.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    dropdownBackdrop.classList.remove('active');
+                    dropdownMenu.classList.remove('show');
+                    hamburger.classList.remove('active');
+                }
+            });
+
+            // Close dropdown when clicking backdrop
+            if (dropdownBackdrop) {
+                dropdownBackdrop.addEventListener('click', function() {
+                    dropdownBackdrop.classList.remove('active');
+                    dropdownMenu.classList.remove('show');
+                    hamburger.classList.remove('active');
+                });
+            }
+        });
     </script>
 <script type="module">
   /* ================= Firebase ================= */
@@ -777,23 +413,25 @@
     snapshot.forEach((child) => {
       const product = child.val();
 
-      container.innerHTML += '<div class="product" data-name="' + product.name + '">' +
-        '<img src="' + product.image + '" alt="' + product.name + '">' +
-        '<div class="product-content">' +
-          '<h3>' + product.name + '</h3>' +
-          '<div class="price">' +
-            '<span class="original-price">$10</span>' +
-            '<span class="discounted-price">$' + product.price + '</span>' +
-            '<span class="discount-badge">10% OFF</span>' +
-          '</div>' +
-          '<div class="quantity-selector">' +
-            '<button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>' +
-            '<input type="number" class="quantity-input" value="1" min="1" readonly>' +
-            '<button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>' +
-          '</div>' +
-          '<button class="add-to-cart">Add to cart</button>' +
-        '</div>' +
-      '</div>';
+      container.innerHTML += `
+        <div class="product" data-name="${product.name}">
+          <img src="${product.image}" alt="${product.name}">
+          <div class="product-content">
+            <h3>${product.name}</h3>
+            <div class="price">
+              <span class="original-price">$10</span>
+              <span class="discounted-price">$${product.price}</span>
+              <span class="discount-badge">10% OFF</span>
+            </div>
+            <div class="quantity-selector">
+              <button class="quantity-btn" onclick="changeQuantity(this, -1)">-</button>
+              <input type="number" class="quantity-input" value="1" min="1" readonly>
+              <button class="quantity-btn" onclick="changeQuantity(this, 1)">+</button>
+            </div>
+            <button class="add-to-cart">Add to cart</button>
+          </div>
+        </div>
+      `;
     });
   });
 </script>
@@ -819,8 +457,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   console.log('Children's supplies products uploaded to Firebase');
 });
 </script>
+
+    <script type="module" src="js/products.service.js"></script>
+<script type="module" src="js/products.ui.js"></script>
+    <script src="shared-ui.js"></script>
 </body>
 </html>
+
+
+
+
 
 
 

@@ -5,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Skin Care - Dr. Alaa Pharmacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="nav.css" />
-    <link rel="stylesheet" href="deodorants-perfumes.css" />
+    <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="search-main.css">
 </head>
 <body>
-    <header>
-        <h1>Skin Care</h1>
-        <p>Professional skincare products for all skin types. Nourish and rejuvenate your skin with our premium range.</p>
-    </header>
-
     <nav>
         <div class="nav-container">
             <div class="logo">Dr. Alaa Pharmacy</div>
+          <div class="products" aria-live="polite" aria-relevant="additions removals">
+
+            </div>
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -101,10 +99,7 @@
                     <i class="fas fa-tags"></i>
                     <span>Offers</span>
                 </a>
-                <a href="admin.html" class="icon-item" data-tooltip="Admin">
-                    <i class="fas fa-cog"></i>
-                    <span>Admin</span>
-                </a>
+
                 <a href="pharmacy_cart.html" class="icon-item" data-tooltip="Cart">
                     <i class="fas fa-shopping-cart"></i>
                     <span>Cart</span>
@@ -112,14 +107,25 @@
             </div>
         </div>
     </nav>
+<div id="floating-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
 
     <main>
         <section class="section">
-            <h2>Skin Care Products</h2>
-            <div class="search-bar">
-                <input type="text" placeholder="Search products..." class="search-input" aria-label="Search products" />
+           <h1>Skin Care</h1>
+        <p>Professional skincare products for all skin types. Nourish and rejuvenate your skin with our premium range.</p>
+        <div class="search-bar">
+            <div class="search-input-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search products..." class="search-input" aria-label="Search products">
+                <button class="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
             </div>
-            <div class="products" aria-live="polite" aria-relevant="additions removals">
+        </div>
+        <div class="products" aria-live="polite" aria-relevant="additions removals">
                 <!-- Example product -->
 
 
@@ -1167,166 +1173,18 @@
     <div id="notification" class="notification" role="alert" aria-live="assertive">
         Product added to cart!
     </div>
-
-    <script>
-        // Search functionality
-        const searchInput = document.querySelector('.search-input');
-        const products = document.querySelectorAll('.product');
-
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            products.forEach(product => {
-                const productName = product.getAttribute('data-name').toLowerCase();
-                if (productName.includes(searchTerm)) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
-        });
-
-        // Add to cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Function to update cart count display
-        function updateCartCount() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-count').textContent = totalItems;
-        }
-
-        // Initialize cart count on page load
-        updateCartCount();
-
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const product = e.target.closest('.product');
-                const productName = product.getAttribute('data-name');
-                const discountedPrice = product.querySelector('.discounted-price').textContent;
-                const productImage = product.querySelector('img').src;
-                const quantity = parseInt(product.querySelector('.quantity-input').value);
-
-                const cartItem = {
-                    name: productName,
-                    price: discountedPrice,
-                    image: productImage,
-                    quantity: quantity
-                };
-
-                // Check if item already in cart
-                const existingItem = cart.find(item => item.name === productName);
-                if (existingItem) {
-                    existingItem.quantity += quantity;
-                } else {
-                    cart.push(cartItem);
-                }
-
-                // Save to localStorage
-                localStorage.setItem('cart', JSON.stringify(cart));
-
-                // Update cart count display
-                updateCartCount();
-
-                // Show notification
-                showNotification();
-            });
-        });
-
-        // Image modal functionality
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeBtn = document.querySelector('.close');
-
-        document.querySelectorAll('.product img').forEach(img => {
-            img.addEventListener('click', (e) => {
-                modal.style.display = 'block';
-                modalImg.src = e.target.src;
-                modalImg.alt = e.target.alt;
-                modal.focus();
-            });
-        });
-
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-
-        // Quantity selector function
-        function changeQuantity(button, delta) {
-            const input = button.parentElement.querySelector('.quantity-input');
-            let value = parseInt(input.value) + delta;
-            if (value < 1) value = 1;
-            input.value = value;
-        }
-
-        // Notification function
-        function showNotification() {
-            const notification = document.getElementById('notification');
-            notification.style.display = 'block';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }
-
-        // Hamburger menu functionality
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        const dropdownBackdrop = document.querySelector('.dropdown-backdrop');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            dropdownBackdrop.classList.toggle('active');
-            dropdownMenu.classList.toggle('show');
-        });
-
-        dropdownBackdrop.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            dropdownBackdrop.classList.remove('active');
-            dropdownMenu.classList.remove('show');
-        });
-
-        // Bar size toggle logic
-        function adjustBarSize() {
-            const header = document.getElementById('main-header');
-            if (localStorage.getItem('largeBar') === 'true') {
-                header.classList.remove('small-bar');
-            } else {
-                header.classList.add('small-bar');
-            }
-        }
-
-        function addNavLinkListeners() {
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    localStorage.setItem('largeBar', 'true');
-                });
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            adjustBarSize();
-            addNavLinkListeners();
-
-            setTimeout(() => {
-                localStorage.removeItem('largeBar');
-            }, 5000);
-        });
-    </script>
     <!-- ========== PRODUCTS VIEW ========== -->
 <div id="productsContainer" class="products-grid"></div>
 
-<script type="module" src="js/products.service.js"></script>
+<script src="shared-ui.js"></script>
+<script type="module" src="js/products.js"></script>
+    <script type="module" src="js/products.service.js"></script>
 <script type="module" src="js/products.ui.js"></script>
 </body>
 </html>
+
+
+
 
 
 

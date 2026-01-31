@@ -1,0 +1,105 @@
+
+
+
+/* ===============================
+   PRODUCT SEARCH – MODERN STYLE
+   =============================== */
+
+.product-search-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 30px;
+  padding: 0 10px;
+}
+
+.product-search {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ===== Search Input ===== */
+.product-search input {
+  width: 100%;
+  height: 46px;
+  padding: 0 45px 0 15px;
+  border-radius: 14px;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.product-search input::placeholder {
+  color: #aaa;
+}
+
+.product-search input:focus {
+  border-color: #4da3ff;
+  box-shadow: 0 6px 18px rgba(77,163,255,0.25);
+}
+
+/* ===== Search Icon ===== */
+.product-search::after {
+  content: "🔍";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #777;
+  pointer-events: none;
+}
+
+/* ===============================
+   SMART SEARCH RESULTS (UI ONLY)
+   =============================== */
+
+.search-suggestions {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+/* Single result */
+.search-suggestions div {
+  padding: 12px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #f1f1f1;
+  transition: background 0.2s ease;
+}
+
+.search-suggestions div:last-child {
+  border-bottom: none;
+}
+
+.search-suggestions div:hover {
+  background: #f5f9ff;
+}
+
+/* Highlighted text */
+.search-suggestions span {
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+@media (max-width: 480px) {
+  .product-search input {
+    height: 44px;
+    font-size: 14px;
+  }
+}
